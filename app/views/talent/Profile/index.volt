@@ -6,7 +6,7 @@
         <small>profile</small>
     </h1>
     <ol class="breadcrumb">
-        <li><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><i class="fa fa-dashboard"></i>Dashboard</a></li>
         <li>Profile</li>
     </ol>
 </section>
@@ -89,7 +89,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title" style="margin-top:5px;">Work Experience</h3>
 
-                    <a href="{{url('talentworkexperience/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
+                    <a href="{{url('talent/workexperience/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
 
                 </div>
                 <div class="alert-work"></div>
@@ -107,7 +107,7 @@
                                     </div>
 
                                     <div class="col-xs-2">
-                                        <a href="{{url('talentworkexperience/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                        <a href="{{url('talent/workexperience/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="#" class="btn tombolremove confirm-delete-work" data-id="{{row.getId()}}">Remove</a>
@@ -158,7 +158,7 @@
                     <h3 class="box-title" style="margin-top:5px;">Education History</h3>
 
 
-                    <a href="{{url('talenteducation/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Education History</a>
+                    <a href="{{url('talent/education/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Education History</a>
 
 
                 </div>
@@ -176,7 +176,7 @@
                                     </div>
 
                                     <div class="col-xs-2">
-                                        <a href="{{url('talenteducation/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                        <a href="{{url('talen/teducation/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="#" class="btn tombolremove confirm-delete-edu" data-id="{{row.getId()}}">Remove</a>
@@ -225,7 +225,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title" style="margin-top:5px;">Training Experience</h3>
 
-                    <a href="{{url('talenttraining/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Training Experience</a>
+                    <a href="{{url('talent/training/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Training Experience</a>
 
                 </div>
                 <div class="alert-training"></div>
@@ -241,7 +241,7 @@
                                         <div> {{row.getOrganizer()}} - {{row.getYear()}}</div>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="{{url('talenttraining/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                        <a href="{{url('talent/training/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="#" class="btn tombolremove confirm-delete-training" data-id="{{row.getId()}}">Remove</a>
@@ -319,7 +319,7 @@ crossorigin="anonymous"></script>
         //sending to php the row to be deleted from the db
         // alert (id);
         $.ajax({
-            url: '{{url('talenteducation/remove/')}}' + id,
+            url: '{{url('talent/education/remove/')}}' + id,
             // type: POST,
             data: 'id=' + id,
             success: function (html) {
@@ -359,7 +359,7 @@ crossorigin="anonymous"></script>
         //sending to php the row to be deleted from the db
         // alert (id);
         $.ajax({
-            url: '{{url('talentworkexperience/remove/')}}' + id,
+            url: '{{url('talent/workexperience/remove/')}}' + id,
             // type: POST,
             data: 'id=' + id,
             success: function (html) {
@@ -405,7 +405,7 @@ crossorigin="anonymous"></script>
         //sending to php the row to be deleted from the db
         // alert (id);
         $.ajax({
-            url: '{{url('talenttraining/remove/')}}' + id,
+            url: '{{url('talent/training/remove/')}}' + id,
             // type: POST,
             data: 'id=' + id,
             success: function (html) {
@@ -426,5 +426,4 @@ crossorigin="anonymous"></script>
         });
         return false;
     });
-
 </script>
