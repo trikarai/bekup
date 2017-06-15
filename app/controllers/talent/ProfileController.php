@@ -36,7 +36,7 @@ class ProfileController extends \TalentControllerBase{
 
     function updateAction(){
         if(!$this->request->isPost()){
-            return $this->forward('profile/index');
+            return $this->forward('talent/profile/index');
         }
         $talentRepository = $this->em->getRepository('\Talent\Profile\DomainModel\Talent\Talent');
         $service = new UpdateTalentService($talentRepository);
@@ -44,9 +44,10 @@ class ProfileController extends \TalentControllerBase{
         $response = $service->execute($this->_getTalentId(), $this->_getRequest());
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forward('profile/edit');
+            return $this->forward('talent/profile/edit');
         }
         $this->flash->success("profile updated");
+        $this->view->pick('talent/dashboard/index');
     }
     
     /**
