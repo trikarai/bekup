@@ -52,7 +52,7 @@ function _hinted(QueryTeamDTO $dto){
 					<div class="box-header with-border">
 						<div class="row">
 							<div class="col-md-10">
-								<h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">My Team Member | <i class="fa fa-th"></i> Team name:<span class="team-name"> <?php echo $teamActiveDTO->name(); ?></span></h3>
+								<h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">My Team Member | x <i class="fa fa-th"></i> Team name:<span class="team-name"> <?php echo $teamActiveDTO->name(); ?></span></h3>
 							</div>						  
 						  <div class="col-md-2">
 								<a href="{{url('team/inviteMember')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> Add new member</a>
