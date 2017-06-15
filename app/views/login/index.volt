@@ -42,7 +42,8 @@
 
                                         </div>
                                         <p class="text-divider">Welcome to BEKUP</p>
-                                        {{content()}}
+                                        
+                                        {{flash.output()}}
                                         <div class="content">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
