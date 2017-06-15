@@ -5,7 +5,7 @@ namespace Superclass\DomainModel\Team;
 use Resources\IReadDataObject;
 use Superclass\DomainModel\Talent\TalentReadDataObject;
 
-abstract class TeamMemberReadDataObject{
+abstract class TeamMemberReadDataObject implements IReadDataObject{
     protected $id;
     protected $status;
     protected $position;
@@ -42,5 +42,16 @@ abstract class TeamMemberReadDataObject{
         $this->isAdmin = $isAdmin;
         $this->isCreator = $isCreator;
         $this->talentRDO = $talentRDO;
+    }
+    
+    public function toArray() {
+        return array(
+            'id' => $this->getId(),
+            'status' => $this->getStatus(),
+            'position' => $this->getPosition(),
+            'is_admin' => $this->getIsAdmin(),
+            'is_creator' => $this->getIsCreator(),
+            'talent' => $this->talentRDO()->toArray(),
+        );
     }
 }

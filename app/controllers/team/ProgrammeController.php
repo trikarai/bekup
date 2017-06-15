@@ -24,7 +24,7 @@ class ProgrammeController extends TeamControllerBase{
         $service = $this->_queryProgrammeService();
         $response = $service->showActiveProgramme($this->_getTalentId());
         if(false === $response->getStatus()){
-            $this->displayWarningMessages($response->errorMessage()->getDetails());
+            //$this->displayWarningMessages($response->errorMessage()->getDetails());
             return $this->forward('programme/participation');
         }
         $this->rdo = $response->firstReadDataObject();

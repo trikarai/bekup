@@ -7,8 +7,9 @@ $isDevMode = true;
 $paths = array(
     BASE_PATH . "/src/Superclass/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/City/Profile/Infrastructure/Persistence/DoctrineMapping",
+    BASE_PATH . "/src/City/Programme/Description/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Personnel/Infrastructure/Persistence/DoctrineMapping",
-    BASE_PATH . "/src/Programme/Infrastructure/Persistence/DoctrineMapping",
+    BASE_PATH . "/src/Programme/Description/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Education/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Profile/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Skill/Infrastructure/Persistence/DoctrineMapping",
@@ -16,6 +17,7 @@ $paths = array(
     BASE_PATH . "/src/Talent/WorkingExperience/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Team/Idea/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Team/Profile/Infrastructure/Persistence/DoctrineMapping",
+    BASE_PATH . "/src/Team/Programme/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Track/Definition/Infrastructure/Persistence/DoctrineMapping",
 );
 

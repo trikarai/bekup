@@ -8,7 +8,8 @@ use Team\Profile\DomainModel\Talent\Talent;
 use Superclass\DomainModel\Team\TeamAbstract as Team;
 //use Team\Profile\DomainModel\Membership\ValueObject\MembershipStatus;
 use Team\Profile\DomainModel\Membership\DataObject\TalentMembershipReadDataObject;
-use Superclass\DomainModel\Team\TeamMemberReadDataObject;
+//use Superclass\DomainModel\Team\TeamMemberReadDataObject;
+use Team\Profile\DomainModel\Membership\DataObject\TeamMemberReadDataObject;
 
 class Membership {
     protected $id;
