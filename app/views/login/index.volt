@@ -1,5 +1,3 @@
-<!doctype html>
-
 <style>
     .alert {
         text-align: justify !important;
