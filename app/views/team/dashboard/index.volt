@@ -27,6 +27,8 @@
                         </div>
                         <div class="col-md-2">
                             <a href="{{url('team/member/invite')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> invite member</a>
+                        
+                            <a href="{{url('team/programme/index')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> Team Programme</a>
                         </div>
                     </div>
                 </div>
