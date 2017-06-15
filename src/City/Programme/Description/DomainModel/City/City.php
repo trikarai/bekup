@@ -28,7 +28,7 @@ class City extends CityAbstract{
             $message = "programme reference already used";
             return ErrorMessage::error409_Conflict([$message]);
         }
-        $id = $this->programmes->count() + 1;
+        $id = \Ramsey\Uuid\Uuid::uuid4()->toString();
         $programme = new Programme($this, $id, $referenceProgrammeId, $isOffline);
         $this->programmes->set($id, $programme);
         return true;
@@ -84,7 +84,10 @@ class City extends CityAbstract{
      */
     function _findProgramme($id){
         $criteria = Criteria::create()
-                ->where(Criteria::expr()->eq('isRemoved', false));
-        return $this->programmes->matching($criteria)->get($id);
+                ->where(Criteria::expr()->andX(
+                        Criteria::expr()->eq('id', $id),
+                        Criteria::expr()->eq('isRemoved', false)
+                ));
+        return $this->programmes->matching($criteria)->first();
     }
 }

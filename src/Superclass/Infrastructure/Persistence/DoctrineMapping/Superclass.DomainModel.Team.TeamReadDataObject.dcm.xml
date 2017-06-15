@@ -10,7 +10,7 @@
         <field name="mission" type="string" />
         <field name="culture" type="string" />
         <field name="founderAgreement" column='founder_agreement' type="string" />
-        <field name="is_removed" type="boolean" />
+        <field name="isRemoved" column='is_removed' type="boolean" />
         
         <many-to-one field="cityRDO" target-entity="Superclass\DomainModel\City\CityReadDataObject">
             <join-column name="city_id" referenced-column-name="id" />

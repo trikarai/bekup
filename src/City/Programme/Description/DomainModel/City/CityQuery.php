@@ -19,8 +19,11 @@ class CityQuery extends \Superclass\DomainModel\City\CityQueryAbstract{
      */
     function aProgrammeRdoOfId($id){
         $criteria = Criteria::create()
-                ->where(Criteria::expr()->eq('isRemoved', false));
-        return $this->programmeRdos->matching($criteria)->get($id);
+                ->where(Criteria::expr()->andX(
+                        Criteria::expr()->eq('id', $id),
+                        Criteria::expr()->eq('isRemoved', false)
+                ));
+        return $this->programmeRdos->matching($criteria)->first();
     }
     
     /**

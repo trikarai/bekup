@@ -5,7 +5,7 @@ namespace Superclass\DomainModel\Team;
 use Resources\IReadDataObject;
 use Superclass\DomainModel\Talent\TalentReadDataObject;
 
-class TeamMemberReadDataObject implements IReadDataObject{
+abstract class TeamMemberReadDataObject{
     protected $id;
     protected $status;
     protected $position;
@@ -15,7 +15,6 @@ class TeamMemberReadDataObject implements IReadDataObject{
      * @var TalentReadDataObject
      */
     protected $talentRDO;
-    protected $team;
     
     function getId() {
         return $this->id;
@@ -35,9 +34,6 @@ class TeamMemberReadDataObject implements IReadDataObject{
     function talentRDO() {
         return $this->talentRDO;
     }
-    function getTalentId(){
-        return $this->talentRDO->getId();
-    }
 
     function __construct($id, $status, $position, $isAdmin, $isCreator, TalentReadDataObject $talentRDO) {
         $this->id = $id;
@@ -46,16 +42,5 @@ class TeamMemberReadDataObject implements IReadDataObject{
         $this->isAdmin = $isAdmin;
         $this->isCreator = $isCreator;
         $this->talentRDO = $talentRDO;
-    }
-    
-    function toArray() {
-        return Array(
-            'id' => $this->getId(),
-            'status' => $this->getStatus(),
-            'position' => $this->getPosition(),
-            'is_creator' => $this->getIsCreator(),
-            'is_admin' => $this->getIsAdmin(),
-            'talent' => $this->talentRDO->toArray(),
-        );
     }
 }

@@ -5,7 +5,7 @@
     >
         <one-to-many field='ideas' 
                      target-entity='Team\Idea\DomainModel\Idea\Idea'
-                     idex-by='id'
+                     index-by='id'
                      orphan-removal='true'
                      mapped-by='team'
         >
@@ -16,7 +16,7 @@
         
         <one-to-many field='teamMemberRdos' 
                      target-entity='Superclass\DomainModel\Team\TeamMemberReadDataObject'
-                     idex-by='id'
+                     index-by='id'
                      orphan-removal='true'
                      mapped-by='team'
         >

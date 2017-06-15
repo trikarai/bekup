@@ -123,8 +123,11 @@ class Team extends TeamAbstract{
      */
     protected function _findIdea($id){
         $criteria = Criteria::create()
-                ->where(Criteria::expr()->eq('isRemoved', false));
-        return $this->ideas->matching($criteria)->get($id);
+				->where(Criteria::expr()->andX(
+                        Criteria::expr()->eq('id', $id),
+                        Criteria::expr()->eq('isRemoved', false)
+                ));
+        return $this->ideas->matching($criteria)->first();
     }
     
     /**
@@ -149,7 +152,10 @@ class Team extends TeamAbstract{
      */
     protected function _findMembershipRDO($memberId){
         $criteria = Criteria::create()
-                ->where(Criteria::expr()->eq('status', "active"));
-        return $this->teamMemberRdos->matching($criteria)->get($memberId);
+				->where(Criteria::expr()->andX(
+                        Criteria::expr()->eq('id', $memberId),
+                        Criteria::expr()->eq('status', "active")
+                ));
+        return $this->teamMemberRdos->matching($criteria)->first();
     }
 }

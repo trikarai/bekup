@@ -35,14 +35,15 @@ class ApplyProgrammeService {
      */
     function execute($talentId, $cityProgrammeId){
         $response = new ResponseObject();
-        $activeMembershipRdo = $this->_findActiveMembershipRdoOrDie($talentId);
-        $cityQuery = $this->_findCityQueryOrDie($activeMembershipRdo->teamRDO()->cityRDO()->getId());
-        $team = $this->_findTeamOrDie($activeMembershipRdo->teamRDO()->getId());
+        $activeMembershipRdo = $this->activeMembershipFinder->findActiveMembershipRdo($talentId);
         
-        $cityProgrammeRdo = $cityQuery->aProgrammeRdoOfId($cityProgrammeId);
-        if(empty($cityProgrammeRdo)){
+        if(empty($activeMembershipRdo)){
+            $response->appendErrorMessage(ErrorMessage::error404_NotFound(['active team not found']));
+        }else if(!($team = $this->teamRepository->ofId($activeMembershipRdo->teamRDO()->getId()))){
+            $response->appendErrorMessage(ErrorMessage::error404_NotFound(['team not found']));
+        }else if(!($cityProgrammeRdo = $this->_findCityProgrammeRdo($activeMembershipRdo->teamRDO()->cityRDO()->getId(), $cityProgrammeId))){
             $response->appendErrorMessage(ErrorMessage::error404_NotFound(['city programme not found']));
-        }else if(true !== $msg = $team->applyProgramme($cityProgrammeRdo)){
+        }else if(true !== $msg = $team->applyProgramme($activeMembershipRdo->getId(), $cityProgrammeRdo)){
             $response->appendErrorMessage($msg);
         }else{
             $this->teamRepository->update();
@@ -51,41 +52,19 @@ class ApplyProgrammeService {
     }
     
     /**
-     * @param type $talentId
-     * @return TalentMembershipReadDataObject
-     */
-    protected function _findActiveMembershipRdoOrDie($talentId){
-        $membershipRdo = $this->activeMembershipFinder->findActiveMembershipRdo($talentId);
-        if(empty($memberhshipRdo)){
-            throw new \Resources\Exception\DoNotCatchException('active team not found');
-        }
-        return $membershipRdo;
-    }
-    /**
-     * 
      * @param type $cityId
      * @param type $cityProgrammeId
-     * @return CityQuery
-     * @throws \Resources\Exception\DoNotCatchException
+     * @return \City\Programme\Description\DomainModel\Programme\ProgrammeRdo||false
      */
-    protected function _findCityQueryOrDie($cityId, $cityProgrammeId){
+    protected function _findCityProgrammeRdo($cityId, $cityProgrammeId){
         $cityQuery = $this->cityQueryRepository->ofId($cityId);
         if(empty($cityQuery)){
-            throw new \Resources\Exception\DoNotCatchException('city not found');
+            return false;
         }
-        return $cityQuery;
-    }
-    /**
-     * 
-     * @param type $teamId
-     * @return Team
-     * @throws \Resources\Exception\DoNotCatchException
-     */
-    protected function _findTeamOrDie($teamId){
-        $team = $this->teamRepository->ofId($teamId);
-        if(empty($team)){
-            throw new \Resources\Exception\DoNotCatchException('team not found');
+        $cityProgrammeRdo = $cityQuery->aProgrammeRdoOfId($cityProgrammeId);
+        if(empty($cityProgrammeRdo)){
+            return false;
         }
-        return $team;
+        return $cityProgrammeRdo;
     }
 }

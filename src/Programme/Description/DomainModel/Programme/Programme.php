@@ -33,14 +33,14 @@ class Programme {
     /**
      * @return ProgrammeReadDataObject
      */
-    function toReadDataObject(){
-        return new ProgrammeReadDataObject($this->id, $this->name, 
-                $this->registrationDateRange->getStartDate()->format('Y-m-d'), 
-                $this->registrationDateRange->getEndDate()->format('Y-m-d'), 
-                $this->operationDateRange->getStartDate()->format('Y-m-d'), 
-                $this->operationDateRange->getEndDate()->format('Y-m-d'), 
-                $this->isRemoved);
-    }
+//    function toReadDataObject(){
+//        return new ProgrammeReadDataObject($this->id, $this->name, 
+//                $this->registrationDateRange->getStartDate()->format('Y-m-d'), 
+//                $this->registrationDateRange->getEndDate()->format('Y-m-d'), 
+//                $this->operationDateRange->getStartDate()->format('Y-m-d'), 
+//                $this->operationDateRange->getEndDate()->format('Y-m-d'), 
+//                $this->isRemoved);
+//    }
     
     /**
      * @param type $id
@@ -54,7 +54,7 @@ class Programme {
                 new \DateTime($request->getRegistrationStartDate()), new \DateTime($request->getRegistrationEndDate()));
         $this->operationDateRange = ProgrammeOperationDateRange::fromNative(
                 new \DateTime($request->getOperationStartDate()), new \DateTime($request->getOperationEndDate()));
-        DomainEventPublisher::instance()->publish(new ProgrammeWasCreatedEvent($this->toReadDataObject()));
+        DomainEventPublisher::instance()->publish(new ProgrammeWasCreatedEvent($this->id));
     }
     
     /**

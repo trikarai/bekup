@@ -11,9 +11,9 @@ use Resources\ErrorMessage;
 
 class Team extends \Superclass\DomainModel\Team\TeamAbstract{
     /** @var ArrayCollection */
-    protected $programmes;
-    /** @var ArrayCollection */
     protected $teamMemberRdos;
+    /** @var ArrayCollection */
+    protected $programmes;
     
     protected function __construct() {
         $this->programmes = new ArrayCollection();
@@ -25,8 +25,8 @@ class Team extends \Superclass\DomainModel\Team\TeamAbstract{
      * @return true||ErrorMessage
      */
     function applyProgramme($memberId, CityProgrammeRdo $cityProgrammeRdo){
-        $msg = true;
-        if(true !== $msg = $this->_isNotHasActiveProgramme()){
+        if(true !== $msg = $this->_isMemberActiveAdmin($memberId)){
+        }else if(true !== $msg = $this->_isNotHasActiveProgramme()){
         }else if($this->cityRDO->getId() !== $cityProgrammeRdo->cityRdo()->getId()){
             $msg = ErrorMessage::error400_BadRequest(['you can only apply programme on your city']);
         }else if(true !== $msg = $this->_isCityProgrammeAvailableToApply($cityProgrammeRdo->getId())){
@@ -41,18 +41,24 @@ class Team extends \Superclass\DomainModel\Team\TeamAbstract{
     
     function cancelApplication($memberId, $programmeId){
         $programme = $this->_findProgramme($programmeId);
-        if(empty($programme)){
-            return ErrorMessage::error404_NotFound(['programme not found']);
+        if(true !== $msg = $this->_isMemberActiveAdmin($memberId)){
+        }else if(empty($programme)){
+            $msg = ErrorMessage::error404_NotFound(['programme not found']);
+        }else {
+            $msg = $programme->changeStatus('cancel');
         }
-        return $programme->changeStatus('cancel');
+        return $msg;
     }
     
     function resignFromProgramme($memberId, $programmeId){
         $programme = $this->_findProgramme($programmeId);
-        if(empty($programme)){
-            return ErrorMessage::error404_NotFound(['programme not found']);
+        if(true !== $msg = $this->_isMemberActiveAdmin($memberId)){
+        }else if(empty($programme)){
+            $msg = ErrorMessage::error404_NotFound(['programme not found']);
+        }else{
+            $msg = $programme->changeStatus('resign'); 
         }
-        return $programme->changeStatus('resign');
+        return $msg;
     }
     
     /**
@@ -98,10 +104,9 @@ class Team extends \Superclass\DomainModel\Team\TeamAbstract{
                         Criteria::expr()->eq('isAdmin', True),
                         Criteria::expr()->eq('status', 'active')
                 ));
-        if($this->teamMemberRdos->matching($criteria)->count > 0){
+        if($this->teamMemberRdos->matching($criteria)->count() > 0){
             return true;
         }
         return ErrorMessage::error401_Unauthorized(['only admin member can make this request']);
     }
-    
 }

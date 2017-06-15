@@ -5,7 +5,7 @@ namespace Superclass\Infrastructure\DomainModelRepository\City;
 use Doctrine\ORM\EntityRepository;
 use Superclass\DomainModel\City\ICityRdoRepository;
 
-class DoctrineCityRdoRepository extends EntityRepository implements ICityQueryRepository{
+class DoctrineCityRdoRepository extends EntityRepository implements ICityRdoRepository {
     public function all() {
         $criteria = array(
             'isRemoved' => false,

@@ -34,6 +34,6 @@ abstract class TeamAbstract {
      */
     function toReadDataObject(){
         return new TeamReadDataObject($this->id, $this->name, $this->vision, 
-                $this->mission, $this->culture, $this->founderAgreement, $this->cityRDO);
+                $this->mission, $this->culture, $this->founderAgreement, $this->cityRDO, $this->isRemoved);
     }
 }

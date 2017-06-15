@@ -10,6 +10,7 @@ abstract class TeamQueryAbstract {
     protected $culture;
     protected $founderAgreement;
     protected $cityRDO;
+    protected $isRemoved;
     
     function getId() {
         return $this->id;
@@ -25,6 +26,9 @@ abstract class TeamQueryAbstract {
     }
     function getCulture() {
         return $this->culture;
+    }
+    function getIsRemoved(){
+        return $this->isRemoved;
     }
     function getFounderAgreement() {
         return $this->founderAgreement;

@@ -13,6 +13,7 @@ class TeamReadDataObject implements IReadDataObject{
     protected $culture;
     protected $founderAgreement;
     protected $cityRDO;
+    protected $isRemoved;
     
     function getId() {
         return $this->id;
@@ -29,6 +30,9 @@ class TeamReadDataObject implements IReadDataObject{
     function getCulture() {
         return $this->culture;
     }
+    function getIsRemoved() {
+        return $this->isRemoved;
+    }
     function getFounderAgreement() {
         return $this->founderAgreement;
     }
@@ -39,7 +43,7 @@ class TeamReadDataObject implements IReadDataObject{
         return $this->cityRDO;
     }
 
-    function __construct($id, $name, $vision, $mission, $culture, $founderAgreement, CityReadDataObject $cityRDO) {
+    function __construct($id, $name, $vision, $mission, $culture, $founderAgreement, CityReadDataObject $cityRDO, $isRemoved) {
         $this->id = $id;
         $this->name = $name;
         $this->vision = $vision;
@@ -47,6 +51,7 @@ class TeamReadDataObject implements IReadDataObject{
         $this->culture = $culture;
         $this->founderAgreement = $founderAgreement;
         $this->cityRDO = $cityRDO;
+        $this->isRemoved = $isRemoved;
     }
 
     

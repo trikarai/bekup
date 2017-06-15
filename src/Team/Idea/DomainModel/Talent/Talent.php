@@ -100,8 +100,11 @@ class Talent extends TalentAbstract {
      */
     protected function _findSuperhero($id){
         $criteria = Criteria::create()
-                ->where(Criteria::expr()->eq('isRemoved', false));
-        $superhero = $this->superheroes->matching($criteria)->get($id);
+				->where(Criteria::expr()->andX(
+                        Criteria::expr()->eq('id', $id),
+                        Criteria::expr()->eq('isRemoved', false)
+                ));
+        $superhero = $this->superheroes->matching($criteria)->first();
         if(empty($superhero)){
             return null;
         }

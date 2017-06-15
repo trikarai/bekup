@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Programme\DomainModel\Team\TeamQuery" 
+            table="bkp_team"
+            repository-class="Team\Programme\Infrastructure\DomainModelRepository\Team\DoctrineTeamQueryRepository"
+    >
+	
+        <one-to-many field='programmeRdos' 
+                     target-entity='Team\Programme\DomainModel\Programme\ProgrammeRdo'
+                     index-by='id'
+                     orphan-removal='true'
+                     mapped-by='teamRdo'
+        >
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>

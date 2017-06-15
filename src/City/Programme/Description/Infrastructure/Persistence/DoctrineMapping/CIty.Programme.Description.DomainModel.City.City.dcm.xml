@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="City\Programme\Description\DomainModel\City\City" 
+            table="bkp_city" 
+            repository-class="City\Programme\Description\Infrastructure\DomainModelRepository\City\DoctrineCityRepository"
+    >
+        
+        <one-to-many field='programmes' 
+                     target-entity='City\Programme\Description\DomainModel\Programme\Programme'
+                     mapped-by='city'
+                     index-by="id"
+        >
+            <cascade><cascade-persist/></cascade>
+        </one-to-many>
+
+    </entity>
+</doctrine-mapping>
