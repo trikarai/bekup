@@ -69,7 +69,7 @@
                         <div class="footer">
                             <hr />
                             <div class="stats">
-                                <i class="fa fa-plus"></i><a href="{{url('talentclass/new')}}" class="info-a link link--kumya"><span data-letters="Apply New Class">Apply New Class</span></a>
+                                <i class="fa fa-plus"></i><a href="{{url('talent/class/new')}}" class="info-a link link--kumya"><span data-letters="Apply New Class">Apply New Class</span></a>
                             </div>
                         </div>
                     </div>

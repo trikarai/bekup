@@ -23,7 +23,7 @@
             <h3 class="box-title">Skill</h3>
 
             <div align="right">
-                <a href="{{url('talentskill/new')}}" class="btn tomboladd"><i class="fa fa-plus"></i> Add Skill Set</a>
+                <a href="{{url('talent/skill/new')}}" class="btn tomboladd"><i class="fa fa-plus"></i> Add Skill Set</a>
             </div>
 
         </div>
@@ -47,7 +47,7 @@
                                     <td data-title="Score"> {{row.getScoreValue()}} </td>
 
                                     <td data-title="Action">
-                                        <a href="{{url('talentskill/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                        <a href="{{url('talent/skill/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </td>
                                     <td>
                                         <a href="#" class="btn tombolremove confirm-delete" data-id="{{row.getId()}}">Remove</a>
@@ -130,7 +130,7 @@ crossorigin="anonymous"></script>
         //sending to php the row to be deleted from the db
         // alert (id);
         $.ajax({
-            url: '{{url('talentskill/remove/')}}' + id,
+            url: '{{url('talent/skill/remove/')}}' + id,
             // type: POST,
             data: 'id=' + id,
             success: function (html) {

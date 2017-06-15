@@ -2,7 +2,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <a href="{{url('talentprofile/index')}}" class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> Talent
+        <a href="{{url('talent/profile/index')}}" class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> Talent
         <small>profile</small>
     </h1>
     <ol class="breadcrumb">
@@ -23,7 +23,7 @@
         <div class="box-body">
 
             <div class="col-md-6">
-                <form action="{{url('talenttraining/update')}}" method="post">
+                <form action="{{url('talent/training/update')}}" method="post">
                     {{hidden_field("id")}}
                     <div class="form-group">
                         <label for="name">Training's Name:</label>

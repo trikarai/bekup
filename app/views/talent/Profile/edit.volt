@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        <a href="{{url('talentprofile/index')}}" class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> Talent
+        <a href="{{url('talent/profile/index')}}" class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> Talent
         <small>profile</small>
     </h1>
     <ol class="breadcrumb">
@@ -23,7 +23,7 @@
         </div>
         <div class="box-body" style="width:50%; margin:10px">
 
-            <form action="{{url('talentprofile/update')}}" method="post">
+            <form action="{{url('talent/profile/update')}}" method="post">
 
                 <div class="form-group">
                     <label for="name">Name:</label>

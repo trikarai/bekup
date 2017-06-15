@@ -3,7 +3,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <a href="{{url('talentskill/index')}}" class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> Talent
+        <a href="{{url('talent/skill/index')}}" class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> Talent
         <small>skill</small>
     </h1>
     <ol class="breadcrumb">
@@ -23,7 +23,7 @@
         <div class="box-body">
 
             <div class="col-md-6">
-                <form action="{{url('talentskill/save')}}" method="post">
+                <form action="{{url('talent/skill/save')}}" method="post">
                     <div class="form-group">
                         <label class="control-label">Skill</label>
                         {{select_static("skill_id", "class": "form-control", skillList)}}
