@@ -14,8 +14,8 @@
 }
 </style>
 
-<?php 
-use Phalcon\Tag; 
+<?php
+use Phalcon\Tag;
 use Talent\Application\Service\Team\DTO\QueryTeamDTO;
 
 /**
@@ -53,17 +53,17 @@ function _hinted(QueryTeamDTO $dto){
 						<div class="row">
 							<div class="col-md-10">
 								<h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">My Team Member | <i class="fa fa-th"></i> Team name:<span class="team-name"> <?php echo $teamActiveDTO->name(); ?></span></h3>
-							</div>						  
+							</div>
 						  <div class="col-md-2">
 								<a href="{{url('team/inviteMember')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> Add new member</a>
 						  </div>
 						</div>
-					</div>	
-				
+					</div>
+
 				<div class="box-body">
 				<div class="alert-teammember"></div>
-				  
-												
+
+
 							<section>
 								<?php if($teamActiveDTO):?>
 						<?php foreach ($teamActiveDTO->queryActiveTeamMemberDTOs() as $row) :?>
@@ -72,22 +72,22 @@ function _hinted(QueryTeamDTO $dto){
 																margin:10px;
 																text-align:center;
 																width:30%;">
-								
+
 									<div class="img-circle" style="text-transform:uppercase;text-transform: uppercase;
 																	text-transform: uppercase;
 																	background: #6f6f6f;
 																	display: inline-block;
 																	padding: 22px;
 																	color: #fff;
-																	
+
 																	font-size: 26px;
 																	margin-bottom: 10px;
 																	width: 80px;
 																	height: 80px;">
-										<?php 									
+										<?php
 											$name = $row->queryTalentAsTeamMemberProfileDTO()->name();
-											preg_match_all('~\b(\S){1}~', $name, $i); 
-											echo @$i[1][0].@$i[1][1]; 
+											preg_match_all('~\b(\S){1}~', $name, $i);
+											echo @$i[1][0].@$i[1][1];
 										?>
 									</div>
 									<div style="font-size: 16px;">
@@ -100,11 +100,11 @@ function _hinted(QueryTeamDTO $dto){
 										 <?php echo $row->position(); ?></a>
 									</div>
 								<div>
-								
-								<?php 
+
+								<?php
 								if($myId == $row->queryTalentAsTeamMemberProfileDTO()->id()){
 									echo <<<_end
-									<a href="{$this->url->get('team/resignTeam/'.$row->id())}" class="btn tomboladd confirm-delete" 
+									<a href="{$this->url->get('team/resignTeam/'.$row->id())}" class="btn tomboladd confirm-delete"
 									data-id="{$row->id()}"><i class="fa fa-external-link"></i> Resign</a>
 _end;
 								}else{
@@ -112,20 +112,20 @@ _end;
 									<a href="{$this->url->get('team/kickMember/'.$row->id())}" class="btn tomboladd confirm-delete-kick" data-id="{$row->id()}"><i class="fa fa-exclamation-circle"></i> Kick</a>
 _end;
 								}
-														
-						 
+
+
 								?>
-													
-								
+
+
 								</div>
 								</div>
-								
-							<?php	
+
+							<?php
 							echo	"<div class='modal fade' id='myModalTeam' role='dialog'>";
 							echo		"<div class='modal-dialog modal-sm'>";
-									
 
-							echo	      "<div class='modal-content'>"	;		
+
+							echo	      "<div class='modal-content'>"	;
 							echo			"<div class='modal-body'>";
 							echo			  "<p>Do you want to resign ?</p>";
 							echo			"</div>";
@@ -136,31 +136,31 @@ _end;
 							echo		  "</div>";
 							echo		"</div>";
 							echo    "</div>";
-							?>	
-							
+							?>
+
 						<?php endforeach ?>
 								<?php else:?>
-							
+
 								<div colspan="3" align="center">No Team Member</div>
-							
+
 						<?php endif; ?>
-								
+
 							</section>
-						  
-						 
-					
-					
-					
-					
-				    
+
+
+
+
+
+
+
 					<!-- tab pane-->
-						
+
 				</div>
 				<!-- /.box-body -->
-				
+
 				<!-- /.box-footer-->
 		</div>
-	</div>	
+	</div>
 </div>
 
 <div class="row">
@@ -170,20 +170,20 @@ _end;
 						<div class="row">
 							<div class="col-md-4">
 								<h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">Vision & Mission</h3>
-							</div>						  
+							</div>
 						  <div class="col-md-8">
 								<a style="margin-bottom: 7px;" class="btn tomboledit pull-right" href="{{url('team/editTeam')}}">edit </a>
 						  </div>
 						</div>
-					</div>	
-				
+					</div>
+
 				<div class="box-body">
-				
+
 				<div>
 						<i class="fa fa-eye vision"></i>
 						<h2 style="color: #676767;">Vision</h2>
-						<p style="word-wrap: break-word;color: #ababab;">{{teamActiveDTO.vision}}</p>					
-				</div> 
+						<p style="word-wrap: break-word;color: #ababab;">{{teamActiveDTO.vision}}</p>
+				</div>
 				<div>
 					<i class="fa fa-rocket vision"></i>
 					<h2 style="color: #676767;">Mission</h3>
@@ -197,37 +197,37 @@ _end;
 				<div>
 					<i class="fa fa-wpforms vision"></i>
 					<h2 style="color: #676767;">Founder Agreement</h3>
-					<p style="word-wrap: break-word;color: #ababab;">						
+					<p style="word-wrap: break-word;color: #ababab;">
 						{% if teamActiveDTO.founderAgreement != "" %}
-							<a class="fa fa-file-pdf-o" style="margin-top: 15px;" target="_blank" href="{{url('public/uploads/')}}{{teamActiveDTO.founderAgreement}}"> {{teamActiveDTO.founderAgreement}}</a> 
+							<a class="fa fa-file-pdf-o" style="margin-top: 15px;" target="_blank" href="{{url('public/uploads/')}}{{teamActiveDTO.founderAgreement}}"> {{teamActiveDTO.founderAgreement}}</a>
 							{%else%}
 							There is no founder agreement file
-						{%endif%}          
+						{%endif%}
 					</p>
 				</div>
-				
+
 				</div>
 		</div>
 	</div>
 </div>
 
-	
+
 <div class="row">
 	<div class="col-md-6">
-	
+
       <!-- Default box -->
       <div class="box">
-        
+
         <div class="box-body">
-          
-            
+
+
             <div class="tab-pane" id="settings">
-                      
+
             <div class="panel panel-default">
                  <div class="panel-heading">My Team Member</div>
                 <div class="panel-body">
-                    
-                    
+
+
                     <section>
                         <?php if($teamActiveDTO):?>
                         <?php $i = 0; ?>
@@ -239,11 +239,11 @@ _end;
                                  <?php echo $row->position(); ?></a>
                             </div>
 							<div>
-							
-							<?php 
+
+							<?php
 							if($myId == $row->queryTalentAsTeamMemberProfileDTO()->id()){
 								echo <<<_end
-								<a href="{$this->url->get('team/resignTeam/'.$row->id())}" class="btn tomboladd confirm-delete" 
+								<a href="{$this->url->get('team/resignTeam/'.$row->id())}" class="btn tomboladd confirm-delete"
 								data-id="{$row->id()}"><i class="fa fa-external-link"></i> Resign</a>
 _end;
 							}else{
@@ -251,13 +251,13 @@ _end;
 								<a href="{$this->url->get('team/kickMember/'.$row->id())}" class="btn tomboladd confirm-delete-kick" data-id="{$row->id()}"><i class="fa fa-exclamation-circle"></i> Kick</a>
 _end;
 							}
-												 
+
  				?>
-												
+
 				<!-- modal -->
 								<div class="modal fade" id="myModalTeamKick" role="dialog">
 									<div class="modal-dialog modal-sm">
-									
+
 									  <!-- Modal content-->
 									  <div class="modal-content">
 										<!-- <div class="modal-header"> -->
@@ -271,21 +271,21 @@ _end;
 										  <a href="#" type="button" class="btn tombolmodal" id="btnKick" data-dismiss="modal">Yes</a>
 										  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
 										</div>
-									  </div>								  
+									  </div>
 									</div>
-								  </div>                            
-						   <!-- Modal -->			
-							
-							
+								  </div>
+						   <!-- Modal -->
+
+
 							</div>
                         </div>
-						
-					<?php	
+
+					<?php
 					echo	"<div class='modal fade' id='myModalTeam' role='dialog'>";
 					echo		"<div class='modal-dialog modal-sm'>";
-							
 
-					echo	      "<div class='modal-content'>"	;		
+
+					echo	      "<div class='modal-content'>"	;
 					echo			"<div class='modal-body'>";
 					echo			  "<p>Do you want to resign ?</p>";
 					echo			"</div>";
@@ -296,50 +296,50 @@ _end;
 					echo		  "</div>";
 					echo		"</div>";
 					echo    "</div>";
-					?>	
-					
+					?>
+
                         <?php $i++; ?>
                 <?php endforeach ?>
                         <?php else:?>
-                    
+
                         <div colspan="3" align="center">No Team Member</div>
-                    
+
                 <?php endif; ?>
-                        
+
                     </section>
-                  
-                 
+
+
                 </div>
             </div>
-            
-            
-            
-     	</div>     
+
+
+
+     	</div>
             <!-- tab pane-->
-                
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
             <div align="right">
                 <a href='<?php echo $this->url->get('team/notification');?>' class="btn tomboladd"><i class="fa fa-exclamation-circle"></i> Notification</a>
                 <a href='<?php echo $this->url->get('team/inviteMember');?>' class="btn tomboladd"><i class="fa fa-plus"></i> Invite Talent</a>
-			</div> 
+			</div>
         </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
 	</div>
-	
+
 	<div class="col-md-6">
-	
+
       <!-- Default box 2 -->
       <div class="box">
-        
+
         <div class="box-body">
-          
-            
+
+
             <div class="tab-pane" id="settings">
-                      
+
             <div class="panel panel-default">
                  <div class="panel-heading">My List Invitee</div>
                 <div class="panel-body">
@@ -361,16 +361,16 @@ _end;
                                 <?php echo $row2->queryTalentAsTeamMemberProfileDTO()->name(); ?></a></td>
                         <td></td>
                         <td><a href="<?php echo $this->url->get('team/cancelInvitation/'.$row2->id()); ?>" class="btn tomboladd pull-right confirm-cancel" data-id="<?php echo $row2->id(); ?>"><i class="fa fa-times"></i> Cancel Invitation</a>
-                        
-                        
-                        
+
+
+
                         </td>
                         </tr>
-						
+
 						<!-- Modal -->
 							  <div class="modal fade" id="myModalTeamCancel" role="dialog">
 								<div class="modal-dialog modal-sm">
-								
+
 								  <!-- Modal content-->
 								  <div class="modal-content">
 									<!-- <div class="modal-header"> -->
@@ -384,11 +384,11 @@ _end;
 									  <a href="#" type="button" class="btn tombolmodal" id="btnCancel" data-dismiss="modal">Yes</a>
 									  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
 									</div>
-								  </div>								  
+								  </div>
 								</div>
-							  </div>                            
+							  </div>
 					   <!-- Modal -->
-						
+
                         <?php $j++; ?>
                 <?php endforeach?>
                          <?php else:?>
@@ -398,16 +398,16 @@ _end;
                 <?php endif; ?>
                     </tbody>
                     </table>
-                    
-                   
+
+
                 </div>
             </div>
-            
-            
-            
-     	</div>     
+
+
+
+     	</div>
             <!-- tab pane-->
-                
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -418,25 +418,25 @@ _end;
       </div>
       <!-- /.box -->
 	</div>
-	
+
 </div>
     </section>
     <!-- /.content -->
-	
+
 <!-- jQuery 2.2.0 -->
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"
   integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4="
   crossorigin="anonymous"></script>
 <script src="{{url('public/js/bootstrap-notify.min.js')}}"></script>
 
-	
+
 <script>
 	$('#teamMenu').addClass('active');
-</script> 
+</script>
 
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+    $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 
@@ -454,7 +454,7 @@ $('.confirm-delete').on('click', function(e) {
 });
 
 $('#btnYes').click(function() {
-	
+
 var id = $('#myModalTeam').data('id');
     //sending to php the row to be deleted from the db
 	// alert (id);
@@ -463,29 +463,29 @@ var id = $('#myModalTeam').data('id');
 	  // type: POST,
 	  data: 'id='+id,
 	  success: function(html){
-		
-		
+
+
 		// $('[data-id='+id+']').remove();
 		// $('#myModalTeam').modal('hide');
-	 
+
 		 //removing entire row
 		 $('[data-id='+id+']').parents('tr').remove();
 		 $('#myModalTeam').modal('hide');
-		 
+
 		 $(document).ready(function () {
 				$('.alert-teammember').notify({
 					message: {
 						text: 'You have resigned!'
 					}
 				}).show();
-				
+
 				setTimeout(function () {
-				window.location.href = "{{url('team/index')}}"; }, 4500); 
+				window.location.href = "{{url('team/index')}}"; }, 4500);
 				});
-		 		 
+
 	   },
-	 
-	 
+
+
  });
 return false;
 });
@@ -506,7 +506,7 @@ $('.confirm-cancel').on('click', function(e) {
 });
 
 $('#btnCancel').click(function() {
-	
+
 var id = $('#myModalTeamCancel').data('id');
     //sending to php the row to be deleted from the db
 	// alert (id);
@@ -515,15 +515,15 @@ var id = $('#myModalTeamCancel').data('id');
 	  // type: POST,
 	  data: 'id='+id,
 	  success: function(html){
-		
-		
+
+
 		// $('[data-id='+id+']').remove();
 		// $('#myModalTeamCancel').modal('hide');
-	 
+
 		 //removing entire row
 		 $('[data-id='+id+']').parents('tr').remove();
 		 $('#myModalTeamCancel').modal('hide');
-		 
+
 		 $(document).ready(function () {
 				$('table .mylistinvitee').notify({
 					message: {
@@ -531,10 +531,10 @@ var id = $('#myModalTeamCancel').data('id');
 					}
 				}).show();
 			});
-		 		 
+
 	   },
-	 
-	 
+
+
  });
 return false;
 });
@@ -555,7 +555,7 @@ $('.confirm-delete-kick').on('click', function(e) {
 });
 
 $('#btnKick').click(function() {
-	
+
 var id = $('#myModalTeamKick').data('id');
     //sending to php the row to be deleted from the db
 	// alert (id);
@@ -564,16 +564,16 @@ var id = $('#myModalTeamKick').data('id');
 	  // type: POST,
 	  data: 'id='+id,
 	  success: function(html){
-		
-		
+
+
 		// $('[data-id='+id+']').remove();
 		// $('#myModalTeamCancel').modal('hide');
-	 
+
 		 //removing entire row
 		 $('#'+id+'').remove();
 		 alert(id);
 		 $('#myModalTeamKick').modal('hide');
-		 
+
 		 $(document).ready(function () {
 				$('.alert-teammember').notify({
 					message: {
@@ -581,10 +581,10 @@ var id = $('#myModalTeamKick').data('id');
 					}
 				}).show();
 			});
-		 		 
+
 	   },
-	 
-	 
+
+
  });
 return false;
 });
