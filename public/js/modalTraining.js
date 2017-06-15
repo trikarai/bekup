@@ -17,12 +17,10 @@ var id = $('#myModalTrainingRemove').data('id');
 	// alert (id);
 	
  $.ajax({
-	  url: '<?php echo $this->url->get('talent/removeTraining/');?>'+id,
+	  url: '<?php echo $this->url->get("talent/removeTraining/");?>'+id,
 	  // type: POST,
 	  data: 'id='+id,
 	  success: function(html){
-		
-		
 		// $('[data-id='+id+']').remove();
 		// $('#myModalTrainingRemove').modal('hide');
 	 
@@ -38,9 +36,7 @@ var id = $('#myModalTrainingRemove').data('id');
 				}).show();
 			});
 		 		 
-	   },
-	 
-	 
+	   } 
  });
 return false;
 });
