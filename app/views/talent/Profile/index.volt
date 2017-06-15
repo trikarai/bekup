@@ -27,7 +27,7 @@
                             <h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">Basic Info</h3>
                         </div>
                         <div class="col-md-8">
-                            <a href="{{url('talentprofile/edit')}}" class="btn tomboledit" style="float:right;">Edit</a>
+                            <a href="{{url('talent/profile/edit')}}" class="btn tomboledit" style="float:right;">Edit</a>
                         </div>
                     </div>
                 </div>

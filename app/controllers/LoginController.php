@@ -47,13 +47,13 @@ class LoginController extends ControllerBase {
             return $this->forward('login/index');
         }
         $this->_registerSession($talentRdo = $response->firstReadDataObject());
-        $this->flash->success('Welcome' . ' ' . $talentRdo->getName());
+        //$this->flash->success('Welcome' . ' ' . $talentRdo->getName());
         return $this->forward('talentdashboard/index');
     }
     
     public function logoutAction() {
         $this->session->remove('auth');
-        $this->flash->success('Goodbye!');
+        //$this->flash->success('Goodbye!');
         return $this->forward('login/index');
     }
 }
