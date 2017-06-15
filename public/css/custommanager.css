@@ -41,6 +41,7 @@ a {
 .tomboladd {	
     background-color: #80ce51;
 	color: #fff !important;
+	font-size:10px !important;
 }
 
 .tomboladd:hover {	
@@ -148,4 +149,54 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     padding-right: 14px;
     border-top-right-radius: 20px;
     border-left: 5px solid #629642 !important;
+}
+
+.edu {
+	padding:12px;
+}
+
+.edu:hover {
+    background: #f9f9f9;
+}
+
+.vision {
+	float: left;
+    margin-right: 10px;
+    height: 68px;
+    width: 68px;
+    color: #8c8c8c;
+    background-color: #e4e4e4;
+    border-radius: 10%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 20px;
+    font-size: 26px;
+}
+
+.ateam {
+	float:left;
+	padding:10px;
+	margin:10px;
+	text-align:center;
+	width:30%;
+}
+
+.bteam {
+	text-transform:uppercase;text-transform: uppercase;
+	text-transform: uppercase;
+	background: #6f6f6f;
+	display: inline-block;
+	padding: 22px;
+	color: #fff;	
+	font-size: 26px;
+	margin-bottom: 10px;
+	width: 80px;
+	height: 80px;
+}
+
+.cteam {
+	color: #b1b1b1;
+	font-size: 12px;
+	font-style: italic;
+	margin-bottom: 5px;
 }

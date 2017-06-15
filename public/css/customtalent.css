@@ -41,6 +41,7 @@ a {
 .tomboladd {	
     background-color: #80ce51;
 	color: #fff !important;
+	font-size:10px !important;
 }
 
 .tomboladd:hover {	
@@ -149,3 +150,12 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     border-top-right-radius: 20px;
     border-left: 5px solid #629642 !important;
 }
+
+.edu {
+	padding:12px;
+}
+
+.edu:hover {
+    background: #f9f9f9;
+}
+

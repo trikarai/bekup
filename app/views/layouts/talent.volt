@@ -5,9 +5,9 @@
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="<?php echo $this->url->get('public'); ?>/css/Admin.css">
-	<link rel="stylesheet" href="<?php echo $this->url->get('public'); ?>/css/customtalent.css">
-	<link rel="stylesheet" href="<?php echo $this->url->get('public'); ?>/css/_all-skins.css">
+	<link rel="stylesheet" href="{{url('public/css/Admin-m.css')}}">
+	<link rel="stylesheet" href="{{url('public/css/custommanager.css')}}">
+	<link rel="stylesheet" href="{{url('public/css/_all-skins-m.css')}}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <style>
@@ -58,6 +58,12 @@
           <!-- User Account Menu -->
           
           <!-- Control Sidebar Toggle Button -->
+		  <li>
+			<a href="{{url('team/notification')}}" style="cursor:pointer;">
+              <i class="fa fa-bell"></i>
+              <span class="label label-warning">10</span>
+            </a>
+		  </li>
           <li>
             <a style="cursor:pointer;" data-toggle="modal" data-target=".logoutadminmodal"><i class="fa fa-sign-out"></i></a>
 			<!-- add data-toggle="control-sidebar" if u want to add left sidebar  -->
@@ -67,7 +73,7 @@
 					<div class="modal-content">
 					  <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
 					  <div class="modal-body"><i class="fa fa-question-circle">&nbsp;</i> Are you sure you want to log-off?</div>
-					  <div class="modal-footer"><a href="<?php echo $this->url->get('login/logout');?>" class="btn tombollogout btn-block">Logout</a></div>
+					  <div class="modal-footer"><a href="{{url('login/logout')}}" class="btn tombollogout btn-block">Logout</a></div>
 					</div>
 				  </div>
 			  </div>
@@ -89,7 +95,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/dart/public/img/profile-fill-circle-160.png" class="img-circle" alt="User Image">
+          <img src="{{url('public/img/profile-fill-circle-160.png')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $this->session->get('auth')['name']; ?></p>
@@ -106,21 +112,13 @@
       <ul class="sidebar-menu">
         <li class="header">Main Navigation</li>
         <!-- Optionally, you can add icons to the links -->
-        <li id="dashboardMenu" class=""><a href="<?php echo $this->url->get('talent/dashboard/index');?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li id="dashboardMenu" class=""><a href="{{url('talent/dashboard/index')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li id="profileMenu" class="treeview">
-          <a href="#"><i class="fa fa-user"></i> <span>Profile</span> <i class="fa fa-angle-left pull-right"></i></a>
-          <ul class="treeview-menu">
-		    <li><a id="basicinfoMenu" href="<?php echo $this->url->get('talent/profile/index');?>">Basic Info</a></li>
-            <li><a id="educationMenu" href="<?php echo $this->url->get('talent/education/new');?>">Education History</a></li>
-            <li><a id="jobMenu" href="<?php echo $this->url->get('talent/workexperience/new');?>">Job History</a></li>
-			<!--<li><a id="certificateMenu" href="<?php echo $this->url->get('talent/certificate');?>">Certification</a></li>
-			<li><a id="skillMenu" href="<?php echo $this->url->get('talent/skill');?>">Skill</a></li>-->
-			<li><a id="trainingMenu" href="<?php echo $this->url->get('talent/training/new');?>">Training Experience</a></li>
-          </ul>
+          <a href="{{url('talent/profile/index')}}"><i class="fa fa-user"></i> <span>Profile</span> <i class=""></i></a>         
         </li>
 		
         <li id="classMenu" class="treeview">
-          <a href="<?php echo $this->url->get('talent/class/index');?>"><i class="fa fa-sitemap"></i> <span>Class</span> <i class=""></i></a>
+          <a href="{{url('talentclass/index')}}"><i class="fa fa-sitemap"></i> <span>Class</span> <i class=""></i></a>
           <!-- <ul class="treeview-menu"> -->
             <!-- <li><a id="" href="">sub menu 2</a></li> -->
             <!-- <li><a id="" href="/../dart/User">sub menu 2</a></li> -->
@@ -128,7 +126,7 @@
         </li>
 		
 		<li id="teamMenu" class="treeview">
-          <a href="<?php echo $this->url->get('team/dashboard/index');?>"><i class="fa fa-users"></i> <span>Team</span> <i class=""></i></a>
+          <a href="{{url('team/dashboard/index')}}"><i class="fa fa-users"></i> <span>Team</span> <i class=""></i></a>
           <!-- <ul class="treeview-menu"> -->
             <!-- <li><a id="" href="">sub menu 2</a></li> -->
             <!-- <li><a id="" href="/../dart/User">sub menu 2</a></li> -->
@@ -157,12 +155,9 @@
     <!-- Default to the left -->
     Copyright &copy; 2017 <b style="color:#80ce51;">BEKUP</b>
   </footer>
-
-  
   
 </div>
 <!-- ./wrapper -->
-
 
 <!-- jQuery -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
@@ -172,11 +167,11 @@
 
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- SlimScroll -->
-<script src="<?php echo $this->url->get('public'); ?>/js/jquery.slimscroll.min.js"></script>
+<script src="{{url('public/js/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
-<script src="<?php echo $this->url->get('public'); ?>/js/fastclick.js"></script>
+<script src="{{url('public/js/fastclick.js')}}"></script>
 <!-- Admin App -->
-<script src="<?php echo $this->url->get('public'); ?>/js/app.min.js"></script>
+<script src="{{url('public/js/app.min.js')}}"></script>
 
 <script>
     // Click handler can be added latter, after jQuery is loaded...
@@ -189,6 +184,5 @@
       }
     });
 </script>
-
 </body>
 </html>

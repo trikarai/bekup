@@ -1,4 +1,4 @@
-<?php use Phalcon\Tag; ?>
+{{content()}}
 
 <!-- Animation library for notifications   -->
 <link href="{{url('public/css/animate.min.css')}}" rel="stylesheet"/>
@@ -6,7 +6,7 @@
 <link href="{{url('public/css/dashboard.css')}}" rel="stylesheet"/>
 <link rel="stylesheet" href="{{url('public/css/linkstyles.css')}}">
 
-{{ content() }}
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
