@@ -137,6 +137,7 @@
     <!-- Vision & Mision -->
 
 </section>
+                            
 <div class='modal fade' id='myModalTeam' role='dialog'>
     <div class='modal-dialog modal-sm'>
         <div class='modal-content'>
