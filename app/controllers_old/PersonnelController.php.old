@@ -1,0 +1,50 @@
+<?php
+/**
+ * Description of PersonelController
+ *
+ * @author Inandar Wiguna
+ */
+use Managerial\Application\Service\Personnel\PersonnelDTO;
+use Managerial\Application\Service\Personnel\AddPersonnelService;
+
+class PersonnelController extends ControllerBase {
+    
+    public function indexAction(){
+        
+    }
+
+    public function addAction(){
+
+    //get parameter data from FORM
+    $name = $this->request->get('name');
+    $email = $this->request->get('email');
+    $password = $this->request->get('password');
+    $role = $this->request->get('role');
+    
+    //Create Data Transfer Object 
+    $request = PersonnelDTO::addRequest($name, $email, $password, $role);
+    
+    //Create Personnel Service Repository
+    $personnelRepository = $this->em->getRepository('Managerial\Domain\Model\Personnel\Personnel');
+    $service = new AddPersonnelService($personnelRepository);
+    $service->execute($request, $this->session->get('auth')['id']);
+    }
+    
+    public function updateAction () {
+        $repository = $this->em->getRepository('Managerial\Domain\Model\Personnel\Personnel');
+        
+        //Update Form
+        $name = $this->request->get('name');
+        $email = $this->request->get('email');
+//        $role = $this->request->get('role');
+        
+        $request = PersonnelDTO::updateRequest($name, $email);
+        
+        $service = new \Managerial\Application\Service\Personnel\UpdatePersonnelService($repository);
+        $service->execute($request, $this->session->get('auth')['id']);               
+    }
+    public function editAction() {
+        
+    }
+}
+     

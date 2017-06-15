@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Skill\DomainModel\Talent\Talent" 
+            table='bkp_talent'
+            repository-class='Talent\Skill\Infrastructure\DomainModelRepository\Talent\DoctrineTalentRepository'
+    >
+        
+        <one-to-many field='skillScores' 
+                     target-entity='Talent\Skill\DomainModel\SkillScore\SkillScore'
+                     mapped-by='talent'
+                     index-by='id'
+        >
+            <cascade><cascade-persist/></cascade>
+        </one-to-many>
+        
+    </entity>
+</doctrine-mapping>

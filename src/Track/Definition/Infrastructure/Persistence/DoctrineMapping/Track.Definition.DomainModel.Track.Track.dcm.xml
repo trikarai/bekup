@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Track\Definition\DomainModel\Track\Track" 
+            table="bkp_track" 
+            repository-class="Track\Definition\Infrastructure\DomainModelRepository\Track\DoctrineTrackRepository"
+    >
+
+    </entity>
+</doctrine-mapping>

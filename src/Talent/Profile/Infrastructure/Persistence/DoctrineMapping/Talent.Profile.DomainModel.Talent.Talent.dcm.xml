@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Profile\DomainModel\Talent\Talent" 
+            table='bkp_talent'
+            repository-class='Talent\Profile\Infrastructure\DomainModelRepository\Talent\DoctrineTalentRepository'
+    >
+        
+        <embedded name="password" class="Talent\Profile\DomainModel\Talent\ValueObject\TalentPassword" use-column-prefix="false" />
+        
+    </entity>
+</doctrine-mapping>

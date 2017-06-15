@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Skill\DomainModel\SkillScore\SkillScore" 
+            table="bkp_talent_skill_score"
+            repository-class="Talent\Skill\Infrastructure\DomainModelRepository\SkillScore\DoctrineSkillScoreRepository"
+    >
+        <id name='id' type='integer' length='6'/>
+        <field name='scoreValue' column='score' type='integer' length='2' />
+        <field name='isRemoved' column='is_removed' type='boolean' />
+        
+        <many-to-one field="skillRDO" target-entity="Talent\Skill\DomainModel\Skill\DataObject\SkillReadDataObject">
+            <join-column name="skill_id" referenced-column-name="id" />
+        </many-to-one>
+        
+        <many-to-one field="talent" target-entity="Talent\Skill\DomainModel\Talent\Talent" inversed-by="skillScores">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+        
+        <one-to-many field="certificates" 
+                     target-entity="Talent\Skill\DomainModel\Certificate\Certificate" 
+                     mapped-by="skillScore"
+                     index-by='id'
+        />
+		
+    </entity>
+</doctrine-mapping>

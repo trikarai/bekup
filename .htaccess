@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule  ^$ public/    [L]
+	RewriteRule  (.*) public/$1 [L]
+</IfModule>
+
+# BEGIN Protect Against Script Injections
+
+Options +FollowSymLinks
+RewriteEngine On
+Rewritecond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+Rewritecond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+Rewritecond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.volt [F,L]
+
+# END Protect Against Script Injections
+
+#deny from cfs2.uzone.id
+

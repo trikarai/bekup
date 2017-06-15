@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Profile\DomainModel\Talent\Talent" 
+            table="bkp_talent"
+            repository-class="Team\Profile\Infrastructure\DomainModelRepository\Talent\DoctrineTalentRepository"
+    >
+	
+        <one-to-many field="teamMemberships" 
+            target-entity="Team\Profile\DomainModel\Membership\Membership" 
+            orphan-removal="true"
+            mapped-by="talent"
+        >
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>

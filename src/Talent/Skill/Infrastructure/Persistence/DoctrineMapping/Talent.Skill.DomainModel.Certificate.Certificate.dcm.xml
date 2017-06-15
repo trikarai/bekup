@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Skill\DomainModel\Certificate\Certificate" 
+            table="bkp_talent_certificate"
+    >
+        <id name='id' type='integer' lengths='3'/>
+        <field name='name' type='string' />
+        <field name='organizer' type='string' />
+        <field name='validUntil' column='valid_until' type='integer' length='4' />
+        <field name='isRemoved' column='is_removed' type='string' />
+
+        <many-to-one field="skillScore" target-entity="Talent\Skill\DomainModel\SkillScore\SkillScore" inversed-by="certificates">
+            <join-column name="skill_score_id" referenced-column-name="id" />
+        </many-to-one>
+		
+    </entity>
+</doctrine-mapping>

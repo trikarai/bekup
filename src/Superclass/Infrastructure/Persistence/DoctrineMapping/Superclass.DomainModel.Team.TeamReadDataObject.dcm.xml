@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Superclass\DomainModel\Team\TeamReadDataObject" 
+            table='bkp_team'
+    >
+        
+        <id name="id" type="guid" />
+        <field name="name" type="string" />
+        <field name="vision" type="string" />
+        <field name="mission" type="string" />
+        <field name="culture" type="string" />
+        <field name="founderAgreement" column='founder_agreement' type="string" />
+        <field name="is_removed" type="boolean" />
+        
+        <many-to-one field="cityRDO" target-entity="Superclass\DomainModel\City\CityReadDataObject">
+            <join-column name="city_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </entity>
+</doctrine-mapping>

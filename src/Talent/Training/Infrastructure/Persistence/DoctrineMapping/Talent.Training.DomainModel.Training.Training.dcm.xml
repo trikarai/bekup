@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Training\DomainModel\Training\Training" 
+            table="bkp_talent_training"
+    >
+        <id name='id' type='guid' />
+        <field name='name' type='string' />
+        <field name='organizer' type='string' />
+        <field name='isRemoved' column='is_removed' type='string' />
+        <embedded name="time" class="Talent\Training\DomainModel\Training\ValueObject\TrainingTime" use-column-prefix="false" />
+		
+        <many-to-one field="talent" target-entity="Talent\Training\DomainModel\Talent\Talent" inversed-by="trainings">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+		
+    </entity>
+</doctrine-mapping>

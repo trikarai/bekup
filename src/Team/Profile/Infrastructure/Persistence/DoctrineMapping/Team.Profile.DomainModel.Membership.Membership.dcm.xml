@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Profile\DomainModel\Membership\Membership" 
+            table="bkp_team_member"
+    >
+	<id name="id" type="integer"/>
+	<field name="position" type="string"/>
+	<field name="status" type="string" length='16' />
+	<field name="isAdmin" column="is_admin" type="boolean"/>
+	<field name="isCreator" column="is_creator" type="boolean"/>
+        
+        <many-to-one field="talent" target-entity="Team\Profile\DomainModel\Talent\Talent" inversed-by="teamMemberships">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+		
+        <many-to-one field="team" target-entity="Team\Profile\DomainModel\Team\Team" inversed-by="members">
+            <join-column name="team_id" referenced-column-name="id" />
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-one>
+		
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Superclass\DomainModel\Track\TrackReadDataObject" 
+            table='bkp_track'
+            repository-class='Superclass\Infrastructure\DomainModelRepository\Track\DoctrineTrackRdoRepository'
+    >
+        
+        <id name="id" type="guid" />
+        <field name="name" type="string" />
+        <field name="description" type="string" />
+        <field name="isRemoved" column='is_removed' type="boolean" />
+        
+    </entity>
+</doctrine-mapping>

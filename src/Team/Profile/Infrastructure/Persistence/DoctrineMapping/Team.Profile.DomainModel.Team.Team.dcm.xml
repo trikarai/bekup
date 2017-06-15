@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Profile\DomainModel\Team\Team" 
+            table="bkp_team"
+            repository-class="Team\Profile\Infrastructure\DomainModelRepository\Team\DoctrineTeamRepository"
+    >
+	
+        <one-to-many field="members" 
+            target-entity="Team\Profile\DomainModel\Membership\Membership" 
+            index-by="id"
+            orphan-removal="true"
+            mapped-by="team"
+        >
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>

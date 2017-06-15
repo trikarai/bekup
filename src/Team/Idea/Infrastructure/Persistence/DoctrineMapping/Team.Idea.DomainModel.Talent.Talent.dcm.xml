@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Idea\DomainModel\Talent\Talent" 
+            table="bkp_talent" 
+            repository-class="Team\Idea\Infrastructure\DomainModelRepository\Talent\DoctrineTalentRepository"
+    >
+	
+		<one-to-many field="superheroes"
+			target-entity="Team\Idea\DomainModel\Superhero\Superhero"
+			index-by="id"
+			orphan-removal="true"
+			mapped-by="talent"
+		>
+                    <cascade>
+                            <cascade-persist/>
+                    </cascade>
+		</one-to-many>
+		
+    </entity>
+</doctrine-mapping>

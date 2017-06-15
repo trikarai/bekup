@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <embeddable name="Talent\Training\DomainModel\Training\ValueObject\TrainingTime">
+        <field name="time" type='integer' length='4' />
+    </embeddable>
+</doctrine-mapping>

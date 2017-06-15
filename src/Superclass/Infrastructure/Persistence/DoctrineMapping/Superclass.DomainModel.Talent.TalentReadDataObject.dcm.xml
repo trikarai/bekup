@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Superclass\DomainModel\Talent\TalentReadDataObject" 
+            table='bkp_talent'
+            repository-class='Superclass\Infrastructure\DomainModelRepository\Talent\DoctrineTalentRdoRepository'
+    >
+        
+        <id name="id" type="guid" />
+        <field name="name" type="string" />
+        <field name="userName" column='username' type="string" />
+        <field name="email" type="string" />
+        <field name="phone" type="string" />
+        <field name="cityOfOrigin" column='city_of_origin' type="string" />
+        <field name="birthDate" column='birth_date' type="datetime" />
+        
+        <many-to-one field="cityRDO" target-entity="Superclass\DomainModel\City\CityReadDataObject">
+            <join-column name="city_id" referenced-column-name="id" />
+        </many-to-one>
+        
+        <many-to-one field="trackRDO" target-entity="Superclass\DomainModel\Track\TrackReadDataObject">
+            <join-column name="track_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </entity>
+</doctrine-mapping>

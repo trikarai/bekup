@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Programme\Description\DomainModel\Programme\Programme" 
+            table="bkp_programme" 
+            repository-class="Programme\Description\Infrastructure\DomainModelRepository\Programme\DoctrineProgrammeRepository">
+
+        <id name='id' type='guid' />
+        <field name="name" type="string"/>
+        <embedded name="registrationDateRange" class="Programme\Description\DomainModel\Programme\ValueObject\ProgrammeRegistrationDateRange" use-column-prefix="false" />
+        <embedded name="operationDateRange" class="Programme\Description\DomainModel\Programme\ValueObject\ProgrammeOperationDateRange" use-column-prefix="false" />
+        
+    </entity>
+</doctrine-mapping>

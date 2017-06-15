@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Programme\Description\DomainModel\Programme\ProgrammeRdo" 
+            table="bkp_programme" 
+            repository-class="Programme\Description\Infrastructure\DomainModelRepository\Programme\DoctrineProgrammeRdoRepository">
+
+        <id name='id' type='guid' />
+        <field name="name" type="string"/>
+        <field name="registrationStartDate" column='registration_start_date' type="datetime"/>
+        <field name="registrationEndDate" column='registration_end_date' type="datetime"/>
+        <field name="operationStartDate" column='operation_start_date' type="datetime"/>
+        <field name="operationEndDate" column='operation_end_date' type="datetime"/>
+        <field name="isRemoved" column='is_removed' type="boolean"/>
+        
+    </entity>
+</doctrine-mapping>

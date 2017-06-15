@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <embeddable name="Programme\Description\DomainModel\Programme\ValueObject\ProgrammeOperationDateRange">
+        <field name="startDate" column="operation_start_date" type="datetime" />
+        <field name="endDate" column="operation_end_date" type="datetime" />
+    </embeddable>
+</doctrine-mapping>

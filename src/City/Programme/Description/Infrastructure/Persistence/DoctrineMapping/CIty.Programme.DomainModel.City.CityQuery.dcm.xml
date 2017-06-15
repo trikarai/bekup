@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="City\Programme\Description\DomainModel\City\CityQuery" 
+            table="bkp_city" 
+            repository-class="City\Programme\Description\Infrastructure\DomainModelRepository\City\DoctrineCityQueryRepository"
+    >
+        
+        <one-to-many field='programmeRdos' 
+                     target-entity='City\Programme\Description\DomainModel\Programme\ProgrammeRdo'
+                     mapped-by='cityRdo'
+                     index-by="id"
+        >
+        </one-to-many>
+
+    </entity>
+</doctrine-mapping>

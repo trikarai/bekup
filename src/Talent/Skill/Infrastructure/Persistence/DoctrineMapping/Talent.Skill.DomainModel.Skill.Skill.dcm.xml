@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Skill\DomainModel\Skill\Skill" 
+            table="bkp_skill" 
+            repository-class="Talent\Skill\Infrastructure\DomainModelRepository\Skill\DoctrineSkillRepository">
+
+        <id name='id' type='guid' />
+        <field name="name" type="string"/>
+        <field name="isRemoved" column="is_removed" type="boolean"/>
+        
+
+        <many-to-one field='trackReadDataObject' target-entity='Superclass\DomainModel\Track\TrackReadDataObject'>
+            <join-column name="track_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </entity>
+</doctrine-mapping>

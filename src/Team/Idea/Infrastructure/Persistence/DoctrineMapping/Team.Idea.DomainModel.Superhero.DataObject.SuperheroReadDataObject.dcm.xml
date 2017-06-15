@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Idea\DomainModel\Superhero\DataObject\SuperheroReadDataObject" 
+            table="bkp_talent_superhero"
+    >
+        
+		<field name="id" type="integer" lenth='6' />
+		<field name="name" column ="name" type="string" length="64"/>
+		<field name="mainDuty" column ="main_duty" type="string" length="256"/>
+		<field name="specialAbility" column ="special_ability" type="string" length="256"/>
+		<field name="dailyActivity" column ="daily_activity" type="string" length="256"/>
+		<field name="alternativeTechnology" column ="alternative_technology" type="string" length="256"/>
+		<field name="isRemoved" column ="is_removed" type="boolean" length="256"/>
+		
+    </entity>
+</doctrine-mapping>

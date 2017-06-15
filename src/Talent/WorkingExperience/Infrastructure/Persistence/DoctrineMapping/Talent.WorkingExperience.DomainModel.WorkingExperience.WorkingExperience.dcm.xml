@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\WorkingExperience\DomainModel\WorkingExperience\WorkingExperience" 
+            table="bkp_talent_work_experience"
+	>
+        <id name='id' type='integer' />
+        <field name='companyName' column = 'company_name' type='string' />
+        <field name='position' type='string' />
+        <field name='role' type='string' />
+        <field name='isRemoved' column='is_removed' type='string' />
+        <embedded name="time" class="Talent\WorkingExperience\DomainModel\WorkingExperience\ValueObject\WorkingExperienceTime" use-column-prefix="false" />
+
+        <many-to-one field="talent" target-entity="Talent\WorkingExperience\DomainModel\Talent\Talent" inversed-by="workingExperiences">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+		
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Education\DomainModel\Education\Education" 
+            table="bkp_talent_education"
+    >
+        <id name='id' type='integer' length="6" />
+        <field name='phase' type='string' length="8" />
+        <field name='institution' type='string' length="64" />
+        <field name='major' type='string' length="64" />
+        <field name='note' type='string' length="256" />
+        <field name='isRemoved' column='is_removed' type='string' />
+        <embedded name="time" class="Talent\Education\DomainModel\Education\ValueObject\EducationTime" use-column-prefix="false" />
+		
+        <many-to-one field="talent" target-entity="Talent\Education\DomainModel\Talent\Talent" inversed-by="educations">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+		
+    </entity>
+</doctrine-mapping>

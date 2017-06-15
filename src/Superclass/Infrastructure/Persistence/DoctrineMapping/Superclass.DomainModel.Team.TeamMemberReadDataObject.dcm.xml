@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <mapped-superclass name="Superclass\DomainModel\Team\TeamMemberReadDataObject">
+        
+        <id name="id" type="integer"/>
+	<field name="status" type="string"/>
+	<field name="position" type="string"/>
+	<field name="isAdmin" column="is_admin" type="boolean"/>
+	<field name="isCreator" column="is_creator" type="boolean"/>
+        
+        <many-to-one field="talentRDO" target-entity="Superclass\DomainModel\Talent\TalentReadDataObject">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </mapped-superclass>
+    
+</doctrine-mapping>

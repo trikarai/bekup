@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Personnel\DomainModel\Personnel\Personnel" 
+            table="bkp_personnel" 
+            repository-class="Personnel\Infrastructure\DomainModelRepository\Personnel\DoctrinePersonnelRepository">
+
+        <id name='id' type='guid' />
+        <field name="name" type="string"/>
+        <field name="email" type="string"/>
+        <field name="role" type="string"/>
+        <field name="isRemoved" column="is_removed" type="boolean"/>
+        <embedded name="password" class="Personnel\DomainModel\Personnel\ValueObject\PersonnelPassword" use-column-prefix="false" />
+        
+        <many-to-one field='cityRDO' target-entity='Superclass\DomainModel\City\CityReadDataObject'>
+            <join-column name="city_id" referenced-column-name="id" />
+        </many-to-one>
+        
+        <many-to-one field='trackRDO' target-entity='Superclass\DomainModel\Track\TrackReadDataObject'>
+            <join-column name="track_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </entity>
+</doctrine-mapping>

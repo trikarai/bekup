@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <embeddable name="Programme\Description\DomainModel\Programme\ValueObject\ProgrammeRegistrationDateRange">
+        <field name="startDate" column="registration_start_date" type="datetime" />
+        <field name="endDate" column="registration_end_date" type="datetime" />
+    </embeddable>
+</doctrine-mapping>

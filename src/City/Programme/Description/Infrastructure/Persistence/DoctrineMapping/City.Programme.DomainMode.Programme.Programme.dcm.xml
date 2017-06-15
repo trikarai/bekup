@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="City\Programme\Description\DomainModel\Programme\Programme" 
+            table="bkp_city_programme" 
+    >
+
+        <id name='id' type='integer' length='6' />
+        <field name="referenceProgrammeId" column='programme_id' type="guid"/>
+        <field name="isOffline" column='is_offline' type="boolean"/>
+        <field name="isRemoved" column='is_removed' type="boolean"/>
+        
+        <many-to-one field="city" target-entity="City\Programme\Description\DomainModel\City\City" inversed-by="programmes">
+            <join-column name="city_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </entity>
+</doctrine-mapping>

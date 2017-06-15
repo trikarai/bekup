@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <mapped-superclass name="Superclass\DomainModel\Track\TrackAbstract">
+        
+        <id name="id" type="guid" />
+        <field name="name" type="string" />
+        <field name="description" type="string" />
+        <field name="isRemoved" column='is_removed' type="boolean" />
+        
+    </mapped-superclass>
+</doctrine-mapping>
