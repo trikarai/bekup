@@ -39,7 +39,7 @@
                                 </a>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
-                                <a href={{url('team/notification/index')}}></i>
+                                <a href={{url('team/invitation/index')}}></i>
                                     <div class="info-box">
                                         <span class="info-box-icon bg-bekup" style="color:#fff;"><i class="ion ion-alert"></i></span>
 
