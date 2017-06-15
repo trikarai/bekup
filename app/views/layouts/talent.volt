@@ -111,16 +111,16 @@
           <a href="#"><i class="fa fa-user"></i> <span>Profile</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
 		    <li><a id="basicinfoMenu" href="<?php echo $this->url->get('talent/profile/index');?>">Basic Info</a></li>
-            <li><a id="educationMenu" href="<?php echo $this->url->get('talent/education');?>">Education History</a></li>
-            <li><a id="jobMenu" href="<?php echo $this->url->get('talent/job');?>">Job History</a></li>
-			<li><a id="certificateMenu" href="<?php echo $this->url->get('talent/certificate');?>">Certification</a></li>
-			<li><a id="skillMenu" href="<?php echo $this->url->get('talent/skill');?>">Skill</a></li>
-			<li><a id="trainingMenu" href="<?php echo $this->url->get('talent/training');?>">Training Experience</a></li>
+            <li><a id="educationMenu" href="<?php echo $this->url->get('talent/education/new');?>">Education History</a></li>
+            <li><a id="jobMenu" href="<?php echo $this->url->get('talent/workexperience/new');?>">Job History</a></li>
+			<!--<li><a id="certificateMenu" href="<?php echo $this->url->get('talent/certificate');?>">Certification</a></li>
+			<li><a id="skillMenu" href="<?php echo $this->url->get('talent/skill');?>">Skill</a></li>-->
+			<li><a id="trainingMenu" href="<?php echo $this->url->get('talent/training/new');?>">Training Experience</a></li>
           </ul>
         </li>
 		
         <li id="classMenu" class="treeview">
-          <a href="<?php echo $this->url->get('talentclass/index');?>"><i class="fa fa-sitemap"></i> <span>Class</span> <i class=""></i></a>
+          <a href="<?php echo $this->url->get('talent/class/index');?>"><i class="fa fa-sitemap"></i> <span>Class</span> <i class=""></i></a>
           <!-- <ul class="treeview-menu"> -->
             <!-- <li><a id="" href="">sub menu 2</a></li> -->
             <!-- <li><a id="" href="/../dart/User">sub menu 2</a></li> -->
