@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-2">
                             <a href="{{url('team/member/invite')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> invite member</a>
-                        
+
                             <a href="{{url('team/programme/index')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> Team Programme</a>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             </div>
                             <div>
                                 <a href={{url('team/member/resign')}} class="btn tomboladd confirm-delete"
-                                data-id={{selfMemberRdo.getId()}}><i class="fa fa-external-link"></i> Resign</a>
+                                   data-id={{selfMemberRdo.getId()}}><i class="fa fa-external-link"></i> Resign</a>
                             </div>
                         </div>
                         {% for member in otherMemberList %}
@@ -59,7 +59,7 @@
                                 </div>
                                 <div style="font-size: 16px;">
                                     <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{selfMember[talent_id]}}>
-                                       {{member[name]}}
+                                        {{member[name]}}
                                     </a></div>
                                 <div style="color: #b1b1b1;
                                      font-size: 12px;
@@ -69,8 +69,8 @@
                                 </div>
                                 <div>
                                     {% if selfMember[is_admin] %}
-                                    <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
-                                    data-id={{member[id]}}><i class="fa fa-external-link"></i> Resign</a>
+                                        <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
+                                           data-id={{member[id]}}><i class="fa fa-external-link"></i> Resign</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
     <!-- Vision & Mision -->
 
 </section>
-                            
+
 <div class='modal fade' id='myModalTeam' role='dialog'>
     <div class='modal-dialog modal-sm'>
         <div class='modal-content'>
