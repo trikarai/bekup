@@ -176,7 +176,7 @@
                                     </div>
 
                                     <div class="col-xs-2">
-                                        <a href="{{url('talen/teducation/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                        <a href="{{url('talent/education/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="#" class="btn tombolremove confirm-delete-edu" data-id="{{row.getId()}}">Remove</a>
