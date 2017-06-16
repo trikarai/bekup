@@ -3,7 +3,7 @@ use Phalcon\Tag as Tag;
 use Phalcon\Flash\Direct as FlashDirect;
 use Phalcon\Flash\Session as FlashSession;
 ?>
-
+<?php ?>
 <head>
     <title>Sign Up Form</title>
     <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
