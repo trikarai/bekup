@@ -22,6 +22,9 @@ class DashboardController extends \TalentControllerBase{
         $this->view->selfMemberRdo = $membershipRdo;
         $this->view->otherMemberList = $this->_getOtherActiveTeamMemberList($membershipRdo->getId());
         $this->view->invitedList = $this->_getInvitedMemberList();
+        
+        print_r($this->_getInvitedMemberList());
+        
     }
 
     function noTeamAction(){
@@ -67,5 +70,6 @@ class DashboardController extends \TalentControllerBase{
         foreach($response->arrayOfReadDataObject() as $rdo){
             $invitedList[] = $this->_transformTeamMemberRdoToArray($rdo);
         }
+        return $invitedList;
     }
 }
