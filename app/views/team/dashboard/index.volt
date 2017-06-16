@@ -27,12 +27,11 @@
                         </div>
                         <div class="col-md-2">
                             <a href="{{url('team/member/invite')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> invite member</a>
-
                             <a href="{{url('team/programme/index')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> Team Programme</a>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="box-body">
                     <div class="alert-teammember"></div>
 
@@ -53,37 +52,66 @@
                             </div>
                         </div>
                         {% for member in otherMemberList %}
-                            <div id="{{selfMember[id]}}" class="ateam">
+                            <div id="{{member['id']}}" class="ateam">
                                 <div class="img-circle bteam">
-                                    {{member[initial]}}
+                                    {{member['initial']}}
                                 </div>
                                 <div style="font-size: 16px;">
-                                    <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{selfMember[talent_id]}}>
-                                        {{member[name]}}
+                                    <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{member['talent_id']}}>
+                                        {{member['name']}}
                                     </a></div>
                                 <div style="color: #b1b1b1;
                                      font-size: 12px;
                                      font-style: italic;
                                      margin-bottom: 5px;">
-                                    {{member[position]}}
+                                    {{member['position']}}
                                 </div>
                                 <div>
-                                    {% if selfMember[is_admin] %}
+                                    {% if member['is_admin'] %}
                                         <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
-                                           data-id={{member[id]}}><i class="fa fa-external-link"></i> Resign</a>
+                                           data-id={{member['id']}}><i class="fa fa-external-link"></i> Resign</a>
                                     {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
                     </section>
                     <!-- tab pane-->
-                </div>
+               </div>
                 <!-- /.box-body -->
                 <!-- /.box-footer-->
             </div>
         </div>
     </div>
     <!-- My Team Member -->
+    
+    <div class="box-body">
+                    <section>
+                        {% for member in invitedList %}
+                            <div id="{{member['id']}}" class="ateam">
+                                <div class="img-circle bteam">
+                                    {{member['initial']}}
+                                </div>
+                                <div style="font-size: 16px;">
+                                    <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{member['talent_id']}}>
+                                        {{member['name']}}
+                                    </a></div>
+                                <div style="color: #b1b1b1;
+                                     font-size: 12px;
+                                     font-style: italic;
+                                     margin-bottom: 5px;">
+                                    {{member['position']}}
+                                </div>
+                                <div>
+                                    {% if member['is_admin'] %}
+                                        <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
+                                           data-id={{member['id']}}><i class="fa fa-external-link"></i> Resign</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                    </section>
+                </div>
 
 
     <!-- Vision & Mision -->
