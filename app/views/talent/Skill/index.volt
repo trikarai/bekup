@@ -10,27 +10,19 @@
         <li><i class="fa fa-dashboard"></i> Profile</a></li>
         <li>Skill</li>
     </ol>
-
-
 </section>
-
 <!-- Main content -->
 <section class="content">
-
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Skill</h3>
-
             <div align="right">
                 <a href="{{url('talent/skill/new')}}" class="btn tomboladd"><i class="fa fa-plus"></i> Add Skill Set</a>
             </div>
-
         </div>
         <div class="box-body">
-
             <div class="tab-pane" id="settings">
-
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead style="font-weight:bold;">
                         <tr>
@@ -62,7 +54,6 @@
                         {%endif%}
                     </tbody>
                 </table>
-
                 <!-- Modal -->
                 <div class="modal fade" id="myModalSkillRemove" role="dialog">
                     <div class="modal-dialog modal-sm">
@@ -81,12 +72,10 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- Modal -->
             </div>
-
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -96,17 +85,49 @@
         <!-- /.box-footer-->
     </div>
     <!-- /.box -->
-
 </section>
 <!-- /.content -->
+
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Skill</h3>
+            <div align="right">
+                <a href="{{url('talent/skill/new')}}" class="btn tomboladd"><i class="fa fa-plus"></i> Add Skill Set</a>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">Skill 1</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">Skill List 1</div>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2">Skill  2</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">Skill List 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!-- jQuery 2.2.0 -->
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"
         integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4="
 crossorigin="anonymous"></script>
 <script src="{{url('public/js/bootstrap-notify.min.js')}}"></script>
-
-
 <script>
     $('#profileMenu').addClass('active');
     $('#skillMenu').css('color', '#fff');
