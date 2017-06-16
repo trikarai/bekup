@@ -24,7 +24,7 @@
 
             <div class="col-md-6">
                 <form action="{{url('talent/skill/saveCertificate')}}" method="post">
-                    {{text_field("skill_id", "maxlength":70,"placeholder":"", "class":"form-control","required":"required")}}                   
+                    {{hidden_field("skill_id", "maxlength":70,"placeholder":"", "class":"form-control","required":"required","value":skill_id)}}                   
                     
                     <div class="form-group">
                         <label for="name">Certificate's Name:</label>
