@@ -78,4 +78,4 @@
 	<script src="../js/birthdate.js"></script>
     </body>
 </html>
-
+<?php ?>
