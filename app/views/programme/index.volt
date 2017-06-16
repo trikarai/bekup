@@ -1,7 +1,5 @@
 {{ content() }}
 
-<?php echo "this is echo"; ?>
-
 <div>
     <a href={{url('programme/new')}}> new rogramme </a>
 </div>
