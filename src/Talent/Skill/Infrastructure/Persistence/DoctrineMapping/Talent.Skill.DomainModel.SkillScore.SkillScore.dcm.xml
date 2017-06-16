@@ -20,7 +20,11 @@
                      target-entity="Talent\Skill\DomainModel\Certificate\Certificate" 
                      mapped-by="skillScore"
                      index-by='id'
-        />
+        >
+            <cascade>
+                <cascade-persist></cascade-persist>
+            </cascade>
+        </one-to-many>
 		
     </entity>
 </doctrine-mapping>

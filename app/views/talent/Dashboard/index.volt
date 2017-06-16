@@ -5,12 +5,12 @@
 <!--  Paper Dashboard core CSS    -->
 <link href="{{url('public/css/dashboard.css')}}" rel="stylesheet"/>
 <link rel="stylesheet" href="{{url('public/css/linkstyles.css')}}">
-
+fgfgfgf
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Talent
+        Talent 
         <small>dashboard</small>
     </h1>
     <ol class="breadcrumb">
@@ -61,15 +61,15 @@
                             </div>
                             <div class="col-xs-7">
                                 <div class="numbers">
-                                    <p>Kelas</p>
-                                    Class
+                                    <p>Skill</p>
+                                    Skill
                                 </div>
                             </div>
                         </div>
                         <div class="footer">
                             <hr />
                             <div class="stats">
-                                <i class="fa fa-plus"></i><a href="{{url('talent/class/new')}}" class="info-a link link--kumya"><span data-letters="Apply New Class">Apply New Class</span></a>
+                                <i class="fa fa-search"></i><a href="{{url('talent/skill/index')}}" class="info-a link link--kumya"><span data-letters="View Team Profile">Add New Skill</span></a>
                             </div>
                         </div>
                     </div>

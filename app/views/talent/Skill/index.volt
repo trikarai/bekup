@@ -36,6 +36,7 @@
                         <tr>
                             <td>Skill</td>
                             <td>Score</td>
+                            <td></td>
                             <td colspan="2"></td>
                         </tr>
                     </thead>
@@ -45,7 +46,7 @@
                                 <tr>
                                     <td data-title="Skill"> {{row.skillRDO().trackReadDataObject().getName()}}  -  {{row.skillRDO().getName()}} </td>
                                     <td data-title="Score"> {{row.getScoreValue()}} </td>
-
+                                    <td> <a href="{{url('talent/skill/addCertificate/')}}{{row.getId()}}" class="btn tomboledit">Add Certificate</a> </td>
                                     <td data-title="Action">
                                         <a href="{{url('talent/skill/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </td>
