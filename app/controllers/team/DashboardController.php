@@ -15,7 +15,6 @@ class DashboardController extends \TalentControllerBase{
             return $this->forward('dashboard/noTeam');
         }
         $membershipRdo = $response->firstReadDataObject();
-        
         $this->view->pick("team/dashboard/index");
     
         $this->view->teamRdo = $membershipRdo->teamRDO();
