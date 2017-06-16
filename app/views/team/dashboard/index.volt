@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="box-body">
                     <div class="alert-teammember"></div>
 
@@ -67,53 +67,71 @@
                                     {{member['position']}}
                                 </div>
                                 <div>
-                                    {% if member['is_admin'] %}
+                                    {% if selfMemberRdo.getIsAdmin() %}
                                         <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
-                                           data-id={{member['id']}}><i class="fa fa-external-link"></i> Resign</a>
+                                           data-id={{member['id']}}><i class="fa fa-external-link"></i> Remove</a>
                                     {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
                     </section>
                     <!-- tab pane-->
-               </div>
+                </div>
                 <!-- /.box-body -->
                 <!-- /.box-footer-->
             </div>
         </div>
-    </div>
+    </div>             
     <!-- My Team Member -->
     
-    <div class="box-body">
-                    <section>
-                        {% for member in invitedList %}
-                            <div id="{{member['id']}}" class="ateam">
-                                <div class="img-circle bteam">
-                                    {{member['initial']}}
-                                </div>
-                                <div style="font-size: 16px;">
-                                    <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{member['talent_id']}}>
-                                        {{member['name']}}
-                                    </a></div>
-                                <div style="color: #b1b1b1;
-                                     font-size: 12px;
-                                     font-style: italic;
-                                     margin-bottom: 5px;">
-                                    {{member['position']}}
-                                </div>
-                                <div>
-                                    {% if member['is_admin'] %}
-                                        <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
-                                           data-id={{member['id']}}><i class="fa fa-external-link"></i> Resign</a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        {% endfor %}
-                        
-                    </section>
+    <!-- My Invited Member -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">Invited Member</h3>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="box-body">
+                    
 
+                    <section>
+                        {% for member in invitedList %}
+                        <div id="{{member['id']}}" class="ateam">
+                            <div class="img-circle bteam">
+                                {{member['initial']}}
+                            </div>
+                            <div style="font-size: 16px;">
+                                <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{member['talent_id']}}>
+                                    {{member['name']}}
+                                </a></div>
+                            <div style="color: #b1b1b1;
+                                 font-size: 12px;
+                                 font-style: italic;
+                                 margin-bottom: 5px;">
+                                {{member['position']}}
+                            </div>
+                            <div>
+                                {% if selfMemberRdo.getIsAdmin() %}
+                                    <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete" data-id={{member['id']}}><i class="fa fa-external-link"> </i> Cancel</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </section>
+                    <!-- tab pane-->
+                </div>
+                <!-- /.box-body -->
+                <!-- /.box-footer-->
+            </div>
+        </div>
+    </div>             
+    <!-- My Invited Member -->
+    
     <!-- Vision & Mision -->
     <div class="row">
         <div class="col-md-12">

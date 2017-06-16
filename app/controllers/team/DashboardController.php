@@ -20,7 +20,7 @@ class DashboardController extends \TalentControllerBase{
         $this->view->teamRdo = $membershipRdo->teamRDO();
         $this->view->selfMemberRdo = $membershipRdo;
         $this->view->otherMemberList = $this->_getOtherActiveTeamMemberList($membershipRdo->getId());
-        $this->view->invitedList = $this->_getInvitedMemberList();        
+        $this->view->invitedList = $this->_getInvitedMemberList();
     }
 
     function noTeamAction(){
