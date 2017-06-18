@@ -5,7 +5,6 @@
 <!--  Paper Dashboard core CSS    -->
 <link href="{{url('public/css/dashboard.css')}}" rel="stylesheet"/>
 <link rel="stylesheet" href="{{url('public/css/linkstyles.css')}}">
-fgfgfgf
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
