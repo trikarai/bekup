@@ -45,8 +45,8 @@
 					<li><a class="smoothscroll"  href="#process" title="">About</a></li>
 					<li><a class="smoothscroll"  href="#features" title="">Partners</a></li>
 					<li><a href="http://bekup.web.id/faq" title="">FAQ</a></li>					
-					<li class="highlight with-sep" style="font-weight:900;"><a href="/../register" title="">Pre-Registration</a></li>
-                    <li class="highlight with-sep" style="font-weight:900;"><a href="/../login" title="">Log In</a></li>					
+					<li class="highlight with-sep" style="font-weight:900;"><a href="{{url('register')}}" title="">Pre-Registration</a></li>
+                    <li class="highlight with-sep" style="font-weight:900;"><a href="{{url('login')}}" title="">Log In</a></li>					
 				</ul>
 			</nav>
 
@@ -70,8 +70,8 @@
 					<h2 style="position: relative;top: 35px;"> Have a Team & Idea ? Register BEKUP-Start Now</h2>
 					
 					<div style="padding-top:28px;">
-						<a href="../register">
-						<button href="../registrasi" class="btn btn-danger" style="font-size:large">BEKUP - Start Registration</button>
+						<a href="{{url('register')}}">
+						<button href="{{url('registrasi')}}" class="btn btn-danger" style="font-size:large">BEKUP - Start Registration</button>
 						</a>	
 					</div>
 				</div>  

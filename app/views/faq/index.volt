@@ -40,8 +40,8 @@
 				<ul class="main-navigation">
 					<li><a href="http://bekup.web.id" title="">Home</a></li>					
 					<!-- <li><a class="current"  href="http://bekup.web.id/faq" title="">FAQ</a></li>					 -->
-					<li class="highlight with-sep" style="font-weight:900;"><a href="/../register" title="">Pre-Registration</a></li>
-                    <li class="highlight with-sep" style="font-weight:900;"><a href="/../login" title="">Log In</a></li>					
+					<li class="highlight with-sep" style="font-weight:900;"><a href="{{url('register')}}" title="">Pre-Registration</a></li>
+                    <li class="highlight with-sep" style="font-weight:900;"><a href="{{url('login')}}" title="">Log In</a></li>					
 				</ul>
 			</nav>
 
