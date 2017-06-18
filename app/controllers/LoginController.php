@@ -48,7 +48,7 @@ class LoginController extends ControllerBase {
         }
         $this->_registerSession($talentRdo = $response->firstReadDataObject());
         $this->flash->success('Welcome' . ' ' . $talentRdo->getName());
-        return $this->forward('talentdashboard/index');
+        return $this->forward('talent/dashboard/index');
     }
     
     public function logoutAction() {

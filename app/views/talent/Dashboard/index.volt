@@ -69,7 +69,7 @@ fgfgfgf
                         <div class="footer">
                             <hr />
                             <div class="stats">
-                                <i class="fa fa-search"></i><a href="{{url('talent/skill/index')}}" class="info-a link link--kumya"><span data-letters="View Team Profile">Add New Skill</span></a>
+                                <i class="fa fa-search"></i><a href="{{url('talent/skill/index')}}" class="info-a link link--kumya"><span data-letters="Add New Skill">Add New Skill</span></a>
                             </div>
                         </div>
                     </div>
