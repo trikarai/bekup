@@ -117,8 +117,8 @@
           <a href="{{url('talent/profile/index')}}"><i class="fa fa-user"></i> <span>Profile</span> <i class=""></i></a>         
         </li>
 		
-        <li id="classMenu" class="treeview">
-          <a href="{{url('talentclass/index')}}"><i class="fa fa-sitemap"></i> <span>Class</span> <i class=""></i></a>
+        <li id="skillMenu" class="treeview">
+          <a href="{{url('talent/skill/index')}}"><i class="fa fa-sitemap"></i> <span>Skill</span> <i class=""></i></a>
           <!-- <ul class="treeview-menu"> -->
             <!-- <li><a id="" href="">sub menu 2</a></li> -->
             <!-- <li><a id="" href="/../dart/User">sub menu 2</a></li> -->

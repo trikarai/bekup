@@ -129,8 +129,7 @@
 crossorigin="anonymous"></script>
 <script src="{{url('public/js/bootstrap-notify.min.js')}}"></script>
 <script>
-    $('#profileMenu').addClass('active');
-    $('#skillMenu').css('color', '#fff');
+    $('#skillMenu').addClass('active');
 </script>
 
 <script>

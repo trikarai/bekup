@@ -186,12 +186,13 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 	text-transform: uppercase;
 	background: #6f6f6f;
 	display: inline-block;
-	padding: 22px;
+	padding-top: 26px;
 	color: #fff;	
-	font-size: 26px;
+	font-size: 20px;
 	margin-bottom: 10px;
 	width: 80px;
 	height: 80px;
+	text-align:center;
 }
 
 .cteam {

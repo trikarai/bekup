@@ -269,7 +269,7 @@ crossorigin="anonymous"></script>
             }
             }).show();
             setTimeout(function () {
-            window.location.href = "{{url('team/index')}}"; }, 4500);
+            window.location.href = "{{url('team/dashboard/index')}}"; }, 3500);
             });
             },
     });
