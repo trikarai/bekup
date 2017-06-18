@@ -59,12 +59,15 @@
                             <div>{{ talentRdo.cityRdo().getName() }}</div>
                         </div>
                     </div>
-                    <div class="row">
-                        <label  class="col-sm-4 control-label">Track</label>
-                        <div class="col-sm-8">
-                            <div>{{ talentRdo.trackRdo().getName() }}</div>
-                        </div>
-                    </div>
+					<?php $trackRdo = $talentRdo->trackRdo(); ?>
+					{% if trackRdo is not empty %}
+						<div class="row">
+							<label  class="col-sm-4 control-label">Track</label>
+							<div class="col-sm-8">
+								<div>{{ trackRdo.getName() }}</div>
+							</div>
+						</div>
+					{% endif %}
                     <div class="row">
                         <label  class="col-sm-4 control-label">Birth Date</label>
                         <div class="col-sm-8">

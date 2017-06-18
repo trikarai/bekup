@@ -24,6 +24,8 @@ class CommandMemberService {
         
         if(true !== $msg = $talent->acceptTeamInvitation($teamId, $memberId)){
             $response->appendErrorMessage($msg);
+        }else{
+            $this->repository->update();
         }
         return $response;
     }
@@ -39,6 +41,8 @@ class CommandMemberService {
         $talent = $this->_findTalentOrDie($talentId);
         if(true !== $msg = $talent->rejectTeamInvitation($teamId, $memberId)){
             $response->appendErrorMessage($msg);
+        }else{
+            $this->repository->update();
         }
         
         return $response;
@@ -54,6 +58,8 @@ class CommandMemberService {
         $talent = $this->_findTalentOrDie($talentId);
         if(true !== $msg = $talent->resign()){
             $response->appendErrorMessage($msg);
+        }else{
+            $this->repository->update();
         }
         return $response;
     }

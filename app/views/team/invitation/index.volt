@@ -53,33 +53,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {#<?php if(@$notificationDTOs):?>
-                        <?php foreach ($notificationDTOs as $row): ?>#}
+                        {% if notificationDTOs is empty %}
+                            <tr>
+                                <td colspan="3" class="text-center" style="font-style:italic;">No Invitation Request</td>
+                                                            <td colspan="3"> </td>
+                            </tr>
+                        {% endif %}
+                        {% for row in notificationDTOs %}
                         <tr>
-                            <td><span class="teamname">{#<?php echo $row->queryTeamProfileDTO()->name() ?>#}</span> invited you to join as <span class="positionname">{#<?php echo $row->position(); ?>#}</span></td>
-                            <td><a href="{#<?php echo $this->url->get('team/rejectInvitation/'.$row->id()); ?>#}" class="btn btn-danger">Reject</a></td>
-                            <td>
-                            {#<?php 
-                                if(!$hasActive){ 
-                                   echo "<a href='";
-                                   echo $this->url->get('team/acceptInvitation/'.$row->id());
-                                   echo " 'class='btn btn-default'>Accept</a>";
-                                }else{
-                                    
-                                }
-                            ?>#}
-                                </a>
-                            </td>
+                            <td><span class="teamname">{{row.teamRDO().getName()}}</span> invited you to join as <span class="positionname">{{row.getPosition()}}</span></td>
+                            <td><a href={{url('team/member/reject/')}}{{row.teamRDO().getId()}}/{{row.getId()}} class="btn btn-danger">Reject</a></td>
+                            <td><a href={{url('team/member/accept/')}}{{row.teamRDO().getId()}}/{{row.getId()}} class="btn btn-success">Accept</a></td>
                         </tr>
-
-                       {# <?php endforeach?>
-                        <?php else: ?>#}
-					   
-                       <tr>
-                            <td colspan="3" class="text-center" style="font-style:italic;">No Invitation Request</td>
-							<td colspan="3"> </td>
-                        </tr>
-                       {# <?php endif;?>#}
+                       {% endfor %}
                     </tbody>
                     </table>
                             

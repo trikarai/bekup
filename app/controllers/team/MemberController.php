@@ -51,17 +51,45 @@ class MemberController extends \TalentControllerBase{
         return $this->forward('member/invite');
     }
     
-    function cancelAction(){
-        
+    function cancelAction($memberId){
+        $service = $this->_commandTeamMemberService();
+        $response = $service->cancelInvitation($this->_getTalentId(), $memberId);
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }
+        return $this->forwardNamespace('Team/dashboard/index');
     }
-    function removeAction(){
-        
+    function removeAction($memberId){
+        $service = $this->_commandTeamMemberService();
+        $response = $service->removeMember($this->_getTalentId(), $memberId);
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }
+        return $this->forwardNamespace('Team/dashboard/index');
     }
-    function resignAction(){    
-        
+    function resignAction(){
+        $service = $this->_commandMemberService();
+        $response = $service->resign($this->_getTalentId());
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }
+        return $this->forwardNamespace('Team/dashboard/index');
     }
-    function rejectAction(){
-        
+    function rejectAction($teamId, $memberId){
+        $service = $this->_commandMemberService();
+        $response = $service->rejectInvitation($this->_getTalentId(), $teamId, $memberId);
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }
+        return $this->forwardNamespace('Team/dashboard/index');
+    }
+    function acceptAction($teamId, $memberId){
+        $service = $this->_commandMemberService();
+        $response = $service->acceptInvitation($this->_getTalentId(), $teamId, $memberId);
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }
+        return $this->forwardNamespace('Team/dashboard/index');
     }
     
     protected function _talentRepository(){
@@ -69,5 +97,11 @@ class MemberController extends \TalentControllerBase{
     }
     protected function _teamRepository(){
         return $this->em->getRepository('Team\Profile\DomainModel\Team\Team');
+    }
+    protected function _commandTeamMemberService(){
+        return new CommandTeamMemberService($this->_teamRepository(), $this->_talentRepository());
+    }
+    protected function _commandMemberService(){
+        return new CommandMemberService($this->_talentRepository());
     }
 }
