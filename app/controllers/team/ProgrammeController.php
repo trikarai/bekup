@@ -6,6 +6,7 @@ use Team\Programme\ApplicationService\Programme\QueryProgrammeService;
 use Team\Programme\ApplicationService\Programme\QueryAvailableProgrammeService;
 use Team\Programme\ApplicationService\Programme\ApplyProgrammeService;
 use Team\Programme\ApplicationService\Programme\CommandProgrammeService;
+use Team\Profile\ApplicationService\Team\QueryMemberService;
 
 class ProgrammeController extends TeamControllerBase{
     protected function _queryProgrammeService(){
@@ -20,6 +21,12 @@ class ProgrammeController extends TeamControllerBase{
     }
     
     function indexAction(){
+        $service = new QueryMembershipService($this->_talentRepository());
+        $response = $service->showActiveMembership($this->_getTalentId());
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+            return $this->forward('dashboard/noTeam');
+        }
         $this->view->pick('team/programme/index');
         $service = $this->_queryProgrammeService();
         $response = $service->showActiveProgramme($this->_getTalentId());
@@ -75,6 +82,10 @@ class ProgrammeController extends TeamControllerBase{
             $this->flash->success('successfully resign from programme');
         }
         return $this->forward('programme/participation');
+    }
+    
+    protected function _talentRepository(){
+        return $this->em->getRepository('\Team\Profile\DomainModel\Talent\Talent');
     }
     
 }
