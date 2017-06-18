@@ -6,7 +6,7 @@ use Team\Programme\ApplicationService\Programme\QueryProgrammeService;
 use Team\Programme\ApplicationService\Programme\QueryAvailableProgrammeService;
 use Team\Programme\ApplicationService\Programme\ApplyProgrammeService;
 use Team\Programme\ApplicationService\Programme\CommandProgrammeService;
-use Team\Profile\ApplicationService\Team\QueryMemberService;
+use Team\Profile\ApplicationService\Talent\QueryMembershipService;
 
 class ProgrammeController extends TeamControllerBase{
     protected function _queryProgrammeService(){
