@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="box-body">
-                    
+                <div class="mylistinvitee"></div>   
 
                     <section>
                         {% for member in invitedList %}
@@ -117,9 +117,11 @@
                             </div>
                             <div>
                                 {% if selfMemberRdo.getIsAdmin() %}
-                                    <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete" data-id={{member['id']}}><i class="fa fa-external-link"> </i> Cancel</a>
+                                    <a class="btn tomboladd confirm-cancel" data-id={{member['id']}}><i class="fa fa-external-link"> </i> Cancel</a>																							
                                 {% endif %}
                             </div>
+														
+							
                         </div>
                     {% endfor %}
                     </section>
@@ -184,6 +186,28 @@
 
 </section>
 
+
+<div class="modal fade" id="myModalTeamCancel" role="dialog">
+<div class="modal-dialog modal-sm">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+	<!-- <div class="modal-header"> -->
+	  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+	  <!-- <h4 class="modal-title"></h4> -->
+	<!-- </div> -->
+	<div class="modal-body">
+	  <p>Do you want to cancel invitation ?</p>
+	</div>
+	<div class="modal-footer">
+	  <a href="#" type="button" class="btn tombolmodal" id="btnCancel" data-dismiss="modal">Yes</a>
+	  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+	</div>
+  </div>								  
+</div>
+</div>                            
+							
+
 <div class='modal fade' id='myModalTeam' role='dialog'>
     <div class='modal-dialog modal-sm'>
         <div class='modal-content'>
@@ -218,6 +242,8 @@
 </div>
 <!-- main content -->
 
+				
+
 <!-- jQuery 2.2.0 -->
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"
         integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4="
@@ -248,9 +274,9 @@ crossorigin="anonymous"></script>
 
     var id = $('#myModalTeam').data('id');
     //sending to php the row to be deleted from the db
-    // alert (id);
+    alert (id);
     $.ajax({
-    url: '<?php echo $this->url->get('team / resignTeam / ');?>' + id,
+    url: '<?php echo $this->url->get('team/member/resign');?>' + id,
             // type: POST,
             data: 'id=' + id,
             success: function(html){
@@ -260,7 +286,7 @@ crossorigin="anonymous"></script>
             // $('#myModalTeam').modal('hide');
 
             //removing entire row
-            $('[data-id=' + id + ']').parents('tr').remove();
+            $('[data-id=' + id + ']').remove();
             $('#myModalTeam').modal('hide');
             $(document).ready(function () {
             $('.alert-teammember').notify({
@@ -274,48 +300,10 @@ crossorigin="anonymous"></script>
             },
     });
     return false;
-    });</script>
-
-<script>
-    $('#myModalTeamCancel').on('show', function() {
-    var id = $(this).data('id'),
-            removeBtn = $(this).find('.danger');
-    })
-
-            $('.confirm-cancel').on('click', function(e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    $('#myModalTeamCancel').data('id', id).modal('show');
     });
-    $('#btnCancel').click(function() {
-
-    var id = $('#myModalTeamCancel').data('id');
-    //sending to php the row to be deleted from the db
-    // alert (id);
-    $.ajax({
-    url: '<?php echo $this->url->get('team / cancelInvitation / ');?>' + id,
-            // type: POST,
-            data: 'id=' + id,
-            success: function(html){
+</script>
 
 
-            // $('[data-id='+id+']').remove();
-            // $('#myModalTeamCancel').modal('hide');
-
-            //removing entire row
-            $('[data-id=' + id + ']').parents('tr').remove();
-            $('#myModalTeamCancel').modal('hide');
-            $(document).ready(function () {
-            $('table .mylistinvitee').notify({
-            message: {
-            text: 'Invitation Canceled'
-            }
-            }).show();
-            });
-            },
-    });
-    return false;
-    });</script>
 
 <script>
     $('#myModalTeamKick').on('show', function() {
@@ -351,6 +339,50 @@ crossorigin="anonymous"></script>
             $('.alert-teammember').notify({
             message: {
             text: 'Member removed'
+            }
+            }).show();
+            });
+            },
+    });
+    return false;
+    });
+
+</script>
+
+<script>
+    $('#myModalTeamCancel').on('show', function() {
+    var id = $(this).data('id'),
+            removeBtn = $(this).find('.danger');
+    })
+
+            $('.confirm-cancel').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $('#myModalTeamCancel').data('id', id).modal('show');
+    });
+    $('#btnKick').click(function() {
+
+    var id = $('#myModalTeamCancel').data('id');
+    //sending to php the row to be deleted from the db
+    // alert (id);
+    $.ajax({
+    url: '<?php echo $this->url->get('team/member/cancel');?>' + id,
+            // type: POST,
+            data: 'id=' + id,
+            success: function(html){
+
+
+            // $('[data-id='+id+']').remove();
+            // $('#myModalTeamCancel').modal('hide');
+
+            //removing entire row
+            $('[data-id='+id+']').remove();
+            alert(id);
+            $('#myModalTeamCancel').modal('hide');
+            $(document).ready(function () {
+            $('.alert-teammember').notify({
+            message: {
+            text: 'Invitation Canceled'
             }
             }).show();
             });
