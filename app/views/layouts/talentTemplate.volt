@@ -133,6 +133,13 @@
           <!-- </ul> -->
         </li>
 		
+		<li id="programMenu" class="treeview">
+          <a href="{{url('team/programme/index')}}"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i></i> <span>Programme</span> <i class=""></i></a>         
+        </li>
+		
+		<li id="ideaMenu" class="treeview">
+          <a href="{{url('team/programme/index')}}"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> <span>Idea</span> <i class=""></i></a>         
+        </li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
