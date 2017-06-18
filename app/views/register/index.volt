@@ -48,7 +48,8 @@ use Phalcon\Flash\Session as FlashSession;
                 <label for="track">Track :</label>
                 {{select_static("track_id", trackList)}}
             </div>
-            <div class="g-recaptcha" data-sitekey="6LfhvBYUAAAAAMTzotjfhChjCevXeVLE_25b6ePV"></div>
+            {#<div class="g-recaptcha" data-sitekey="6LfhvBYUAAAAAMTzotjfhChjCevXeVLE_25b6ePV"></div>#}
+                                <div class="g-recaptcha" data-sitekey="6LcJtSUUAAAAAJfDDzKlhP5CI4oOGC70MhJ_398r"></div>
         </fieldset>
         <button type="submit">SIGN UP</button>
     </form>

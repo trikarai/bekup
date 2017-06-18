@@ -70,7 +70,8 @@
 					?>					
 				</div>
 		
-				<div class="g-recaptcha" data-sitekey="6LfhvBYUAAAAAMTzotjfhChjCevXeVLE_25b6ePV"></div>
+				{#<div class="g-recaptcha" data-sitekey="6LfhvBYUAAAAAMTzotjfhChjCevXeVLE_25b6ePV"></div>#}
+                                <div class="g-recaptcha" data-sitekey="6LcJtSUUAAAAAJfDDzKlhP5CI4oOGC70MhJ_398r"></div>
 				
 				<input style="margin-top:20px" type='submit' value='Sign in'/>
 			  

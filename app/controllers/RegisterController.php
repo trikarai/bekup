@@ -37,7 +37,8 @@ return true;
             $this->flash->error('Please input captcha');
             return false;
         } else {
-            $secretKey = "6LfhvBYUAAAAAEbdOB7p1VD_rQS7QW_tmVPujCbV";
+            //$secretKey = "6LfhvBYUAAAAAEbdOB7p1VD_rQS7QW_tmVPujCbV";
+            $secretKey = "6LcJtSUUAAAAACD53SdVeiB6XZ5J-j8vozTopZA5";
             $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha);
             if(json_decode($response)->success === true){
                 return true;
