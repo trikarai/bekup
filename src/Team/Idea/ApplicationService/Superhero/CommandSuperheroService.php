@@ -75,6 +75,8 @@ class CommandSuperheroService {
         
         if(true !== $msg = $talent->removeSuperhero($superheroId)){
             $response->appendErrorMessage($msg);
+        }else{
+            $this->repository->update();
         }
         return $response;
     }

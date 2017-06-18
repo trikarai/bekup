@@ -16,22 +16,22 @@ use Team\Profile\DomainModel\Membership\DataObject\TalentMembershipReadDataObjec
 class ProposeIdeaService {
     
     protected $repository;
-    protected $talentRepository;
+    protected $talentQueryRepository;
     protected $activeMemberhipFinder;
     protected $dataValidationService;
     
     /**
      * @param \Team\Idea\DomainModel\Team\ITeamRepository $teamRepository
-     * @param \Team\Idea\DomainModel\Talent\ITalentRepository $talentRepository
-     * @param \Team\Idea\DomainModel\Team\Team\Profile\ApplicationService\Talent\ActiveMembershipFinder $activeMembershipFinder
+     * @param \Team\Idea\DomainModel\Talent\ITalentQueryRepository $talentQueryRepository
+     * @param \Team\Profile\ApplicationService\Talent\ActiveMembershipFinder $activeMembershipFinder
      */
     public function __construct(
             \Team\Idea\DomainModel\Team\ITeamRepository $teamRepository,
-            \Team\Idea\DomainModel\Talent\ITalentRepository $talentRepository,
+            \Team\Idea\DomainModel\Talent\ITalentQueryRepository $talentQueryRepository,
             \Team\Profile\ApplicationService\Talent\ActiveMembershipFinder $activeMembershipFinder
     ) {
         $this->repository = $teamRepository;
-        $this->talentRepository = $talentRepository;
+        $this->talentQueryRepository = $talentQueryRepository;
         $this->activeMemberhipFinder = $activeMembershipFinder;
         $this->dataValidationService = new IdeaDataValidationService();
     }
@@ -46,11 +46,12 @@ class ProposeIdeaService {
         $response = new ResponseObject();
         $activeMemberhshipRdo = $this->_findActiveMembershipOrDie($talentId);
         $team = $this->_findTeamOrDie($activeMemberhshipRdo->teamRDO()->getId());
-        if(false === $superheroRdo = $this->_findSuperhero($talentId, $superheroId)){
+        
+        if(false === $verifiedSuperheroId = $this->_findSuperheroId($talentId, $superheroId)){
             $response->appendErrorMessage(ErrorMessage::error404_NotFound(['superhero not found']));
         }else if(true !== $msg = $this->dataValidationService->isValidToPropose($request)){
             $response->appendErrorMessage($msg);
-        }else if(true !== $msg = $team->proposeIdea($activeMemberhshipRdo->getId(), $request, $superheroRdo)){
+        }else if(true !== $msg = $team->proposeIdea($activeMemberhshipRdo->getId(), $request, $verifiedSuperheroId)){
             $response->appendErrorMessage($msg);
         }else{
             $this->repository->update();
@@ -82,18 +83,24 @@ class ProposeIdeaService {
         }
         return $team;
     }
-    protected function _findSuperhero($talentId, $superheroId){
+    /**
+     * @param type $talentId
+     * @param type $superheroId
+     * @return null||false||string
+     * @throws DoNotCatchException
+     */
+    protected function _findSuperheroId($talentId, $superheroId){
         if(empty($superheroId)){
             return null;
         }
-        $talent = $this->talentRepository->ofId($talentId);
-        if(empty($talent)){
+        $talentQuery = $this->talentQueryRepository->ofId($talentId);
+        if(empty($talentQuery)){
             throw new DoNotCatchException('talent not found');
         }
-        $superheroRDO = $talent->aSuperheroRdoById($superheroId);
+        $superheroRDO = $talentQuery->aSuperheroRdoOfId($superheroId);
         if(empty($superheroRDO)){
             return false;
         }
-        return $superheroRDO;
+        return $superheroRDO->getId();
     }
 }

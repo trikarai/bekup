@@ -6,6 +6,7 @@
 
         <id name='id' type='guid' />
         <field name="name" type="string"/>
+        <field name="description" type="string"/>
         <field name="registrationStartDate" column='registration_start_date' type="datetime"/>
         <field name="registrationEndDate" column='registration_end_date' type="datetime"/>
         <field name="operationStartDate" column='operation_start_date' type="datetime"/>

@@ -3,32 +3,23 @@
 namespace Team\Idea\DomainModel\Idea;
 
 use Team\Idea\DomainModel\Idea\DataObject\IdeaWriteDataObject;
-use Team\Idea\DomainModel\Idea\DataObject\IdeaReadDataObject;
-
-use Team\Idea\DomainModel\Superhero\DataObject\SuperheroReadDataObject;
-use Superclass\DomainModel\Talent\TalentReadDataObject;
 use Team\Idea\DomainModel\Team\Team;
 
 class Idea {
     protected $id;
     protected $name;
-    protected $localProblem;
-    protected $globalTrendRelation;
-    protected $appliedTechnology;
-    protected $idealFinalResult;
-    protected $valueContradiction;
-    protected $usedResource;
-    /**
-     * @var SuperheroReadDataObject
-     */
-    protected $superheroRDO = null;
-    /**
-     * @var TalentReadDataObject
-     */
-    protected $talentInitiatorRDO;
-    protected $team;
-    
+    protected $description;
+    protected $targetCustomer;
+    protected $problemFaced;
+    protected $valueProposed;
+    protected $revenueModel;
     protected $isRemoved = false;
+    protected $superheroId = null;
+    protected $talentInitiatorId;
+    /**
+     * @var Team
+     */
+    protected $team;
     
     function getId(){
         return $this->id;
@@ -39,51 +30,41 @@ class Idea {
     function getIsRemoved(){
         return $this->isRemoved;
     }
+
     /**
-     * @return IdeaReadDataObject
-     */
-    function toReadDataObject(){
-        return new IdeaReadDataObject($this->id, $this->name, $this->localProblem, 
-                $this->globalTrendRelation, $this->appliedTechnology, $this->idealFinalResult, 
-                $this->valueContradiction, $this->usedResource, $this->superheroRDO, $this->talentInitiatorRDO);
-    }
-    
-    /**
-     * @param Team $team
      * @param type $id
      * @param IdeaWriteDataObject $request
-     * @param TalentReadDataObject $talentRDO
-     * @param SuperheroReadDataObject $superheroRDO
+     * @param type $talentId
+     * @param Team $team
+     * @param type $superheroId
      */
-    public function __construct(Team $team, $id, IdeaWriteDataObject $request, 
-            TalentReadDataObject $talentRDO, SuperheroReadDataObject $superheroRDO = null
-    ) {
+    function __construct($id, IdeaWriteDataObject $request, $talentId, Team $team, $superheroId = null) {
         $this->id = $id;
         $this->name = $request->getName();
-        $this->localProblem = $request->getLocalProblem();
-        $this->globalTrendRelation = $request->getGlobalTrendRelation();
-        $this->appliedTechnology = $request->getAppliedTechnology();
-        $this->idealFinalResult = $request->getIdealFinalResult();
-        $this->valueContradiction = $request->getValueContradiction();
-        $this->usedResource = $request->getUsedResource();
-        
-        $this->superheroRDO = $superheroRDO;
-        $this->talentInitiatorRDO = $talentRDO;
+        $this->description = $request->getDescription();
+        $this->targetCustomer = $request->getTargetCustomer();
+        $this->problemFaced = $request->getProblemFaced();
+        $this->valueProposed = $request->getValueProposed();
+        $this->revenueModel = $request->getRevenueModel();
+        $this->talentInitiatorId = $talentId;
         $this->team = $team;
+        $this->superheroId = $superheroId;
     }
-    
+
     /**
      * @param IdeaWriteDataObject $request
+     * @param type $superheroId
      */
-    function update(IdeaWriteDataObject $request){
+    function update(IdeaWriteDataObject $request, $superheroId = null){
         $this->name = $request->getName();
-        $this->localProblem = $request->getLocalProblem();
-        $this->globalTrendRelation = $request->getGlobalTrendRelation();
-        $this->appliedTechnology = $request->getAppliedTechnology();
-        $this->idealFinalResult = $request->getIdealFinalResult();
-        $this->valueContradiction = $request->getValueContradiction();
-        $this->usedResource = $request->getUsedResource();
+        $this->description = $request->getDescription();
+        $this->targetCustomer = $request->getTargetCustomer();
+        $this->problemFaced = $request->getProblemFaced();
+        $this->valueProposed = $request->getValueProposed();
+        $this->revenueModel = $request->getRevenueModel();
+        $this->superheroId = $superheroId;
     }
+    
     function remove(){
         $this->isRemoved = true;
     }

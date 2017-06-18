@@ -7,6 +7,7 @@ use Resources\IReadDataObject;
 class ProgrammeRdo implements IReadDataObject{
     protected $id;
     protected $name;
+    protected $description;
     protected $registrationStartDate;
     protected $registrationEndDate;
     protected $operationStartDate;
@@ -18,6 +19,9 @@ class ProgrammeRdo implements IReadDataObject{
     }
     function getName() {
         return $this->name;
+    }
+    function getDescription() {
+        return $this->description;
     }
     function getRegistrationStartDate() {
         return $this->registrationStartDate->format('Y-m-d');
@@ -35,9 +39,10 @@ class ProgrammeRdo implements IReadDataObject{
         return $this->isRemoved;
     }
     
-    protected function __construct($id, $name, \DateTime $registrationStartDate, \DateTime $registrationEndDate, \DateTime $operationStartDate, \DateTime $operationEndDate, $isRemoved) {
+    protected function __construct($id, $name, $description, \DateTime $registrationStartDate, \DateTime $registrationEndDate, \DateTime $operationStartDate, \DateTime $operationEndDate, $isRemoved) {
         $this->id = $id;
         $this->name = $name;
+        $this->description = $description;
         $this->registrationStartDate = $registrationStartDate;
         $this->registrationEndDate = $registrationEndDate;
         $this->operationStartDate = $operationStartDate;
@@ -49,6 +54,7 @@ class ProgrammeRdo implements IReadDataObject{
         return array(
             'id' => $this->getId(),
             'name' => $this->getName(),
+            'description' => $this->getDescription(),
             'registration_start_date' => $this->getRegistrationStartDate(),
             'registration_end_date' => $this->getRegistrationEndDate(),
             'operation_start_date' => $this->getOperationStartDate(),

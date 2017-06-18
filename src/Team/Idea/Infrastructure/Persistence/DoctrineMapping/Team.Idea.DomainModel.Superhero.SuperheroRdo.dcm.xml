@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Idea\DomainModel\Superhero\SuperheroRdo" 
+            table="bkp_talent_superhero"
+    >
+        
+		<id name="id" type="guid" />
+		<field name="name" column ="name" type="string" length="64"/>
+		<field name="mainDuty" column ="main_duty" type="string" length="256"/>
+		<field name="specialAbility" column ="special_ability" type="string" length="256"/>
+		<field name="dailyActivity" column ="daily_activity" type="string" length="256"/>
+		<field name="alternativeTechnology" column ="alternative_technology" type="string" length="256"/>
+		<field name="isRemoved" column ="is_removed" type="boolean" length="256"/>
+		
+                <many-to-one field='talentQuery' target-entity='Team\Idea\DomainModel\Talent\TalentQuery' inversed-by='superheroRdos'>
+                    <join-column name='talent_id' referenced-column-name='id' />
+                </many-to-one>
+    </entity>
+</doctrine-mapping>

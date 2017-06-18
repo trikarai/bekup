@@ -11,6 +11,8 @@ $paths = array(
     BASE_PATH . "/src/Personnel/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Programme/Description/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Education/Infrastructure/Persistence/DoctrineMapping",
+    BASE_PATH . "/src/Talent/Entrepreneurship/Infrastructure/Persistence/DoctrineMapping",
+    BASE_PATH . "/src/Talent/Organizational/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Profile/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Skill/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/Talent/Training/Infrastructure/Persistence/DoctrineMapping",

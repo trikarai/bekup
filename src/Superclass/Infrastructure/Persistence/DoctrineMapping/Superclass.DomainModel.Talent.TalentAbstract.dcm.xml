@@ -8,7 +8,10 @@
         <field name="email" type="string" />
         <field name="phone" type="string" />
         <field name="cityOfOrigin" column='city_of_origin' type="string" />
-        <field name="birthDate" column='birth_date' type="datetime" />
+        <field name="birthDate" column='birth_date' type="date" />
+        <field name="gender" type="string" length='1'/>
+        <field name="bekupType" column='bekup_type' type="string" length='16'/>
+        <field name="motivation" column='motivation' type="string" length='256' />
         
         <many-to-one field="cityRDO" target-entity="Superclass\DomainModel\City\CityReadDataObject">
             <join-column name="city_id" referenced-column-name="id" />

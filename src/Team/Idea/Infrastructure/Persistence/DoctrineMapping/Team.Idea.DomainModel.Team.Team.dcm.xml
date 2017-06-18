@@ -2,6 +2,7 @@
 <doctrine-mapping>
     <entity name="Team\Idea\DomainModel\Team\Team" 
             table="bkp_team" 
+			repository-class='Team\Idea\Infrastructure\DomainModelRepository\Team\DoctrineTeamRepository'
     >
         <one-to-many field='ideas' 
                      target-entity='Team\Idea\DomainModel\Idea\Idea'
@@ -15,9 +16,8 @@
         </one-to-many>
         
         <one-to-many field='teamMemberRdos' 
-                     target-entity='Superclass\DomainModel\Team\TeamMemberReadDataObject'
+                     target-entity='Team\Idea\DomainModel\Team\TeamMemberRdo'
                      index-by='id'
-                     orphan-removal='true'
                      mapped-by='team'
         >
         </one-to-many>

@@ -2,8 +2,6 @@
 
 namespace Team\Idea\ApplicationService\Superhero;
 
-use Team\Idea\ApplicationService\Superhero\SuperheroMessageObject;
-
 use Resources\ErrorMessage;
 use Resources\Exception\DoNotCatchException;
 
@@ -11,10 +9,10 @@ class QuerySuperheroService {
     protected $repository;
     
     /**
-     * @param \Team\Idea\DomainModel\Talent\ITalentRepository $talentRepository
+     * @param \Team\Idea\DomainModel\Talent\ITalentQueryRepository $talentQueryRepository
      */
-    public function __construct(\Team\Idea\DomainModel\Talent\ITalentRepository $talentRepository) {
-        $this->repository = $talentRepository;
+    public function __construct(\Team\Idea\DomainModel\Talent\ITalentQueryRepository $talentQueryRepository) {
+        $this->repository = $talentQueryRepository;
     }
     
     /**
@@ -23,15 +21,14 @@ class QuerySuperheroService {
      */
     function showAll($talentId){
         $response = new SuperheroQueryResponseObject();
-        $talent = $this->_findTalentOrDie($talentId);
         
-        $rdos = $talent->allSuperheroRdos();
+        $talentQuery = $this->_findTalentQueryOrDie($talentId);
+        
+        $rdos = $talentQuery->allSuperheroRdos();
         if(empty($rdos)){
             $response->appendErrorMessage(ErrorMessage::error404_NotFound(['no superhero found']));
         }else{
-            foreach($rdos as $rdo){
-                $response->setReadDataObject($rdo);
-            }
+            $response->setBulkReadDataObject($rdos);
         }
         return $response;
     }
@@ -43,8 +40,8 @@ class QuerySuperheroService {
      */
     function showById($talentId, $superheroId){
         $response = new SuperheroQueryResponseObject();
-        $talent = $this->_findTalentOrDie($talentId);
-        $rdo = $talent->aSuperheroRdoById($superheroId);
+        $talentQuery = $this->_findTalentQueryOrDie($talentId);
+        $rdo = $talentQuery->aSuperheroRdoOfId($superheroId);
         
         if(empty($rdo)){
             $response->appendErrorMessage(ErrorMessage::error404_NotFound(['superhero not found']));
@@ -55,14 +52,15 @@ class QuerySuperheroService {
     }
     
     /**
-     * @param string $id
-     * @return \Team\Idea\DomainModel\Talent\Talent
+     * @param type $id
+     * @return \Team\Idea\DomainModel\Talent\TalentQuery
+     * @throws DoNotCatchException
      */
-    protected function _findTalentOrDie($id){
-        $talent = $this->repository->ofId($id);
-        if(empty($talent)){
+    protected function _findTalentQueryOrDie($id){
+        $talentQuery = $this->repository->ofId($id);
+        if(empty($talentQuery)){
             throw new DoNotCatchException("Talent not found");
         }
-        return $talent;
+        return $talentQuery;
     }
 }

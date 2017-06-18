@@ -4,7 +4,7 @@
             table="bkp_talent_superhero"
     >
         
-		<field name="id" type="integer" lenth='6' />
+		<id name="id" type="guid"/>
 		<field name="name" column ="name" type="string" length="64"/>
 		<field name="mainDuty" column ="main_duty" type="string" length="256"/>
 		<field name="specialAbility" column ="special_ability" type="string" length="256"/>
@@ -13,7 +13,7 @@
 		<field name="isRemoved" column ="is_removed" type="boolean" length="256"/>
 		
 		<many-to-one field="talent" target-entity="Team\Idea\DomainModel\Talent\Talent" inversed-by="superheroes">
-			<join-column name="talent_id" reference-column-name="id">
+			<join-column name="talent_id" reference-column-name="id" />
 		</many-to-one>
 		
     </entity>

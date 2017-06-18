@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name='Team\Idea\DomainModel\Idea\IdeaRdo' 
+            table='bkp_team_idea'
+    >
+        
+        <id name='id' type='guid' />
+        <field name='name' type='string' />
+        <field name='description' column='description' type='string' />
+        <field name='targetCustomer' column='target_customer' type='string' />
+        <field name='problemFaced' column='problem_faced' type='string' />
+        <field name='valueProposed' column='value_proposed' type='string' />
+        <field name='revenueModel' column='revenue_model' type='string' />
+        <field name='isRemoved' column='is_removed' type='boolean' />
+		
+		<many-to-one field='superheroRdo' target-entity='Team\Idea\DomainModel\Superhero\SuperheroRdo'>
+            <join-column name='superhero_id' referenced-column-name='id' />
+        </many-to-one>
+		<many-to-one field='talentInitiatorRdo' target-entity='Superclass\DomainModel\Talent\TalentReadDataObject'>
+            <join-column name='talent_id' referenced-column-name='id' />
+        </many-to-one>
+        <many-to-one field='teamQuery' target-entity='Team\Idea\DomainModel\Team\TeamQuery' inversed-by='ideaRdos' >
+            <join-column name='team_id' referenced-column-name='id' />
+        </many-to-one>
+        
+    </entity>
+</doctrine-mapping>

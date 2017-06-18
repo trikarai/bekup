@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Organizational\DomainModel\Talent\Talent" 
+            table='bkp_talent'
+            repository-class='Talent\Organizational\Infrastructure\DomainModelRepository\Talent\DoctrineTalentRepository'
+    >
+        
+        <one-to-many field='organizationals' 
+                     target-entity='Talent\Organizational\DomainModel\Organizational\Organizational'
+                     mapped-by='talent'
+                     index-by="id"
+        >
+            <cascade><cascade-persist/></cascade>
+        </one-to-many>
+        
+    </entity>
+</doctrine-mapping>

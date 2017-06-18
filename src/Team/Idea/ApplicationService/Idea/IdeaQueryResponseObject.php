@@ -3,19 +3,19 @@
 namespace Team\Idea\ApplicationService\Idea;
 
 use Resources\QueryResponseObject;
-use Team\Idea\DomainModel\Idea\DataObject\IdeaReadDataObject;
+use Team\Idea\DomainModel\Idea\IdeaRdo;
 
 class IdeaQueryResponseObject extends QueryResponseObject{
     
     /**
-     * @return IdeaReadDataObject[]
+     * @return IdeaRdo[]
      */
     public function arrayOfReadDataObject() {
         return $this->_arrayOfReadDataObject();
     }
 
     /**
-     * @return IdeaReadDataObject
+     * @return IdeaRdo
      */
     public function firstReadDataObject() {
         return $this->_firstReadDataObject();

@@ -3,7 +3,7 @@
 namespace Team\Idea\ApplicationService\Idea;
 
 use Resources\ErrorMessage;
-use Team\Idea\DomainModel\Team\Team;
+use Team\Idea\DomainModel\Team\TeamQuery;
 use Resources\Exception\DoNotCatchException;
 
 use Team\Profile\DomainModel\Membership\DataObject\TalentMembershipReadDataObject;
@@ -14,10 +14,10 @@ class QueryIdeaService {
     
             
     public function __construct(
-            \Team\Idea\DomainModel\Team\ITeamRepository $teamRepository,
+            \Team\Idea\DomainModel\Team\ITeamQueryRepository $teamQueryRepository,
             \Team\Profile\ApplicationService\Talent\ActiveMembershipFinder $activeMembershipFinder
     ) {
-        $this->repository = $teamRepository;
+        $this->repository = $teamQueryRepository;
         $this->activeMembershipFinder = $activeMembershipFinder;
     }
     
@@ -30,8 +30,8 @@ class QueryIdeaService {
     function showIdeaById($talentId, $ideaId){
         $response = new IdeaQueryResponseObject();
         $activeMembershipRdo = $this->_findActiveMembershipRdoOrDie($talentId);
-        $team = $this->_findTeamOrDie($activeMembershipRdo->teamRDO()->getId());
-        $rdo = $team->anIdeaRdoOfId($ideaId);
+        $teamQuery = $this->_findTeamOrDie($activeMembershipRdo->teamRDO()->getId());
+        $rdo = $teamQuery->anIdeaRdoOfId($ideaId);
         
         if(empty($rdo)){
             $response->appendErrorMessage(ErrorMessage::error404_NotFound(['idea not found']));
@@ -48,9 +48,9 @@ class QueryIdeaService {
     function showAllIdea($talentId){
         $response = new IdeaQueryResponseObject();
         $activeMembershipRdo = $this->_findActiveMembershipRdoOrDie($talentId);
-        $team = $this->_findTeamOrDie($activeMembershipRdo->teamRDO()->getId());
+        $teamQuery = $this->_findTeamOrDie($activeMembershipRdo->teamRDO()->getId());
         
-        $rdos = $team->allIdeaRdo();
+        $rdos = $teamQuery->allIdeaRdos();
         if(empty($rdos)){
             $response->appendErrorMessage(ErrorMessage::error404_NotFound(['no idea found']));
         }else{
@@ -61,15 +61,15 @@ class QueryIdeaService {
     
     /**
      * @param type $teamId
-     * @return Team
+     * @return TeamQuery
      * @throws DoNotCatchException
      */
     protected function _findTeamOrDie($teamId){
-        $team = $this->repository->ofId($teamId);
-        if(empty($team)){
+        $teamQuery = $this->repository->ofId($teamId);
+        if(empty($teamQuery)){
             throw new DoNotCatchException("team not found");
         }
-        return $team;
+        return $teamQuery;
     }
     /**
      * @param type $talentId

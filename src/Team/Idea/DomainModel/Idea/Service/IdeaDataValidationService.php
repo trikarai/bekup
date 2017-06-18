@@ -14,12 +14,11 @@ class IdeaDataValidationService extends DataValidationServiceAbstract{
      */
     function isValidToPropose(IdeaWriteDataObject $request){
         $this->_checkNotEmtpyOrNull($request->getName(), 'idea name');
-        $this->_checkNotEmtpyOrNull($request->getLocalProblem(), 'idea local problem');
-        $this->_checkNotEmtpyOrNull($request->getGlobalTrendRelation(), 'idea global trend relation');
-        $this->_checkNotEmtpyOrNull($request->getAppliedTechnology(), 'idea applied technology');
-        $this->_checkNotEmtpyOrNull($request->getIdealFinalResult(), 'idea ideal final result');
-        $this->_checkNotEmtpyOrNull($request->getValueContradiction(), 'idea value contradiction');
-        $this->_checkNotEmtpyOrNull($request->getUsedResource(), 'idea used resources');
+        $this->_checkNotEmtpyOrNull($request->getDescription(), 'idea description');
+        $this->_checkNotEmtpyOrNull($request->getTargetCustomer(), 'idea target customer');
+        $this->_checkNotEmtpyOrNull($request->getProblemFaced(), 'idea problem faced');
+        $this->_checkNotEmtpyOrNull($request->getValueProposed(), 'idea value proposed');
+        $this->_checkNotEmtpyOrNull($request->getRevenueModel(), 'idea revenue model');
         return $this->_generateResponse();
     }
     

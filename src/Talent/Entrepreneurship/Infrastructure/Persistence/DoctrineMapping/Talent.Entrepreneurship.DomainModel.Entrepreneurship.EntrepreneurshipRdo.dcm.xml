@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Entrepreneurship\DomainModel\Entrepreneurship\EntrepreneurshipRdo" 
+            table="bkp_talent_entrepreneurship"
+    >
+        <id name='id' type='guid' />
+        <field name='name' type='string' length="128" />
+        <field name='businessField' column='business_field' type='string' length="64" />
+        <field name='businessCategory' column='business_category' type='string' length="3" />
+        <field name='position' type='string' length="64" />
+        <field name='isRemoved' column='is_removed' type='string' />
+        <embedded name="time" class="Talent\Entrepreneurship\DomainModel\Entrepreneurship\ValueObject\EntrepreneurshipTime" use-column-prefix="false" />
+		
+        <many-to-one field="talentQuery" target-entity="Talent\Entrepreneurship\DomainModel\Talent\TalentQuery" inversed-by="entrepreneurshipRdos">
+            <join-column name="talent_id" referenced-column-name="id" />
+        </many-to-one>
+		
+    </entity>
+</doctrine-mapping>

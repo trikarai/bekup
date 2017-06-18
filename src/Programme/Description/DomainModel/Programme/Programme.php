@@ -15,6 +15,7 @@ use Resources\ErrorMessage;
 class Programme {
     protected $id;
     protected $name;
+    protected $description;
     /** @var ProgrammeRegistrationDateRange */
     protected $registrationDateRange;
     /** @var ProgrammeOperationDateRange */
@@ -50,6 +51,7 @@ class Programme {
     public function __construct($id, ProgrammeWriteDataObject $request) {
         $this->id = $id;
         $this->name = $request->getName();
+        $this->description = $request->getDescription();
         $this->registrationDateRange = ProgrammeRegistrationDateRange::fromNative(
                 new \DateTime($request->getRegistrationStartDate()), new \DateTime($request->getRegistrationEndDate()));
         $this->operationDateRange = ProgrammeOperationDateRange::fromNative(
@@ -64,6 +66,7 @@ class Programme {
     function change(ProgrammeWriteDataObject $request){
         try{
             $this->name = $request->getName();
+            $this->description = $request->getDescription();
             $this->registrationDateRange = ProgrammeRegistrationDateRange::fromNative(
                     new \DateTime($request->getRegistrationStartDate()), new \DateTime($request->getRegistrationEndDate()));
             $this->operationDateRange = ProgrammeOperationDateRange::fromNative(

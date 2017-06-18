@@ -6,6 +6,7 @@
 
         <id name='id' type='guid' />
         <field name="name" type="string"/>
+        <field name="description" type="string"/>
         <field name="isRemoved" column='is_removed' type="boolean"/>
         <embedded name="registrationDateRange" class="Programme\Description\DomainModel\Programme\ValueObject\ProgrammeRegistrationDateRange" use-column-prefix="false" />
         <embedded name="operationDateRange" class="Programme\Description\DomainModel\Programme\ValueObject\ProgrammeOperationDateRange" use-column-prefix="false" />

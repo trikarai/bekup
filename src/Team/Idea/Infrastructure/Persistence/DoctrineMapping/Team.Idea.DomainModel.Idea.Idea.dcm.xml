@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping>
-    <entity name='Team\Idea\DomainModel\Idea\idea' 
+    <entity name='Team\Idea\DomainModel\Idea\Idea' 
             table='bkp_team_idea'
     >
         
-        <id name='id' type='integer' length='6' />
+        <id name='id' type='guid' />
         <field name='name' type='string' />
-        <field name='localProblem' column='local_problem' type='string' />
-        <field name='globalTrendRelation' column='global_trend_relation' type='string' />
-        <field name='appliedTechnology' column='applied_technology' type='string' />
-        <field name='idealFinalResult' column='ideal_final_result' type='string' />
-        <field name='valueContradiction' column='value_contradiction' type='string' />
-        <field name='usedResource' column='used_resource' type='string' />
+        <field name='description' column='description' type='string' />
+        <field name='targetCustomer' column='target_customer' type='string' />
+        <field name='problemFaced' column='problem_faced' type='string' />
+        <field name='valueProposed' column='value_proposed' type='string' />
+        <field name='revenueModel' column='revenue_model' type='string' />
         <field name='isRemoved' column='is_removed' type='boolean' />
+        <field name='superheroId' column='superhero_id' type='guid' />
+        <field name='talentInitiatorId' column='talent_id' type='guid' />
         
-        <one-to-one field='superheroRDO' target-entity='Team\Idea\DomainModel\Superhero\DataObject\SuperheroReadDataObject'>
-            <join-column name='superhero_id' referenced-column-name='id' />
-        </one-to-one>
-        <one-to-one field='talentInitiatorRDO' target-entity='Superclass\DomainModel\Talent\TalentReadDataObject'>
-            <join-column name='initiator_id' referenced-column-name='id' />
-        </one-to-one>
         <many-to-one field='team' target-entity='Team\Idea\DomainModel\Team\Team' inversed-by='ideas' >
             <join-column name='team_id' referenced-column-name='id' />
         </many-to-one>

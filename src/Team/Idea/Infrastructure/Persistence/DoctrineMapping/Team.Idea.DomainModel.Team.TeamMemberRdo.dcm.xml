@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Idea\DomainModel\Team\TeamMemberRdo" 
+            table="bkp_team_member"
+    >
+        <many-to-one field="team" target-entity="Team\Idea\DomainModel\Team\Team">
+            <join-column name="team_id" referenced-column-name="id" />
+        </many-to-one>
+        
+    </entity>
+
+</doctrine-mapping>

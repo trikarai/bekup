@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <embeddable name="Talent\Entrepreneurship\DomainModel\Entrepreneurship\ValueObject\EntrepreneurshipTime">
+        <field name="startYear" column="start_year" type='integer' length='4' />
+        <field name="endYear" column="end_year" type='integer' length='4' />
+    </embeddable>
+</doctrine-mapping>

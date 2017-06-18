@@ -4,51 +4,45 @@ namespace Team\Idea\DomainModel\Idea\DataObject;
 
 class IdeaWriteDataObject{
     protected $name;
-    protected $localProblem;
-    protected $globalTrendRelation;
-    protected $appliedTechnology;
-    protected $idealFinalResult;
-    protected $valueContradiction;
-    protected $usedResource;
+    protected $description;
+    protected $targetCustomer;
+    protected $problemFaced;
+    protected $valueProposed;
+    protected $revenueModel;
     
-    function getName(){
+    function getName() {
         return $this->name;
     }
-    function getLocalProblem(){
-        return $this->localProblem;
+    function getDescription() {
+        return $this->description;
     }
-    function getGlobalTrendRelation(){
-        return $this->globalTrendRelation;
+    function getTargetCustomer() {
+        return $this->targetCustomer;
     }
-    function getAppliedTechnology(){
-        return $this->appliedTechnology;
+    function getProblemFaced() {
+        return $this->problemFaced;
     }
-    function getIdealFinalResult(){
-        return $this->idealFinalResult;
+    function getValueProposed() {
+        return $this->valueProposed;
     }
-    function getValueContradiction(){
-        return $this->valueContradiction;
-    }
-    function getUsedResource(){
-        return $this->usedResource;
+    function getRevenueModel() {
+        return $this->revenueModel;
     }
     
-    protected function __construct($name, $localProblem, $globalTrendRelation, 
-            $appliedTechnology, $idealFinalResult, $valueContradiction, $usedResource
-    ) {
+    function __construct($name, $description, $targetCustomer, $problemFaced, $valueProposed, $revenueModel) {
         $this->name = $name;
-        $this->localProblem = $localProblem;
-        $this->globalTrendRelation = $globalTrendRelation;
-        $this->appliedTechnology = $appliedTechnology;
-        $this->idealFinalResult = $idealFinalResult;
-        $this->valueContradiction = $valueContradiction;
-        $this->usedResource = $usedResource;
+        $this->description = $description;
+        $this->targetCustomer = $targetCustomer;
+        $this->problemFaced = $problemFaced;
+        $this->valueProposed = $valueProposed;
+        $this->revenueModel = $revenueModel;
     }
-    
-    static function request($name, $localProblem, $globalTrendRelation, $appliedTechnology, 
-            $idealFinalResult, $valueContradiction, $usedResource
+
+            
+    static function request($name, $description, $targetCustomer, $problemFaced, 
+            $valueProposed, $revenueModel
     ){
-        return new static($name, $localProblem, $globalTrendRelation, $appliedTechnology, 
-                $idealFinalResult, $valueContradiction, $usedResource);
+        return new static($name, $description, $targetCustomer, $problemFaced, 
+                $valueProposed, $revenueModel);
     }
 }

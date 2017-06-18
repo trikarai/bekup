@@ -4,7 +4,6 @@ namespace Superclass\DomainModel\Talent;
 
 interface ITalentRdoRepository {
     /**
-     * 
      * @param type $id
      * @return TalentReadDataObject
      */

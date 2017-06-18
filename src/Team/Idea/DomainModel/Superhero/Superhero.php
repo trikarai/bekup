@@ -3,7 +3,6 @@
 namespace Team\Idea\DomainModel\Superhero;
 
 use Team\Idea\DomainModel\Superhero\DataObject\SuperheroWriteDataObject;
-use Team\Idea\DomainModel\Superhero\DataObject\SuperheroReadDataObject;
 use Team\Idea\DomainModel\Talent\Talent;
 
 class Superhero {
@@ -26,15 +25,7 @@ class Superhero {
     function getIsRemoved(){
         return $this->isRemoved;
     }
-    /**
-     * @return SuperheroReadDataObject
-     */
-    function toReadDataObject(){
-        return new SuperheroReadDataObject($this->id, $this->name, $this->mainDuty, 
-                $this->specialAbility, $this->dailyActivity, $this->alternativeTechnology, $this->isRemoved);
-    }
 
-//CONSTRUCTOR
     /**
      * @param integer $id
      * @param SuperheroWriteDataObject $request
@@ -50,7 +41,6 @@ class Superhero {
         $this->talent = $talent;
     }
 
-//MUTATOR
     /**
      * @param SuperheroWriteDataObject $request
      */

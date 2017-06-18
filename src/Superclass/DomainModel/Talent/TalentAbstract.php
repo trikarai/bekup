@@ -13,7 +13,11 @@ abstract class TalentAbstract {
     
     protected $birthDate;
     protected $cityRDO;
-    protected $trackRDO;
+    protected $trackRDO = null;
+    
+    protected $gender;
+    protected $bekupType;
+    protected $motivation;
     
     function getId(){
         return $this->id;
@@ -35,6 +39,8 @@ abstract class TalentAbstract {
      * @return \Superclass\DomainModel\Talent\TalentReadDataObject
      */
     function toReadDataObject(){
-        return new TalentReadDataObject($this->id, $this->name, $this->userName, $this->email, $this->phone, $this->cityOfOrigin, $this->birthDate, $this->cityRDO, $this->trackRDO);
+        return new TalentReadDataObject($this->id, $this->name, $this->userName, 
+                $this->email, $this->phone, $this->cityOfOrigin, $this->birthDate, 
+                $this->cityRDO, $this->trackRDO, $this->gender, $this->bekupType, $this->motivation);
     }
 }

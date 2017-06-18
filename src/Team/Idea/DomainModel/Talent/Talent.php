@@ -7,43 +7,14 @@ use Superclass\DomainModel\Talent\TalentAbstract;
 
 use Team\Idea\DomainModel\Superhero\Superhero;
 use Team\Idea\DomainModel\Superhero\DataObject\SuperheroWriteDataObject;
-use Team\Idea\DomainModel\Superhero\DataObject\SuperheroReadDataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-
-use Resources\Exception\DoNotCatchException;
 
 class Talent extends TalentAbstract {
     /** @var ArrayCollection */
     protected $superheroes;
     
-    /**
-     * @param type $id
-     * @return null||SuperheroReadDataObject
-     */
-    function aSuperheroRdoById($id){
-        $superhero = $this->_findSuperhero($id);
-        if(empty($superhero)){
-            return null;
-        }
-        return $superhero->toReadDataObject();
-    }
-    
-    /**
-     * @return SuperheroReadDataObject[]
-     */
-    function allSuperheroRdos(){
-        $criteria = Criteria::create()
-                ->where(Criteria::expr()->eq('isRemoved', false));
-        $superheroRdos = [];
-        foreach($this->superheroes->matching($criteria)->toArray() as $superhero){
-            $superheroRdos[] = $superhero->toReadDataObject();
-        }
-        return $superheroRdos;
-    }
-    
-//CONSTRUCTOR
     protected function __construct() {
         $this->superheroes = new ArrayCollection();
     }
@@ -57,7 +28,7 @@ class Talent extends TalentAbstract {
         if(true !== $msg = $this->_isNotDuplicateName($request->getName())){
             return $msg;
         }
-        $id = $this->superheroes->count() + 1;
+        $id = \Ramsey\Uuid\Uuid::uuid4()->toString();
         $superhero = new Superhero($id, $request, $this);
         $this->superheroes->set($id, $superhero);
         return true;

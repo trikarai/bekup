@@ -21,26 +21,16 @@ $di = new FactoryDefault();
  
 //security checking is temporarily disabled	
 
-// $di->set('dispatcher', function() use ($di) {
-	// $eventsManager = new EventsManager;
-
-	/**
-	 * Check if the user is allowed to access certain action using the SecurityPlugin
-	 */
-	//$eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
-
-	/**
-	 * Handle exceptions and not-found exceptions using NotFoundPlugin
-	 */
-	//$eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
-	// $security = new Security($di);
-	// $eventsManager->attach('dispatch', $security);
+ $di->set('dispatcher', function() use ($di) {
+	 $eventsManager = new EventsManager;
+	 $security = new Security($di);
+	 $eventsManager->attach('dispatch', $security);
 	
-	// $dispatcher = new Dispatcher;
-	// $dispatcher->setEventsManager($eventsManager);
+	 $dispatcher = new Dispatcher;
+	 $dispatcher->setEventsManager($eventsManager);
 
-	// return $dispatcher;
-// });
+	 return $dispatcher;
+ });
 
 /**
  * The URL component is used to generate all kind of urls in the application

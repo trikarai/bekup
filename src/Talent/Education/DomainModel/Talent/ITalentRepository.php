@@ -2,9 +2,7 @@
 
 namespace Talent\Education\DomainModel\Talent;
 
-use Superclass\DomainModel\Talent\IBaseTalentRepository;
-
-interface ITalentRepository extends IBaseTalentRepository{
+interface ITalentRepository{
     /**
      * @param type $id
      * @return Talent

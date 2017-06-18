@@ -10,7 +10,7 @@ class DoctrineSkillScoreRepository extends EntityRepository implements ISkillSco
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('sks')
                 ->from('\Talent\Skill\DomainModel\SkillScore\SkillScore', 'sks')
-                ->leftJoin('sks.talent', 'tln')
+                ->leftJoin('ss.talent', 'tln')
                 ->where($qb->expr()->andX(
                         $qb->expr()->eq('sks.id', "'{$id}'"),
                         $qb->expr()->eq('tln.id', "'{$talentId}'")

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Talent\Entrepreneurship\DomainModel\Talent\TalentQuery" 
+            table='bkp_talent'
+            repository-class='Talent\Entrepreneurship\Infrastructure\DomainModelRepository\Talent\DoctrineTalentQueryRepository'
+    >
+        
+        <one-to-many field='entrepreneurshipRdos' 
+                     target-entity='Talent\Entrepreneurship\DomainModel\Entrepreneurship\EntrepreneurshipRdo'
+                     mapped-by='talentQuery'
+                     index-by="id"
+        >
+        </one-to-many>
+        
+    </entity>
+</doctrine-mapping>

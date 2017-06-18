@@ -2,6 +2,8 @@
 
 namespace Superclass\DomainModel\Team;
 
+use Superclass\DomainModel\City\CityReadDataObject;
+
 abstract class TeamQueryAbstract {
     protected $id;
     protected $name;
@@ -9,6 +11,9 @@ abstract class TeamQueryAbstract {
     protected $mission;
     protected $culture;
     protected $founderAgreement;
+    /**
+     * @var CityReadDataObject
+     */
     protected $cityRDO;
     protected $isRemoved;
     
@@ -39,4 +44,30 @@ abstract class TeamQueryAbstract {
     function cityRDO() {
         return $this->cityRDO;
     }
+    
+    protected function __construct($id, $name, $vision, $mission, $culture, $founderAgreement, CityReadDataObject $cityRDO, $isRemoved) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->vision = $vision;
+        $this->mission = $mission;
+        $this->culture = $culture;
+        $this->founderAgreement = $founderAgreement;
+        $this->cityRDO = $cityRDO;
+        $this->isRemoved = $isRemoved;
+    }
+    
+    function toArray(){
+        return array(
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'vision' => $this->getVision(),
+            'mission' => $this->getMission(),
+            'culture' => $this->getCulture(),
+            'founder_agreement' => $this->getFounderAgreement(),
+            'city' => $this->cityRDO()->toArray(),
+        );
+    }
+
+    
+
 }

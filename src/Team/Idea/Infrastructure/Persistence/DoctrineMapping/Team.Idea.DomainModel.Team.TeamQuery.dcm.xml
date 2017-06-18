@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Idea\DomainModel\Team\TeamQuery" 
+            table="bkp_team" 
+			repository-class='Team\Idea\Infrastructure\DomainModelRepository\Team\DoctrineTeamQueryRepository'
+    >
+        <one-to-many field='ideaRdos' 
+                     target-entity='Team\Idea\DomainModel\Idea\IdeaRdo'
+                     index-by='id'
+                     mapped-by='teamQuery'
+        >
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>

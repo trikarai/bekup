@@ -57,7 +57,7 @@ class MemberController extends \TalentControllerBase{
     function removeAction(){
         
     }
-    function resignAction(){
+    function resignAction(){    
         
     }
     function rejectAction(){

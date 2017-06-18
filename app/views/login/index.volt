@@ -20,8 +20,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
         <!-- CSS Files -->
-        <link href="<?php echo $this->url->get('public'); ?>/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="<?php echo $this->url->get('public'); ?>/css/material-kit.css" rel="stylesheet"/>
+        {#<link href="{{url('public/css/bootstrap.min.css')}}" rel="stylesheet" />#}
+        <link href="{{url('public/css/material-kit.css')}}" rel="stylesheet"/>
 
 
     </head>
@@ -97,7 +97,7 @@
     </body>
 
     <script src="<?php echo $this->url->get('public'); ?>/js/jquery.min.js"></script>
-    <script src="<?php echo $this->url->get('public'); ?>/js/bootstrap.min.js"></script>
+    {#<link href="{{url('public/css/bootstrap.min.css')}}" rel="stylesheet" />#}
     <script src="<?php echo $this->url->get('public'); ?>/js/material.min.js"></script>
     <script src="<?php echo $this->url->get('public'); ?>/js/material-kit.js" type="text/javascript"></script>
 

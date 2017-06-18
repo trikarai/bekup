@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <entity name="Team\Idea\DomainModel\Talent\TalentQuery" 
+            table="bkp_talent" 
+            repository-class="Team\Idea\Infrastructure\DomainModelRepository\Talent\DoctrineTalentQueryRepository"
+    >
+	
+		<one-to-many field="superheroRdos"
+			target-entity="Team\Idea\DomainModel\Superhero\SuperheroRdo"
+			index-by="id"
+			mapped-by="talentQuery"
+		>
+		</one-to-many>
+		
+    </entity>
+</doctrine-mapping>

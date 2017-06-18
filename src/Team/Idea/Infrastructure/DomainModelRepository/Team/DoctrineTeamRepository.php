@@ -34,7 +34,7 @@ class DoctrineTeamRepository extends EntityRepository implements ITeamRepository
         $criteria = array(
             'id' => $teamId,
         );
-        $this->findOneBy($criteria);
+        return $this->findOneBy($criteria);
     }
 
 }
