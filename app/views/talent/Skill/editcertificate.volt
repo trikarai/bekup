@@ -24,8 +24,8 @@
 
             <div class="col-md-6">
                 <form action="{{url('talent/skill/updateCertificate')}}" method="post">
-                    {{text_field("skill_id", "maxlength":70,"placeholder":"", "class":"form-control")}}                   
-                    {{text_field("certificate_id", "maxlength":70,"placeholder":"", "class":"form-control","required":"required")}}                   
+                    {{hidden_field("skill_id", "maxlength":70,"placeholder":"", "class":"form-control")}}                   
+                    {{hidden_field("certificate_id", "maxlength":70,"placeholder":"", "class":"form-control","required":"required")}}                   
 
                     <div class="form-group">
                         <label for="name">Certificate's Name:</label>
@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <label for="year">Year:</label>
-                        {{text_field("year", "pattern":"^(19[5-9]\d|20[0-4]\d|2050)$" , "maxlength":4,"placeholder":"Year", "class":"form-control","required":"required")}}
+                        {{text_field("year", "pattern":"^(19[5-9]\d|20[0-4]\d|2050)$" , "maxlength":4,"placeholder":"Year", "class":"form-control")}}
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
