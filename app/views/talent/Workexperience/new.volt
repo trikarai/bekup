@@ -43,7 +43,7 @@
 
                     <div class="form-group">
                         <label for="endYear">End Year:</label>
-                        {{text_field("endYear","max-length":4, "pattern":"^(19[5-9]\d|20[0-4]\d|2050)$","class":"form-control", "placeholder":"End Working Year" , "required":"required")}}
+                        {{text_field("endYear","max-length":4, "pattern":"^(19[5-9]\d|20[0-4]\d|2050)$","class":"form-control", "placeholder":"End Working Year")}}
                     </div>
                     <div class="form-group">
                         <label for="role">Role:</label>

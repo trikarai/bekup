@@ -18,7 +18,10 @@ class WorkingExperienceDataValidationService extends DataValidationServiceAbstra
         $this->_checkNotEmtpyOrNull($request->getPosition(), 'working experience position');
         $this->_checkNotEmtpyOrNull($request->getRole(), 'working experience role');
         $this->_checkYearFormat($request->getStartYear(), 'working experience start year');
-        if(null !== $request->getEndYear()){
+        
+        $endYear = $request->getEndYear();
+        
+        if(!empty($endYear)){
             $this->_checkYearFormat($request->getEndYear(), 'working experience end year');
         }
         return $this->_generateResponse();

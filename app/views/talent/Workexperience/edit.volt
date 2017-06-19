@@ -34,7 +34,7 @@
 
                     <div class="form-group">
                         <label for="position">Position:</label>
-                        {{text_field("position","max-length":70, "class":"form-control", "placeholder":"Positione" , "required":"required")}}
+                        {{text_field("position","max-length":70, "class":"form-control", "placeholder":"Positione")}}
                     </div>
 
                     <!-- Regex year validation:
@@ -48,7 +48,7 @@
 
                     <div class="form-group">
                         <label for="endYear">End Year:</label>
-                        {{text_field("endYear","max-length":4, "pattern":"^(19[5-9]\d|20[0-4]\d|2050)$","class":"form-control", "placeholder":"End Working Year" , "required":"required")}}
+                        {{text_field("endYear","max-length":4, "pattern":"^(19[5-9]\d|20[0-4]\d|2050)$","class":"form-control", "placeholder":"End Working Year")}}
                     </div>
 
                     <div class="form-group">
