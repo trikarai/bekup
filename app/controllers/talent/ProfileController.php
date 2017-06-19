@@ -63,9 +63,7 @@ class ProfileController extends \TalentControllerBase{
         $talentRdoRepository = $this->em->getRepository('\Superclass\DomainModel\Talent\TalentReadDataObject');
         $service = new  QueryTalentService($talentRdoRepository);
         $response = $service->showOneById($this->_getTalentId());
-        if(false === $response->getStatus()){
-            $this->displayErrorMessages($response->errorMessage()->getDetails());
-        }
+
         return $response->firstReadDataObject();
     }
     /**
