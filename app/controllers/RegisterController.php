@@ -46,14 +46,19 @@ class RegisterController extends ControllerBase{
     function signupJourneyAction(){
         return $this->forward($this->_signup('journey'));
     }
-    function signupBasicDiloMemberAction($bekupType){
-        return $this->forward($this->_signupDiloMemberAction('basic'));
+    function signupBasicDiloMemberAction(){
+        try{
+            $this->forward($this->_signupDiloMember('basic'));
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+        
     }
     function signupStartDiloMemberAction(){
-        return $this->forward($this->_signupDiloMemberAction('start'));
+        return $this->forward($this->_signupDiloMember('start'));
     }
     function signupJourneyDiloMemberAction(){
-        return $this->forward($this->_signupDiloMemberAction('journey'));
+        return $this->forward($this->_signupDiloMember('journey'));
     }
     
     protected function _signup($bekupType){
@@ -112,7 +117,7 @@ class RegisterController extends ControllerBase{
             $this->displayErrorMessages($response->errorMessage()->getDetails());
             return "register/$bekupType";
         }
-        $this->flash->success('sign up successfull, please check email to confirm');
+        $this->flash->success('sign up successfull, plea check email to confirm');
         return "login/index";
     }
     
@@ -155,12 +160,13 @@ class RegisterController extends ControllerBase{
         );
     }
     protected function _verifyCaptcha(){
+return true;
         $captcha = $this->request->getPost('g-recaptcha-response');
         if(!$captcha){
             $this->flash->error('Please input captcha');
             return false;
         } else {
-            $secretKey = "6LcJtSUUAAAAAJfDDzKlhP5CI4oOGC70MhJ_398r";
+            $secretKey = "6LcJtSUUAAAAACD53SdVeiB6XZ5J-j8vozTopZA5";
             $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha);
 
             if(json_decode($response)->success === true){
@@ -182,7 +188,7 @@ class RegisterController extends ControllerBase{
         $gender = strip_tags($this->request->getPost('gender'));
         $motivation = strip_tags($this->request->getPost('motivation'));
         $cityId = strip_tags($this->request->getPost('city_id'));
-        return TalentWriteDataObject::signUpRequest($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $gender, $bekupType, $motivation, $cityId, $trackId);
+        return TalentWriteDataObject::signUpRequest($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $gender, $bekupType, $motivation, $trackId);
     }
 } 
 
