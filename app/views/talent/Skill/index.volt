@@ -12,7 +12,7 @@
     </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+{#<section class="content">
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {%if(skillScoreRdos)%}
+                        {%if(skillScoreRdos)%} 
                             {%for row in skillScoreRdos%}
                                 <tr>
                                     <td data-title="Skill"> {{row.skillRDO().trackReadDataObject().getName()}}  -  {{row.skillRDO().getName()}} </td>
@@ -85,7 +85,7 @@
         <!-- /.box-footer-->
     </div>
     <!-- /.box -->
-</section>
+</section>#}
 <!-- /.content -->
 
 
@@ -100,22 +100,41 @@
         <div class="box-body">
             <div class="panel-group">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse1">Skill 1</a>
-                        </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-body">Skill List 1</div>
-                    </div>
-                    <div class="panel-heading">
+                    
+                    {%for row in skillScoreRdos%}                   
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#{{row['id']}}">{{row['skill']['name']}} {{row['skill']['track']['name']}} {{row['score_value']}}</a>  
+                                </h4>
+                                    <a href="{{url('talent/skill/addCertificate/')}}{{row['id']}}" class="btn tomboledit">Add Certificate</a>
+                                    <a href="{{url('talent/skill/edit/')}}{{row['id']}}" class="btn tomboledit">Edit</a>
+                                    <a href="{{url('talent/skill/remove/')}}{{row['id']}}" class="btn">Remove</a>
+                                    {#<a href="#" class="btn tombolremove confirm-delete" data-id="{{row['skill']['id']}}">Remove</a>#}
+                            </div>
+                            <div id="{{row['id']}}" class="panel-collapse collapse">
+                                {%if row['certificates'] is defined%}
+                                {%for cert in row['certificates'] %}
+                                    <div class="panel-body">{{cert['name']}}</div>
+                                    <a href="{{url('talent/skill/editCertificate/')}}{{cert['id']}}/{{row['id']}}" class="btn tomboledit">Edit</a>
+                                    <a href="{{url('talent/skill/removeCertificate/')}}{{row['id']}}/{{cert['id']}}" class="btn tomboledit">Remove</a>
+                                {%endfor%}
+                                {%else%}
+                                    <div class="panel-body">No Certificate Added</div>
+                                {%endif%}
+                            </div>
+                                
+                    {%endfor%}
+                        
+                    {#<div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse2">Skill  2</a>
                         </h4>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse">
                         <div class="panel-body">Skill List 2</div>
-                    </div>
+                    </div>#}
+                
+                
                 </div>
             </div>
         </div>

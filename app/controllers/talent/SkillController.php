@@ -18,17 +18,20 @@ class SkillController extends \TalentControllerBase{
         $this->view->pick('talent/skill/index');
         $service = $this->_querySkillScoreService();
         $response = $service->showAll($this->_getTalentId());
+        $serviceCert = $this->_queryCertificateService();
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
         }
-        
-        $serviceCert = $this->_queryCertificateService();
-//        $responeCert = $serviceCert->showAll($this->_getTalentId(), 2);      
-        
-        $this->view->skillScoreRdos = $response->arrayOfReadDataObject();
-        
-//print_r($response->arrayOfReadDataObject()[1]->toArray());
-//        print_r($responeCert->arrayOfReadDataObject());
+        $skillScoreRdos = [];
+        foreach($response->arrayOfReadDataObject() as $index => $skillScore){
+            $skillScoreRdos[$index] = $skillScore->toArray();
+            foreach($serviceCert->showAll($this->_getTalentId(), $skillScore->getId())->arrayOfReadDataObject() as $cert){
+               $skillScoreRdos[$index]['certificates'][] = $cert->toArray();
+            }
+    } 
+  //      $this->view->disable();
+        $this->view->skillScoreRdos = $skillScoreRdos;
+//        print_r($skillScoreRdos);
     }
  
     function newAction(){
@@ -92,8 +95,7 @@ class SkillController extends \TalentControllerBase{
         return $this->forward('skill/index');
     }
     
-    function addCertificateAction($id){
-        
+    function addCertificateAction($id){   
         $this->view->pick('talent/skill/addcertificate');
         Tag::displayTo("skill", $id);
         $this->view->skill_id = $id;
@@ -114,6 +116,51 @@ class SkillController extends \TalentControllerBase{
             return $this->forward('talent/skill/index');
         }
         $this->flash->success('skill certificate created');
+        return $this->forward('skill/index');
+    }
+    function editCertificateAction($certificateId, $skillScoreId){
+        $this->view->pick('talent/skill/editcertificate');
+        $service = $this->_queryCertificateService();
+        $response = $service->showByid($this->_getTalentId(), $skillScoreId, $certificateId);
+        
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+            return $this->forward('skill/index');
+        }
+        $certificateRdo = $response->firstReadDataObject();
+        Tag::displayTo('skill_id', $skillScoreId);
+        Tag::displayTo('certificate_id', $certificateRdo->getId());
+        Tag::displayTo('name', $certificateRdo->getName());
+        Tag::displayTo('organizer', $certificateRdo->getOrganizer());
+        Tag::displayTo('year', $certificateRdo->getValidUntil());
+ 
+    }
+    function updateCertificateAction(){
+        if(!$this->request->isPost()){
+            return $this->forward('skill/index');
+        }
+        $service = $this->_commandCertificateService();
+
+        $skillScoreid  = strip_tags($this->request->getPost('certificate_id'));
+        $certificateId  = strip_tags($this->request->getPost('skill_id'));
+              
+        $response = $service->update($this->_getTalentId(), $skillScoreid, $certificateId, $this->_getRequest());
+        
+        if(false === $response->getStatus()){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }else{
+            $this->flash->success("certificate updated");
+        }
+        return $this->forward('skill/index');
+    }
+    function removeCertificateAction($skillScoreid,$certificateId){
+        $service = $this->_commandCertificateService();
+        $response = $service->remove($this->_getTalentId(), $skillScoreid, $certificateId);
+        if(false === $response){
+            $this->displayErrorMessages($response->errorMessage()->getDetails());
+        }else{
+            $this->flash->success("certificate removed");
+        }
         return $this->forward('skill/index');
     }
     
@@ -137,6 +184,9 @@ class SkillController extends \TalentControllerBase{
     }
     protected function _commandSkillScoreService(){
         return new CommandSkillScoreService($this->_talentRepository());
+    }
+    protected function _commandCertificateService(){
+        return new CommandCertificateService($this->_skillScoreRepository());
     }
     protected function _getSkillList(){
         $service = new QuerySkillService($this->_skillRdoRepository());

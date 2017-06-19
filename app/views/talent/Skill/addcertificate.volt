@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i> Skill</a></li>
-        <li>Add Skill Score</li>
+        <li>Add Certificate</li>
     </ol>    
 </section>
 
@@ -18,7 +18,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Add Skill Score</h3>
+            <h3 class="box-title">Add Certificate</h3>
         </div>
         <div class="box-body">
 
