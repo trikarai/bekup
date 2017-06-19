@@ -22,6 +22,8 @@ class ProfileController extends \TalentControllerBase{
         $this->view->workingExperienceRdos = $this->_talentWorkingExperienceRdos();
         $this->view->educationRdos = $this->_talentEducationRdos();
         $this->view->trainingRdos = $this->_talentTrainingRdos();
+        $this->view->businessRdos = $this->_talentBusinessRdos();
+        $this->view->organizationRdos = $this->_talentOrganizationRdos();
     }
     
     function editAction(){
@@ -94,6 +96,21 @@ class ProfileController extends \TalentControllerBase{
         $response = $service->showAll($this->_getTalentId());
         return $this->_getArrayOfRdos($response);
     }
+    
+    protected function _talentBusinessRdos(){
+        $talentQueryRepository = $this->em->getRepository('Talent\Entrepreneurship\DomainModel\Talent\TalentQuery');
+        $service = new Entrepreneurship\ApplicationService\Entrepreneurship\QueryEntrepreneurshipService($talentQueryRepository);
+        $response = $service->showAll($this->_getTalentId());
+        return $response->arrayOfReadDataObject();
+    }
+    protected function _talentOrganizationRdos(){
+        $talentQueryRepository = $this->em->getRepository('Talent\Organizational\DomainModel\Talent\TalentQuery');
+        $service = new Organizational\ApplicationService\Organizational\QueryOrganizationalService($talentQueryRepository);
+        $response = $service->showAll($this->_getTalentId());
+        return $response->arrayOfReadDataObject();
+    }
+    
+    
 
     protected function _getArrayOfRdos(\Resources\QueryResponseObject $response){
         if(false === $response->getStatus()){

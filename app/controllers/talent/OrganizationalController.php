@@ -8,12 +8,12 @@ use Talent\Organizational\ApplicationService\Organizational\QueryOrganizationalS
 use Talent\Organizational\DomainModel\Organizational\DataObject\OrganizationalWriteDataObject;
 
 class OrganizationalController extends \TalentControllerBase{
-    function indexAction(){
-        $this->view->pick('talent/organizational/index');
-        $service = $this->_queryOrganizationalService();
-        $response = $service->showAll($this->_getTalentId());
-        $this->view->rdos = $response->arrayOfReadDataObject();
-    }
+//    function indexAction(){
+//        $this->view->pick('talent/organizational/index');
+//        $service = $this->_queryOrganizationalService();
+//        $response = $service->showAll($this->_getTalentId());
+//        $this->view->rdos = $response->arrayOfReadDataObject();
+//    }
     
     function newAction(){
         $this->view->pick('talent/organizational/new');
@@ -21,16 +21,16 @@ class OrganizationalController extends \TalentControllerBase{
     
     function addAction(){
         if(!$this->request->isPost()){
-            return $this->forwardNamespace('talent/organizational/new');
+            return $this->forwardNamespace('Talent/organizational/new');
         }
         $service = $this->_commandOrganizationalService();
         $response = $service->add($this->_getTalentId(), $this->_createRequest());
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forwardNamespace('talent/organizational/new');
+            return $this->forwardNamespace('Talent/organizational/new');
         }
         $this->flash->success('organizational experience created');
-        return $this->forwardNamespace('talent/organizational/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     function editAction($organizationalId){
@@ -39,7 +39,7 @@ class OrganizationalController extends \TalentControllerBase{
         $response = $service->showById($this->_getTalentId(), $organizationalId);
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forwardNamespace('talent/organizational/index');
+            return $this->forwardNamespace('Talent/profile/index');
         }
         $rdo = $response->firstReadDataObject();
         Tag::displayTo('id', $rdo->getId());
@@ -51,7 +51,7 @@ class OrganizationalController extends \TalentControllerBase{
     
     function updateAction(){
         if(!$this->request->isPost()){
-            return $this->forwardNamespace('talent/organizational/index');
+            return $this->forwardNamespace('Talent/profile/index');
         }
         $service = $this->_commandOrganizationalService();
         $organizationalId = strip_tags($this->request->getPost('id'));
@@ -61,7 +61,7 @@ class OrganizationalController extends \TalentControllerBase{
         }else{
             $this->flash->success('organizational experience updated');
         }
-        return $this->forwardNamespace('talent/organizational/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     function removeAction($organizationalId){
@@ -72,7 +72,7 @@ class OrganizationalController extends \TalentControllerBase{
         }else{
             $this->flash->success('organizational experience removed');
         }
-        return $this->forwardNamespace('talent/organizational/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     protected function _commandOrganizationalService(){

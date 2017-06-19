@@ -167,6 +167,72 @@
             </div>
             <!-- /.box-body -->
 
+<!-- Entrepreneurhip Start -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title" style="margin-top:5px;">Entrepreneurship Experience</h3>
+
+                    <a href="{{url('talent/entrepreneurship/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
+
+                </div>
+                <div class="alert-work"></div>
+                <div class="box-body">
+
+
+                    <div>
+                        {% if(businessRdos) %}
+                            {% for row in businessRdos %}
+                                <div id="{{row.getId()}}" class="row edu">
+                                    <div class="col-md-6">
+                                        <div style="font-weight:bold;"> {{row.getName()}}</div>
+                                        <div style="font-style:italic;"> {{row.getBusinessField()}} - {{row.getBusinessCategory()}}</div>
+                                        <div> {{row.getPosition()}} ( {{row.getStartYear()}} - {{row.getEndYear()}} )</div>
+                                    </div>
+
+                                    <div class="col-xs-2">
+                                        <a href="{{url('talent/entrepreneurship/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        {#<a href="#" class="btn tombolremove confirm-delete-work" data-id="{{row.getId()}}">Remove</a>#}
+                                        <a href="{{url('talent/entrepreneurship/remove/')}}{{row.getId()}}" class="btn tomboledit">Remove</a>
+                                    </div>
+                                </div>
+                            {%endfor%}
+                        {%else%}
+
+                            <div colspan="6" align="center" style="font-style:italic;">No Entrepreneurship History Data</div>
+
+                        {%endif%}
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModalJobRemove" role="dialog">
+                        <div class="modal-dialog modal-sm">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <!-- <div class="modal-header"> -->
+                                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                <!-- <h4 class="modal-title"></h4> -->
+                                <!-- </div> -->
+                                <div class="modal-body">
+                                    <p>Do you want to remove ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" type="button" class="btn tombolmodal" id="btnYesWork" data-dismiss="modal">Yes</a>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+
+
+<!-- Entrepreneurhip end -->
 
             <!-- /.box-footer-->
         </div>
@@ -231,8 +297,6 @@
                         </div>
                     </div>
                     <!-- Modal -->
-
-
                 </div>
                 <!-- /.box-body -->
                 <!-- <div class="box-footer"> -->
@@ -300,6 +364,75 @@
             </div>
             <!-- /.box-body -->
             <!-- <div class="box-footer"> -->
+            
+<!-- Organizational Start -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title" style="margin-top:5px;">Entrepreneurship Experience</h3>
+
+                    <a href="{{url('talent/organizational/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
+
+                </div>
+                <div class="alert-work"></div>
+                <div class="box-body">
+
+
+                    <div>
+                        {% if(organizationRdos) %}
+                            {% for row in organizationRdos %}
+                                <div id="{{row.getId()}}" class="row edu">
+                                    <div class="col-md-6">
+                                        <div style="font-weight:bold;"> {{row.getName()}}</div>
+{#                                        <div style="font-style:italic;"> {{row.getBusinessField()}} - {{row.getBusinessCategory()}}</div>
+#}                                        <div> {{row.getPosition()}} ( {{row.getStartYear()}} - {{row.getEndYear()}} )</div>
+                                    </div>
+
+                                    <div class="col-xs-2">
+                                        <a href="{{url('talent/organizational/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        {#<a href="#" class="btn tombolremove confirm-delete-work" data-id="{{row.getId()}}">Remove</a>#}
+                                        <a href="{{url('talent/organizational/remove/')}}{{row.getId()}}" class="btn tomboledit">Remove</a>
+                                    </div>
+                                </div>
+                            {%endfor%}
+                        {%else%}
+
+                            <div colspan="6" align="center" style="font-style:italic;">No Organizational History Data</div>
+
+                        {%endif%}
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModalJobRemove" role="dialog">
+                        <div class="modal-dialog modal-sm">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <!-- <div class="modal-header"> -->
+                                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                <!-- <h4 class="modal-title"></h4> -->
+                                <!-- </div> -->
+                                <div class="modal-body">
+                                    <p>Do you want to remove ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" type="button" class="btn tombolmodal" id="btnYesWork" data-dismiss="modal">Yes</a>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+
+
+<!-- Organizational end -->            
+            
+            
 
             <!-- </div> -->
             <!-- /.box-footer-->

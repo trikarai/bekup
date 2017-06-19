@@ -8,12 +8,12 @@ use Talent\Entrepreneurship\ApplicationService\Entrepreneurship\QueryEntrepreneu
 use Talent\Entrepreneurship\DomainModel\Entrepreneurship\DataObject\EntrepreneurshipWriteDataObject;
 
 class EntrepreneurshipController extends \TalentControllerBase{
-    function indexAction(){
-        $this->view->pick('talent/entrepreneurship/index');
-        $service = $this->_queryEntrepreneurshipService();
-        $response = $service->showAll($this->_getTalentId());
-        $this->view->rdos = $response->arrayOfReadDataObject();
-    }
+//    function indexAction(){
+//        $this->view->pick('talent/entrepreneurship/index');
+//        $service = $this->_queryEntrepreneurshipService();
+//        $response = $service->showAll($this->_getTalentId());
+//        $this->view->rdos = $response->arrayOfReadDataObject();
+//    }
     
     function newAction(){
         $this->view->pick('talent/entrepreneurship/new');
@@ -22,16 +22,16 @@ class EntrepreneurshipController extends \TalentControllerBase{
     
     function addAction(){
         if(!$this->request->isPost()){
-            return $this->forwardNamespace('talent/entrepreneurship/new');
+            return $this->forwardNamespace('Talent/entrepreneurship/new');
         }
         $service = $this->_commandEntrepreneurshipService();
         $response = $service->add($this->_getTalentId(), $this->_getRequest());
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forwardNamespace('talent/entrepreneurship/new');
+            return $this->forwardNamespace('Talent/profile/new');
         }
         $this->flash->success('entrepreneurship experience created');
-        return $this->forwardNamespace('talent/entrepreneurship/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     function editAction($id){
@@ -40,7 +40,7 @@ class EntrepreneurshipController extends \TalentControllerBase{
         $response = $service->showById($this->_getTalentId(), $id);
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forwardNamespace('talent/entrepreneurship/index');
+            return $this->forwardNamespace('Talent/profile/index');
         }
         $this->view->businessCategoryList = $this->_getCategoryList();
         $rdo = $response->firstReadDataObject();
@@ -55,7 +55,7 @@ class EntrepreneurshipController extends \TalentControllerBase{
     
     function updateAction(){
         if(!$this->request->isPost()){
-            return $this->forwardNamespace('talent/entrepreneurship/index');
+            return $this->forwardNamespace('Talent/profile/index');
         }
         $service = $this->_commandEntrepreneurshipService();
         $entrepreneurshipId = strip_tags($this->request->getPost('id'));
@@ -65,7 +65,7 @@ class EntrepreneurshipController extends \TalentControllerBase{
         }else{
             $this->flash->success('entrepreneurship experience updated');
         }
-        return $this->forwardNamespace('talent/entrepreneurship/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     function removeAction($id){
@@ -76,7 +76,7 @@ class EntrepreneurshipController extends \TalentControllerBase{
         }else{
             $this->flash->success('entrepreneurship experience removed');
         }
-        return $this->forwardNamespace('talent/entrepreneurship/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     protected function _commandEntrepreneurshipService(){
