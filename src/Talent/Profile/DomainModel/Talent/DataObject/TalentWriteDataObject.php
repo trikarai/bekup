@@ -11,7 +11,11 @@ class TalentWriteDataObject {
     protected $cityOfOrigin;
     protected $birthDate;
     protected $cityId;
-    protected $trackId;
+    protected $trackId = null;
+    
+    protected $gender;
+    protected $bekupType;
+    protected $motivation;
 
     function getName(){
         return $this->name;
@@ -37,12 +41,21 @@ class TalentWriteDataObject {
     function getCityId() {
         return $this->cityId;
     }
-
     function getTrackId() {
         return $this->trackId;
     }
-    
-    function __construct($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $trackId) {
+    function getGender() {
+        return $this->gender;
+    }
+    function getBekupType() {
+        return $this->bekupType;
+    }
+    function getMotivation() {
+        return $this->motivation;
+    }
+
+        
+    protected function __construct($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $gender, $bekupType, $motivation, $trackId = null) {
         $this->name = $name;
         $this->userName = $userName;
         $this->email = $email;
@@ -52,14 +65,17 @@ class TalentWriteDataObject {
         $this->birthDate = $birthDate;
         $this->cityId = $cityId;
         $this->trackId = $trackId;
+        $this->gender = $gender;
+        $this->bekupType = $bekupType;
+        $this->motivation = $motivation;
     }
 
-    
-    static function signUpRequest($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $trackId){
-        return new static($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $trackId);
+        
+    static function signUpRequest($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $gender, $bekupType, $motivation, $trackId = null){
+        return new static($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $gender, $bekupType, $motivation, $trackId);
     }
     
-    static function updateRequest($name, $email, $phone, $cityOfOrigin, $birthDate){
-        return new static($name, null, $email, null, $phone, $cityOfOrigin, $birthDate, null, null);
+    static function updateRequest($name, $email, $phone, $cityOfOrigin, $birthDate, $gender, $bekupType, $motivation){
+        return new static($name, null, $email, null, $phone, $cityOfOrigin, $birthDate, null, $gender, $bekupType, $motivation, null);
     }
 }

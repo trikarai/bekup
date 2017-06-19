@@ -20,6 +20,9 @@ class TalentDataValidationService extends DataValidationServiceAbstract{
         $this->_checkNotEmtpyOrNull($request->getPhone(), 'talent phone number');
         $this->_checkNotEmtpyOrNull($request->getCityOfOrigin(), 'talent city of origin');
         $this->_checkTalentAgeOver17($request->getBirthDate());
+        $this->_checkGenderString($request->getGender());
+        $this->_checkBekupTypeString($request->getBekupType());
+        $this->_checkNotEmtpyOrNull($request->getMotivation(), 'talent motivation');
         return $this->_generateResponse();
     }
     
@@ -33,6 +36,9 @@ class TalentDataValidationService extends DataValidationServiceAbstract{
         $this->_checkNotEmtpyOrNull($request->getPhone(), 'talent phone number');
         $this->_checkNotEmtpyOrNull($request->getCityOfOrigin(), 'talent city of origin');
         $this->_checkTalentAgeOver17($request->getBirthDate());
+        $this->_checkGenderString($request->getGender());
+        $this->_checkBekupTypeString($request->getBekupType());
+        $this->_checkNotEmtpyOrNull($request->getMotivation(), 'talent motivation');
         return $this->_generateResponse();
     }
     
@@ -44,6 +50,18 @@ class TalentDataValidationService extends DataValidationServiceAbstract{
             }
         } catch(\Exception $e){
             $this->_appendMessage("Argument: '$birthDate' is invalid - 'talent birth date' musta be a date format");
+        }
+    }
+    protected function _checkGenderString($gender){
+        $genderList = ["L", "M"];
+        if(!in_array($gender, $genderList)){
+            $this->_appendMessage("invalid gender");
+        }
+    }
+    protected function _checkBekupTypeString($bekupType){
+        $bekupTypeList = ['start', 'basic', 'journey'];
+        if(!in_array($bekupType, $bekupTypeList)){
+            $this->_appendMessage("invalid bekup Type");
         }
     }
 }

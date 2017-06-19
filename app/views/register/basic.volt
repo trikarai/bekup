@@ -14,6 +14,11 @@ use Phalcon\Flash\Session as FlashSession;
         {{password_field("password", "id": "password", "class": "form-control", "placeholder": "password", "required": "required")}}
         {{password_field("repassword", "id": "confirm_password", "class": "form-control", "placeholder": "retype password", "required": "required")}}
         {{text_field("phone", "id": "phone", "class": "form-control", "placeholder": "phone", "required": "required")}}
+        {{text_area("motivation", "id": "motivation", "class": "form-control", "placeholder": "motivation", "required": "required")}}
+        <div id="gender">
+            <label for="gender">Gender :</label>
+            {{select_static("gender", "class": "form-control", genderList)}}
+        </div>
         <div id="birthdate">
             {{text_field("birth_date", "class": "form-control", "placeholder": "birth date", "required": "required")}}
         </div>
@@ -26,7 +31,7 @@ use Phalcon\Flash\Session as FlashSession;
             <label for="track">Track :</label>
             {{select_static("track_id", "class": "form-control", trackList)}}
         </div>
-        <div class="g-recaptcha" data-sitekey="6LcJtSUUAAAAAJfDDzKlhP5CI4oOGC70MhJ_398r"></div>
+        <div class="g-recaptcha" data-sitekey="6LfhvBYUAAAAAMTzotjfhChjCevXeVLE_25b6ePV"></div>
         <input style="margin-top:20px" type='submit' value='Sign in'/>
     </form>
 </div>

@@ -31,6 +31,9 @@ class Talent extends TalentAbstract{
         $this->password = TalentPassword::fromNative($request->getPassword());
         $this->cityRDO = $cityRDO;
         $this->trackRDO = $trackRDO;
+        $this->gender = $request->getGender();
+        $this->bekupType = $request->getBekupType();
+        $this->motivation = $request->getMotivation();
     }
     
     function change(TalentWriteDataObject $request){
@@ -39,6 +42,9 @@ class Talent extends TalentAbstract{
         $this->phone = $request->getPhone();
         $this->cityOfOrigin = $request->getCityOfOrigin();
         $this->birthDate = new \DateTime($request->getBirthDate());
+        $this->gender = $request->getGender();
+        $this->bekupType = $request->getBekupType();
+        $this->motivation = $request->getMotivation();
     }
     
 }
