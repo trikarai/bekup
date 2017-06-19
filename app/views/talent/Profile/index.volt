@@ -368,7 +368,7 @@
 <!-- Organizational Start -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title" style="margin-top:5px;">Entrepreneurship Experience</h3>
+                    <h3 class="box-title" style="margin-top:5px;">Organizational Experience</h3>
 
                     <a href="{{url('talent/organizational/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
 

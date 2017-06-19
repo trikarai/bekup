@@ -8,12 +8,12 @@ use Talent\Organizational\ApplicationService\Organizational\QueryOrganizationalS
 use Talent\Organizational\DomainModel\Organizational\DataObject\OrganizationalWriteDataObject;
 
 class OrganizationalController extends \TalentControllerBase{
-//    function indexAction(){
-//        $this->view->pick('talent/organizational/index');
-//        $service = $this->_queryOrganizationalService();
-//        $response = $service->showAll($this->_getTalentId());
-//        $this->view->rdos = $response->arrayOfReadDataObject();
-//    }
+    function indexAction(){
+        $this->view->pick('talent/organizational/index');
+        $service = $this->_queryOrganizationalService();
+        $response = $service->showAll($this->_getTalentId());
+        $this->view->rdos = $response->arrayOfReadDataObject();
+    }
     
     function newAction(){
         $this->view->pick('talent/organizational/new');

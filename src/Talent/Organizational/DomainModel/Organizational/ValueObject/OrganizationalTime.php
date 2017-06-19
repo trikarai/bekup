@@ -31,7 +31,7 @@ class OrganizationalTime {
         $this->startYear = $startYear;
     }
     protected function _setEndYear($endYear = null){
-        if(null === $endYear){
+        if(empty($endYear)){
             return;
         }
         if($endYear < $this->startYear){

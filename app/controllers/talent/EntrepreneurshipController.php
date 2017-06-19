@@ -28,7 +28,7 @@ class EntrepreneurshipController extends \TalentControllerBase{
         $response = $service->add($this->_getTalentId(), $this->_getRequest());
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forwardNamespace('Talent/profile/new');
+            return $this->forwardNamespace('Talent/entrepreneurship/new');
         }
         $this->flash->success('entrepreneurship experience created');
         return $this->forwardNamespace('Talent/profile/index');
