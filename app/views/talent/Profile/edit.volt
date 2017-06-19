@@ -24,34 +24,34 @@
         <div class="box-body" style="width:50%; margin:10px">
 
             <form action="{{url('talent/profile/update')}}" method="post">
-
                 <div class="form-group">
                     <label for="name">Name:</label>
                     {{text_field('name','class':'form-control')}}
                 </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone:</label>
-                    {{text_field('phone','class':'form-control')}}
-                </div>
-
                 <div class="form-group">
                     <label for="email">Email:</label>
                     {{email_field('email','class':'form-control')}}
                 </div>
-
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    {{text_field('phone','class':'form-control')}}
+                </div>
+                <div class="form-group">
+                    <label for="domicile">City of Origin:</label>
+                    {{text_field('city_of_origin','class':'form-control')}}
+                </div>
                 <div class="form-group">
                     <label for="birthdate">Birth date:</label>
                     {{text_field('birthdate','class':'form-control')}}
                 </div>
-
                 <div class="form-group">
-                    <label for="domicile">City of Origin:</label>
-                    {{text_field('domicile','class':'form-control')}}
+                    <label for="gender">Gender :</label>
+                    {{select_static('gender', genderList, 'class':'form-control')}}
                 </div>
-{#                {{hidden_field('cityId','class':'form-control')}}
-                {{hidden_field('trackId','class':'form-control')}}#}
-
+		<div class="form-group">
+                    <label for="motivation">Motivasi ikut program bekup:</label>
+                    {{text_area('motivation','class':'form-control')}}
+                </div>
                 <button type="submit" class="btn btn-default">Submit</button>
 
             </form>

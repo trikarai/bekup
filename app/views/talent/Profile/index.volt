@@ -61,13 +61,15 @@
                                 <div>{{profileRdo.cityRdo().getName()}}</div>
                             </div>
                         </div>
-                        <div class="row">
-                            <label  class="col-sm-4 control-label">Track</label>
-
-                            <div class="col-sm-8">
-                                <div>{{profileRdo.trackRdo().getName()}}</div>
+                        <?php $trackRdo = $profileRdo->trackRdo()?>
+                        {% if trackRdo is defined %}
+                            <div class="row">
+                                <label  class="col-sm-4 control-label">Track</label>
+                                <div class="col-sm-8">
+                                    <div>{{profileRdo.trackRdo().getName()}}</div>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                         <div class="row">
                             <label  class="col-sm-4 control-label">Birth Date</label>
 
@@ -79,6 +81,24 @@
                             <label  class="col-sm-4 control-label">City of Origin</label>
                             <div class="col-sm-8">
                                 <div>{{profileRdo.getCityOfOrigin()}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label  class="col-sm-4 control-label">Gender</label>
+                            <div class="col-sm-8">
+                                <div>{{profileRdo.getGender()}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label  class="col-sm-4 control-label">Bekup Type</label>
+                            <div class="col-sm-8">
+                                <div>{{profileRdo.getBekupType()}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label  class="col-sm-4 control-label">Motivation</label>
+                            <div class="col-sm-8">
+                                <div>{{profileRdo.getMotivation()}}</div>
                             </div>
                         </div>
                     </div>

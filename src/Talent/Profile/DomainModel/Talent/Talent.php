@@ -43,7 +43,6 @@ class Talent extends TalentAbstract{
         $this->cityOfOrigin = $request->getCityOfOrigin();
         $this->birthDate = new \DateTime($request->getBirthDate());
         $this->gender = $request->getGender();
-        $this->bekupType = $request->getBekupType();
         $this->motivation = $request->getMotivation();
     }
     

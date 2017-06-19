@@ -26,12 +26,16 @@ class ProfileController extends \TalentControllerBase{
     
     function editAction(){
         $this->view->pick('talent/profile/edit');
+        $this->view->genderList = ['M' => "Male", "F" => "Female"];
         $profileRdo = $this->_talentProfileRdo();
         Tag::displayTo('name',$profileRdo->getName());
         Tag::displayTo('phone',$profileRdo->getPhone());
         Tag::displayTo('email',$profileRdo->getEmail());
         Tag::displayTo('birthdate',$profileRdo->getBirthDate()); 
-        Tag::displayTo('domicile',$profileRdo->getCityOfOrigin());
+        Tag::displayTo('city_of_origin',$profileRdo->getCityOfOrigin());
+        Tag::displayTo('gender',$profileRdo->getGender());
+        Tag::displayTo('bekup_type',$profileRdo->getBekupType());
+        Tag::displayTo('motivation',$profileRdo->getMotivation());
     }
 
     function updateAction(){
@@ -44,10 +48,10 @@ class ProfileController extends \TalentControllerBase{
         $response = $service->execute($this->_getTalentId(), $this->_getRequest());
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forward('talent/profile/edit');
+            return $this->forwardNamespace('Talent/profile/edit');
         }
         $this->flash->success("profile updated");
-        $this->view->pick('talent/dashboard/index');
+        return $this->forwardNamespace('Talent/profile/index');
     }
     
     /**
@@ -103,7 +107,9 @@ class ProfileController extends \TalentControllerBase{
         $phone = strip_tags($this->request->getPost('phone'));
         $email = strip_tags($this->request->getPost('email'));
         $birthDate = strip_tags($this->request->getPost('birthdate'));
-        $cityOfOrigin = strip_tags($this->request->getPost('domicile'));
-        return TalentWriteDataObject::updateRequest($name, $email, $phone, $cityOfOrigin, $birthDate);
+        $cityOfOrigin = strip_tags($this->request->getPost('city_of_origin'));
+        $gender = strip_tags($this->request->getPost('gender'));
+        $motivation = strip_tags($this->request->getPost('motivation'));
+        return TalentWriteDataObject::updateRequest($name, $email, $phone, $cityOfOrigin, $birthDate, $gender, $motivation);
     }
 }

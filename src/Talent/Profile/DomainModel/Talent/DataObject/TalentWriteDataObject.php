@@ -75,7 +75,7 @@ class TalentWriteDataObject {
         return new static($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $gender, $bekupType, $motivation, $trackId);
     }
     
-    static function updateRequest($name, $email, $phone, $cityOfOrigin, $birthDate, $gender, $bekupType, $motivation){
-        return new static($name, null, $email, null, $phone, $cityOfOrigin, $birthDate, null, $gender, $bekupType, $motivation, null);
+    static function updateRequest($name, $email, $phone, $cityOfOrigin, $birthDate, $gender, $motivation){
+        return new static($name, null, $email, null, $phone, $cityOfOrigin, $birthDate, null, $gender, null, $motivation, null);
     }
 }

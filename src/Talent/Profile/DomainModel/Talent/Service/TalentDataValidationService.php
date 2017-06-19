@@ -37,7 +37,6 @@ class TalentDataValidationService extends DataValidationServiceAbstract{
         $this->_checkNotEmtpyOrNull($request->getCityOfOrigin(), 'talent city of origin');
         $this->_checkTalentAgeOver17($request->getBirthDate());
         $this->_checkGenderString($request->getGender());
-        $this->_checkBekupTypeString($request->getBekupType());
         $this->_checkNotEmtpyOrNull($request->getMotivation(), 'talent motivation');
         return $this->_generateResponse();
     }
@@ -53,7 +52,7 @@ class TalentDataValidationService extends DataValidationServiceAbstract{
         }
     }
     protected function _checkGenderString($gender){
-        $genderList = ["L", "M"];
+        $genderList = ["F", "M"];
         if(!in_array($gender, $genderList)){
             $this->_appendMessage("invalid gender");
         }
