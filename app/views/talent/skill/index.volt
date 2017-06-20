@@ -142,51 +142,54 @@
 </section>#}
 
 <section class="content">
-<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Skill & Sertificate</h3><a href="{{url('talent/skill/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Skill Set</a>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="box-group" id="accordion">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Skill & Certificate</h3><a href="{{url('talent/skill/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Skill Set</a>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-				{%for row in skillScoreRdos%}
-					<div class="panel box box-success">
-					  <div class="box-header with-border">
-						<h4 class="row">
-						  <a class="col-md-6" data-toggle="collapse" href="#{{row['id']}}" style="font-size:16px;">{{row['skill']['name']}} {{row['skill']['track']['name']}}<br>Score :{{row['score_value']}}</a>
-						  </a>
-									<a href="{{url('talent/skill/addCertificate/')}}{{row['id']}}" class="btn tomboladd col-md-2"><i class="fa fa-plus"></i> Add Certificate</a>
-									<div class="col-md-4">								
-										<a href="{{url('talent/skill/remove/')}}{{row['id']}}" class="btn tombolremove pull-right" style="margin-left:5px;">Remove</a>
-										<a href="{{url('talent/skill/edit/')}}{{row['id']}}" class="btn tomboledit pull-right">Edit</a>
-									</div>
-						</h4>
-					  </div>
-					  <div id="{{row['id']}}" class="panel-collapse collapse in">
-						<div class="box-body">
-						  {%if row['certificates'] is defined%}
-                                {%for cert in row['certificates'] %}
-								<div class="row" style="margin-top:10px;">
-                                    <div class="col-md-6">{{cert['name']}}</div>
-									<div class="col-md-2">
-										<a href="{{url('talent/skill/editCertificate/')}}{{cert['id']}}/{{row['id']}}" class="btn tomboledit">Edit</a>
-										<a href="{{url('talent/skill/removeCertificate/')}}{{row['id']}}/{{cert['id']}}" class="btn tomboledit">Remove</a>
-									</div>
-									<div class="col-md-4"></div> 
-								</div>
-									
-                                {%endfor%}
+                {%for row in skillScoreRdos%}
+                    <div class="panel box box-success">
+                        <div class="box-header with-border">
+                            <h4 class="row">
+                                <a class="col-md-6" data-toggle="collapse" href="#{{row['id']}}" style="font-size:16px;">{{row['skill']['name']}} {{row['skill']['track']['name']}}<br>
+                                    {% for i in 1..row['score_value'] %}                                     
+                                     <img src="{{url('public/img/star_on.png')}}" alt="" height="30" width="30">     
+                                    {% endfor %}                             
+                                </a>
+                                <a href="{{url('talent/skill/addCertificate/')}}{{row['id']}}" class="btn tomboladd col-md-2"><i class="fa fa-plus"></i> Add Certificate</a>
+                                <div class="col-md-4">								
+                                    <a href="{{url('talent/skill/remove/')}}{{row['id']}}" class="btn tombolremove pull-right" style="margin-left:5px;">Remove</a>
+                                    <a href="{{url('talent/skill/edit/')}}{{row['id']}}" class="btn tomboledit pull-right">Edit</a>
+                                </div>
+                            </h4>
+                        </div>
+                        <div id="{{row['id']}}" class="panel-collapse collapse in">
+                            <div class="box-body">
+                                {%if row['certificates'] is defined%}
+                                    {%for cert in row['certificates'] %}
+                                        <div class="row" style="margin-top:10px;">
+                                            <div class="col-md-6">{{cert['name']}} - {{cert['organizer']}} - {{cert['valid_until']}}</div>
+                                            <div class="col-md-2">
+                                                <a href="{{url('talent/skill/editCertificate/')}}{{cert['id']}}/{{row['id']}}" class="btn tomboledit">Edit</a>
+                                                <a href="{{url('talent/skill/removeCertificate/')}}{{row['id']}}/{{cert['id']}}" class="btn tomboledit">Remove</a>
+                                            </div>
+                                            <div class="col-md-4"></div> 
+                                        </div>
+
+                                    {%endfor%}
                                 {%else%}
                                     <div class="panel-body">No Certificate Added</div>
                                 {%endif%}
-						</div>
-					  </div>
-					</div>
+                            </div>
+                        </div>
+                    </div>
                 {%endfor%}              
             </div>
             <!-- /.box-body -->
-          </div>
+        </div>
 </section>
 
 

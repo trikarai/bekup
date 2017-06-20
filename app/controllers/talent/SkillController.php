@@ -28,10 +28,8 @@ class SkillController extends \TalentControllerBase{
             foreach($serviceCert->showAll($this->_getTalentId(), $skillScore->getId())->arrayOfReadDataObject() as $cert){
                $skillScoreRdos[$index]['certificates'][] = $cert->toArray();
             }
-    } 
-  //      $this->view->disable();
+		} 
         $this->view->skillScoreRdos = $skillScoreRdos;
-//        print_r($skillScoreRdos);
     }
  
     function newAction(){
@@ -65,7 +63,7 @@ class SkillController extends \TalentControllerBase{
         }
         $skillScoreRdo = $response->firstReadDataObject();
         Tag::displayTo("id", $skillScoreRdo->getId());
-        Tag::displayTo("skill", $skillScoreRdo->skillRDO()->trackReadDataObject()->getName() . " - " . $skillScoreRdo->skillRDO()->getName());
+        Tag::displayTo("skill", $skillScoreRdo->skillRDO()->getType() . " - " . $skillScoreRdo->skillRDO()->getName());
         Tag::displayTo("score", $skillScoreRdo->getScoreValue());
     }
     
@@ -141,8 +139,8 @@ class SkillController extends \TalentControllerBase{
         }
         $service = $this->_commandCertificateService();
 
-        $skillScoreid  = strip_tags($this->request->getPost('certificate_id'));
-        $certificateId  = strip_tags($this->request->getPost('skill_id'));
+        $skillScoreid  = strip_tags($this->request->getPost('skill_id'));
+        $certificateId  = strip_tags($this->request->getPost('certificate_id'));
               
         $response = $service->update($this->_getTalentId(), $skillScoreid, $certificateId, $this->_getRequest());
         
