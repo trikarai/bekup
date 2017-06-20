@@ -24,17 +24,19 @@ class ProgrammeController extends TeamControllerBase{
         $service = new QueryMembershipService($this->_talentRepository());
         $response = $service->showActiveMembership($this->_getTalentId());
         if(false === $response->getStatus()){
-            $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forward('dashboard/noTeam');
+	$this->flash->error('You cant apply new Programme, create team first');
+        // $this->displayErrorMessages($response->errorMessage()->getDetails());
+        return $this->forward('dashboard/noTeam');
         }
         $this->view->pick('team/programme/index');
         $service = $this->_queryProgrammeService();
         $response = $service->showActiveProgramme($this->_getTalentId());
         if(false === $response->getStatus()){
-            //$this->displayWarningMessages($response->errorMessage()->getDetails());
-            return $this->forward('programme/participation');
-        }
-        $this->rdo = $response->firstReadDataObject();
+//            $this->displayWarningMessages($response->errorMessage()->getDetails());
+           $this->flash->error('Active Programme Not Found');
+           return $this->forward('programme/participation');
+       }
+        $this->view->rdo = $response->firstReadDataObject();
     }
     
     function participationAction(){
