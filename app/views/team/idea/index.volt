@@ -46,12 +46,67 @@
                         {% endfor %}
                     {% else %}
 
-                    <tr>
-                        <td><div style="font-style:italic;">No Idea Data</div></td>
-                    </tr>
-                {% endif %}
+                        <tr>
+                            <td><div style="font-style:italic;text-ali">No Idea Data</div></td>
+                        </tr>
+                    {% endif %}
                 </tbody>
             </table>
+        </div>
+    </div>
+
+</section>
+
+<section class="content">
+
+    <div class="box">
+        <div class="box-body">
+
+
+
+           {# <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">Panel Body</div>
+                    </div>
+                </div>
+            </div>#}
+
+            <div class="box-group" id="accordion">
+                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                {%for row in ideaRdos%}
+                    <div class="panel box box-success">
+                        <div class="box-header with-border">
+                            <h4 class="row">
+                                <a class="col-md-6" data-toggle="collapse" href="#{{row.getId()}}" style="font-size:16px;">{{row.getName()}}<br>
+                                                               
+                                </a>
+                                <div class="col-md-4">								
+                                    <a href="{{url('team/idea/remove/')}}{{row.getId()}}" class="btn tombolremove pull-right" style="margin-left:5px;">Remove</a>
+                                    <a href="{{url('team/idea/edit/')}}{{row.getId()}}" class="btn tomboledit pull-right">Edit</a>
+                                </div>
+                            </h4>
+                        </div>
+                        <div id="{{row.getId()}}" class="panel-collapse collapse in">
+                            <div class="box-body">
+{{row.getDescription()}} 
+{{row.getTargetCustomer()}} 
+{{row.getProblemFaced()}} 
+{{row.getValueProposed()}} 
+{{row.getRevenueModel()}} 
+
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}              
+            </div>
+
+
         </div>
     </div>
 
@@ -66,5 +121,5 @@ crossorigin="anonymous"></script>
 <script src="{{url('public/js/bootstrap-notify.min.js')}}"></script>
 
 <script>
-    $('#programMenu').addClass('active');
+    $('#ideaMenu').addClass('active');
 </script>
