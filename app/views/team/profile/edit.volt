@@ -54,8 +54,8 @@
                         <label for="founderAgreement">Founder Agreement</label>
                         <div id="filefa">
                             {% if founderAgreement %}
-                                <a href={{url('public/uploads/')}}{{founderAgreement}}><p class="form-control-static">'. {{founderAgreement}} . '</p></a>
-                                {{hidden_field("previous_founder_agreement", "value": 1)}}
+                                <a href="{{url('public/uploads/')}}{{founderAgreement}}"><p class="form-control-static">{{founderAgreement}}</p></a>
+                                {{hidden_field("previous_founder_agreement", "value":founderAgreement)}}
                                 <text onclick="" class="btn tomboladd"><span class="glyphicon glyphicon-remove-circle confirm-delete" data-id="founderAgreementFile"> Remove</span></text>
                                 {{file_field("founder_agreement", "class": "form-control", "accept": "application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document", "style": "display:none")}}
                             {% else %}

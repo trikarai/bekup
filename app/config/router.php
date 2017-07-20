@@ -1,6 +1,7 @@
 <?php
 
 $router = new Phalcon\Mvc\Router();
+
 $router->add(
         "/team/:controller/:action/:params",
         [
@@ -19,4 +20,10 @@ $router->add(
             "params" => 3,
         ]
 );
+
+// $router->notFound(array(
+	// "controller" => 'index',
+	// "action" => 'error404',
+// ));
+
 return $router;

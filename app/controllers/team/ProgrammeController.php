@@ -83,7 +83,7 @@ class ProgrammeController extends TeamControllerBase{
         }else{
             $this->flash->success('successfully resign from programme');
         }
-        return $this->forward('programme/participation');
+        return $this->forward('programme/index');
     }
     
     protected function _talentRepository(){

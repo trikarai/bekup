@@ -8,51 +8,30 @@ use Team\Idea\ApplicationService\Superhero\QuerySuperheroService;
 use Team\Idea\DomainModel\Superhero\DataObject\SuperheroWriteDataObject;
 
 class SuperheroController extends \TalentControllerBase{
-    protected function _talentRepository(){
-        return $this->em->getRepository('\Team\Idea\DomainModel\Talent\Talent');
-    }
-    protected function _commandSuperheroService(){
-        return new CommandSuperheroService($this->_talentRepository());
-    }
-    protected function _querySuperheroService(){
-        return new QuerySuperheroService($this->_talentRepository());
-    }
-    
-    
+
     function indexAction(){
         $this->view->pick('talent/superhero/index');
         $service = $this->_querySuperheroService();
         $response = $service->showAll($this->_getTalentId());
-        if(false === $response->getStatus()){
-            $this->displayErrorMessages($response->errorMessage()->getDetails());
-        }
         $this->view->superheroRdos = $response->arrayOfReadDataObject();
     }
     
     function newAction(){
-        $this->view->pick('talent/superhero/index');
+        $this->view->pick('talent/superhero/new');
     }
     
-    protected function _getRequest(){
-        $name = strip_tags($this->request->getPost('name'));
-        $mainDuty = strip_tags($this->request->getPost('main_duty'));
-        $specialAbility = strip_tags($this->request->getPost('special_ability'));
-        $dailyActivity = strip_tags($this->request->getPost('daily_activity'));
-        $alternativeTechnology = strip_tags($this->request->getPost('alternative_technology'));
-        return SuperheroWriteDataObject::request($name, $mainDuty, $specialAbility, $dailyActivity, $alternativeTechnology);
-    }
     function addAction(){
         if(!$this->request->isPost()){
-            return $this->forward('superhero/new');
+            return $this->forwardNamespace('Talent/superhero/new');
         }
         $service = $this->_commandSuperheroService();
         $response = $service->add($this->_getTalentId(), $this->_getRequest());
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
-            return $this->forward('superhero/new');
+            return $this->forwardNamespace('Talent/superhero/new');
         }
         $this->flash->success('superhero created');
-        return $this->forward('superhero/index');
+        return $this->forwardNamespace('Talent/superhero/index');
     }
     
     function editAction($superheroId){
@@ -93,9 +72,25 @@ class SuperheroController extends \TalentControllerBase{
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
         }else{
-            $this->flash->success('supehero removed');
+            $this->flash->success('superhero removed');
         }
         return $this->forward('superhero/index');
     }
     
+    protected function _commandSuperheroService(){
+        $talentRepository = $this->em->getRepository('\Team\Idea\DomainModel\Talent\Talent');
+        return new CommandSuperheroService($talentRepository);
+    }
+    protected function _querySuperheroService(){
+        $talentQueryRepository = $this->em->getRepository('\Team\Idea\DomainModel\Talent\TalentQuery');
+        return new QuerySuperheroService($talentQueryRepository);
+    }
+    protected function _getRequest(){
+        $name = strip_tags($this->request->getPost('name'));
+        $mainDuty = strip_tags($this->request->getPost('main_duty'));
+        $specialAbility = strip_tags($this->request->getPost('special_ability'));
+        $dailyActivity = strip_tags($this->request->getPost('daily_activity'));
+        $alternativeTechnology = strip_tags($this->request->getPost('alternative_technology'));
+        return SuperheroWriteDataObject::request($name, $mainDuty, $specialAbility, $dailyActivity, $alternativeTechnology);
+    }
 }

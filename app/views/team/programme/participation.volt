@@ -1,5 +1,25 @@
 {{ content() }}
 <!-- Content Header (Page header) -->
+
+<style>
+.statuspro {
+	background: #80ce51;
+    display: inline-block;
+    color: #fff;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 20px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+
+.statusnone {
+	visibility: hidden;
+}
+
+</style>
+
+
 <section class="content-header">
     <h1>
         <!-- <a href={{ url('team/programme/index') }} class="btn tomboladd"><i class="fa fa-reply" aria-hidden="true"></i> back</a> List -->
@@ -15,51 +35,7 @@
 <!-- Main content -->
 <section class="content">
 
-    <div class="box">
-		<div class="box-header with-border">
-            <h3 class="box-title">Participated Programme</h3>
-        </div>
-		<div class="box-body">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-hover">
-                    <thead style="font-weight:900">
-                        <tr>
-                            <td>Programme</td>
-                            <td>Registration Start Date</td>
-                            <td>Registration End Date</td>
-                            <td>Operation Start Date</td>
-                            <td>Operation End Date</td>
-                            <td>Status</td>
-                            <td colspan="2">Action</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for participatedRdo in participatedProgrammeRdos %}
-                            <?php $referenceProgrammeRdo = $participatedRdo->referenceCityProgrammeRdo()->referenceProgrammeRDO(); ?>
-                            <tr>
-                                <td data-title="programme"> {{referenceProgrammeRdo.getName()}}</td>
-                                <td data-title="registration_start_date"> {{referenceProgrammeRdo.getRegistrationStartDate()}}</td>
-                                <td data-title="registration_end_date"> {{referenceProgrammeRdo.getRegistrationEndDate()}}</td>
-                                <td data-title="operation_start_date"> {{referenceProgrammeRdo.getOperationStartDate()}}</td>
-                                <td data-title="operation_end_date"> {{referenceProgrammeRdo.getOperationEndDate()}}</td>
-                                <td data-title="status"> {{participatedRdo.getStatus()}}</td>
-                                <td data-title="Action">
-                                    {%if(participatedRdo.getStatus())=='apply'%}
-                                    <a href="{{url('team/programme/cancelApplication/')}}{{participatedRdo.getId()}}" class="btn tomboledit">Cancel</a>
-                                    {%else%}
-                                    {%endif%}
-                                    </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-		</div>
-    </div>
-
-    <div class="box">
+	<div class="box" style="">
 		<div class="box-header with-border">
             <h3 class="box-title">Available Programme</h3>
         </div>
@@ -70,10 +46,10 @@
                     <thead style="font-weight:900">
                         <tr>
                             <td>Programme</td>
-                            <td>Registration Start Date</td>
-                            <td>Registration End Date</td>
-                            <td>Operation Start Date</td>
-                            <td>Operation End Date</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Status</td>
                             <td colspan="2">Action</td>
                         </tr>
                     </thead>
@@ -82,13 +58,31 @@
                             <?php $referenceProgrammeRdo = $availableRdo->referenceProgrammeRDO(); ?>
                             <tr>
                                 <td data-title="programme"> {{referenceProgrammeRdo.getName()}}</td>
-                                <td data-title="registration_start_date"> {{referenceProgrammeRdo.getRegistrationStartDate()}}</td>
-                                <td data-title="registration_end_date"> {{referenceProgrammeRdo.getRegistrationEndDate()}}</td>
-                                <td data-title="operation_start_date"> {{referenceProgrammeRdo.getOperationStartDate()}}</td>
-                                <td data-title="operation_end_date"> {{referenceProgrammeRdo.getOperationEndDate()}}</td>
-                                <td data-title="Action">
-                                    <a href="{{url('team/programme/apply/')}}{{availableRdo.getId()}}" class="btn tomboledit">Apply</a>
-                                </td>
+                                <td data-title="registration_start_date"></td>
+                                <td data-title="registration_end_date"></td>
+                                <td data-title="operation_start_date"></td>
+								<?php $appliedStatus = "" ?>
+								<?php $canApply = true ?>
+							{% for participatedRdo in participatedProgrammeRdos %}
+								<?php $referenceParticipatedProgrammeRdo = $participatedRdo->referenceCityProgrammeRdo()->referenceProgrammeRDO(); ?>
+								{%if(referenceParticipatedProgrammeRdo.getId()) == referenceProgrammeRdo.getId() and ((participatedRdo.getStatus()) == "apply" or (participatedRdo.getStatus()) == "active") %}
+									<?php $appliedStatus = $participatedRdo->getStatus() ?>
+									<?php $canApply = false ?>
+								{%endif%}
+								
+							{% endfor %}
+								<td data-title="status" id="stspro"><span class="statuspro"> {{appliedStatus}} </span></td>
+							{% if(canApply) %}
+								<td data-title="Action">
+									<a href="{{url('team/programme/apply/')}}{{availableRdo.getId()}}" class="btn tomboledit">Apply</a>
+								</td>
+							{% elseif(appliedStatus == "apply") %}
+								<td data-title="Action">
+									<a href="{{url('team/programme/cancelApplication/')}}{{participatedRdo.getId()}}" class="btn tomboledit">Cancel</a>
+								</td>
+							{% else %}
+								<td data-title="Action"></td>
+							{% endif %}
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -109,4 +103,13 @@ crossorigin="anonymous"></script>
 
 <script>
     $('#programMenu').addClass('active');
+	
+	var statusclass = $("#stspro");
+	
+		$('#stspro').each(function () {
+			if(statusclass.val() == "") {				
+				statusclass.removeClass("statuspro");											
+			}
+		
+		});
 </script>

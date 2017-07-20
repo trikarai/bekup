@@ -44,11 +44,11 @@
                     <label for="birthdate">Birth date:</label>
                     {{text_field('birthdate','class':'form-control')}}
                 </div>
-                <div class="form-group">
+				<div class="form-group">
                     <label for="gender">Gender :</label>
                     {{select_static('gender', genderList, 'class':'form-control')}}
                 </div>
-		<div class="form-group">
+				<div class="form-group">
                     <label for="motivation">Motivasi ikut program bekup:</label>
                     {{text_area('motivation','class':'form-control')}}
                 </div>

@@ -88,16 +88,23 @@ class ProfileController extends \TalentControllerBase{
         return TeamWriteDataObject::request($name, $vision, $mission, $culture, $founderAgreement);
     }
     protected function _uploadFounderAgreementAndGetPath(){
-        $targetDir = BASE_PATH . "/public/uploads/";  
-        $upload = $this->request->getUploadedFiles()[0];
-        
-        if($_FILES["founder_agreement"]["error"] == 4) { 
+        if(true != $this->request->hasFiles() || 4 == $_FILES["founder_agreement"]["error"]){
             return "";
         }
-        if($upload->getRealType()!="application/pdf" && $upload->getRealType()!="application/msword" && $upload->getRealType() !="application/vnd.openxmlformats-officedocument.wordprocessingml.document"){
+        
+        $targetDir = BASE_PATH . "/public/uploads/";
+        $upload = $this->request->getUploadedFiles()[0];
+        $acceptedType = array(
+            "application/pdf",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        );
+//getRealType() More secure but require finfo in php.ini to be enable
+//        if(!in_array($upload->getRealType(), $acceptedType)){}
+        if(!in_array($upload->getType(), $acceptedType)){
             $this->flash->warning('File Must be PDF / DOC / DOCX');
             return false;
-        } else if($upload->getSize()>100000){
+        } else if($upload->getSize()>1000000){
             $this->flash->warning('File must not more than 1 MB');
             return false;
         }

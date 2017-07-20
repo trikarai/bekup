@@ -16,67 +16,15 @@
 </section>
 
 <!-- Main content -->
+
 <section class="content">
 
     <div class="box">
-        <div class="box-body">
-            <table class="table table-hover">
-                <thead style="font-weight:900;">
-                    <tr>
-                        <td>Idea</td>
-                        <td>Description</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {%if(ideaRdos)%}
-                        {% for rdo in ideaRdos %}
-                            <tr>
-                                <td style="width:40%"> {{rdo.getName()}}</td>
-                                <td style="width:40%"> {{rdo.getDescription()}}</td>
-                                <td data-title="Action">
-
-                                </td>
-                                <td style="width:20%">
-                                    <a href="{{url('team/idea/edit/')}}{{rdo.getId()}}" class="btn tomboledit">Edit</a>
-                                    <a href="{{url('team/idea/remove/')}}{{rdo.getId()}}" class="btn tomboledit">Remove</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    {% else %}
-
-                        <tr>
-                            <td><div style="font-style:italic;text-ali">No Idea Data</div></td>
-                        </tr>
-                    {% endif %}
-                </tbody>
-            </table>
+		<div class="box-header with-border">
+            <h3 class="box-title">Idea</h3>
         </div>
-    </div>
-
-</section>
-
-<section class="content">
-
-    <div class="box">
         <div class="box-body">
-
-
-
-           {# <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-                        </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-body">Panel Body</div>
-                    </div>
-                </div>
-            </div>#}
-
+		{% if(ideaRdos)%}
             <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                 {%for row in ideaRdos%}
@@ -94,16 +42,34 @@
                         </div>
                         <div id="{{row.getId()}}" class="panel-collapse collapse in">
                             <div class="box-body">
-{{row.getDescription()}} 
-{{row.getTargetCustomer()}} 
-{{row.getProblemFaced()}} 
-{{row.getValueProposed()}} 
-{{row.getRevenueModel()}} 
+									<div class='form-group'>
+										<label>Description</label><br>
+										{{row.getDescription()}}
+									</div class='form-group'>
+									<div class='form-group'>
+										<label>Target Customer</label><br>
+										{{row.getTargetCustomer()}}
+									</div>
+									<div class='form-group'>
+										<label>Problem Faced</label><br>
+										{{row.getProblemFaced()}}
+									</div> 
+									<div class='form-group'>
+										<label>Value Proposed</label><br>
+										{{row.getValueProposed()}} 
+									</div>
+									<div class='form-group'>
+										<label>Revenue Model</label><br>
+										{{row.getRevenueModel()}}
+									</div> 
 
                             </div>
                         </div>
                     </div>
-                {%endfor%}              
+                {%endfor%}
+				{%else%}
+					<div style="font-style:italic;text-align:center;padding:30px;">No Idea Added</div>
+				{%endif%}
             </div>
 
 

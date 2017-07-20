@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+	<title>BEKUP</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -59,9 +60,9 @@
           
           <!-- Control Sidebar Toggle Button -->
 		  <li>
-			<a href="{{url('team/notification')}}" style="cursor:pointer;">
+			<a href="{{url('team/invitation/index')}}" style="cursor:pointer;">
               <i class="fa fa-bell"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"><?php echo $this->session->get('auth')['invitation_count']; ?></span>
             </a>
 		  </li>
           <li>
@@ -138,9 +139,18 @@
         </li>
 		
 		<li id="ideaMenu" class="treeview">
-          <a href="{{url('team/programme/index')}}"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> <span>Idea</span> <i class=""></i></a>         
+          <a href="{{url('team/idea/index')}}"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> <span>Idea</span> <i class=""></i></a>         
         </li>
+		<hr/>
+		
+		<li id="logutMenu" class="treeview">
+			<a style="cursor:pointer;" data-toggle="modal" data-target=".logoutadminmodal"><i class="fa fa-sign-out"></i><span>Logout</span></a>
+		</li>
+		
+		
       </ul>
+	  
+	  
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
@@ -157,7 +167,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      <small style="color:#c5c5c5;">BEKUP Version 0.2</small>
+      <small style="color:#c5c5c5;">BEKUP Version 0.5</small>
     </div>
     <!-- Default to the left -->
     Copyright &copy; 2017 <b style="color:#80ce51;">BEKUP</b>
@@ -168,9 +178,9 @@
 
 <!-- jQuery -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
-<!-- <script src="<?php echo $this->url->get('public'); ?>/js/jQuery-2.2.0.min.js"></script> -->
+<!-- <script src={{url('public/js/jQuery-2.2.0.min.js')}}"></></script> -->
 <!-- Bootstrap 3.3.6 -->
-<!-- <script src="<?php echo $this->url->get('public'); ?>/js/bootstrap.min.js"></script> -->
+<!-- <script src={{url('public/js/bootstrap.min.js')}}"></></script> -->
 
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- SlimScroll -->

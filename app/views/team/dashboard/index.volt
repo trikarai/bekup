@@ -26,8 +26,7 @@
                             <h3 class="box-title" style="vertical-align: -webkit-baseline-middle;">My Team Member | <i class="fa fa-th"></i> Team name:<span class="team-name"> {{teamRdo.getName()}}</span></h3>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{url('team/member/invite')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> invite member</a>
-                            <a href="{{url('team/programme/index')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> Team Programme</a>
+                            <a href="{{url('team/member/invite')}}" class="btn tomboladd" style="float:right;"><i class="fa fa-plus"></i> invite member</a>         
                         </div>
                     </div>
                 </div>
@@ -47,8 +46,8 @@
                                 {{selfMemberRdo.getPosition()}}
                             </div>
                             <div>
-                                <a href={{url('team/member/resign')}} class="btn tomboladd confirm-delete"
-                                   data-id={{selfMemberRdo.getId()}}><i class="fa fa-external-link"></i> Resign</a>
+                                <a href={{url('team/member/resign')}} class="btn tomboladd confirm-delete"><i class="fa fa-external-link"></i> Resign</a>
+{#                                <a href={{url('team/member/resign')}} class="btn tomboladd confirm-delete" data-id={{selfMemberRdo.getId()}}><i class="fa fa-external-link"></i> Resign</a>#}
                             </div>
                         </div>
                         {% for member in otherMemberList %}
@@ -57,7 +56,7 @@
                                     {{member['initial']}}
                                 </div>
                                 <div style="font-size: 16px;">
-                                    <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{member['talent_id']}}>
+                                    <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile/')}}{{member['talent_id']}}>
                                         {{member['name']}}
                                     </a></div>
                                 <div style="color: #b1b1b1;
@@ -68,8 +67,8 @@
                                 </div>
                                 <div>
                                     {% if selfMemberRdo.getIsAdmin() %}
-                                        <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete"
-                                           data-id={{member['id']}}><i class="fa fa-external-link"></i> Remove</a>
+                                        <a href={{url('team/member/remove/')}}{{member['id']}} class="btn tomboladd"><i class="fa fa-ban"></i> Remove</a>
+{#                                        <a href={{url('team/member/remove')}} class="btn tomboladd confirm-delete" data-id={{member['id']}}><i class="fa fa-external-link"></i> Remove</a>#}
                                     {% endif %}
                                 </div>
                             </div>
@@ -97,7 +96,7 @@
                 </div>
 
                 <div class="box-body">
-                <div class="mylistinvitee"></div>   
+                    
 
                     <section>
                         {% for member in invitedList %}
@@ -106,7 +105,7 @@
                                 {{member['initial']}}
                             </div>
                             <div style="font-size: 16px;">
-                                <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile')}}{{member['talent_id']}}>
+                                <a style="color: #6f6f6f !important;" data-toggle="tooltip" title="Click for Profile Talent" href={{url('team/member/profile/')}}{{member['talent_id']}}>
                                     {{member['name']}}
                                 </a></div>
                             <div style="color: #b1b1b1;
@@ -117,11 +116,11 @@
                             </div>
                             <div>
                                 {% if selfMemberRdo.getIsAdmin() %}
-                                    <a class="btn tomboladd confirm-cancel" data-id={{member['id']}}><i class="fa fa-external-link"> </i> Cancel</a>																							
+									<a href={{url('team/member/cancel/')}}{{ member['id'] }} class="btn tomboladd">Cancel</a>
+{#                                    <a href={{url('team/member/cancel/')}}{{ member['id'] }} class="btn tomboladd confirm-delete"><i class="fa fa-external-link"></i> Cancel</a>#}
+{#                                    <a href={{url('team/member/cancel/')}}{{ member['id'] }} class="btn tomboladd confirm-delete" data-id={{member['id']}}><i class="fa fa-external-link"> </i> Cancel</a>#}
                                 {% endif %}
                             </div>
-														
-							
                         </div>
                     {% endfor %}
                     </section>
@@ -151,24 +150,24 @@
 
                 <div class="box-body">
 
-                    <div>
+                    <div style="margin-top: 20px;">
                         <i class="fa fa-eye vision"></i>
-                        <h2 style="color: #676767;">Vision</h2>
+                        <h4 style="color: #676767;">Vision</h4>
                         <p style="word-wrap: break-word;color: #ababab;">{{teamRdo.getVision()}}</p>
                     </div>
-                    <div>
+                    <div style="margin-top: 20px;">
                         <i class="fa fa-rocket vision"></i>
-                        <h2 style="color: #676767;">Mission</h3>
+                        <h4 style="color: #676767;">Mission</h4>
                             <p style="word-wrap: break-word;color: #ababab;">{{teamRdo.getMission()}}</p>
                     </div>
-                    <div>
+                    <div style="margin-top: 20px;">
                         <i class="fa fa-ravelry vision"></i>
-                        <h2 style="color: #676767;">Culture</h3>
+                        <h4 style="color: #676767;">Culture</h4>
                             <p style="word-wrap: break-word;color: #ababab;">{{teamRdo.getCulture()}}</p>
                     </div>
-                    <div>
+                    <div style="margin-top: 20px;">
                         <i class="fa fa-wpforms vision"></i>
-                        <h2 style="color: #676767;">Founder Agreement</h3>
+                        <h4 style="color: #676767;">Founder Agreement</h4>
                             <p style="word-wrap: break-word;color: #ababab;">
                                 {% if teamRdo.getFounderAgreement() != "" %}
                                     <a class="fa fa-file-pdf-o" style="margin-top: 15px;" target="_blank" href="{{url('public/uploads/')}}{{teamRdo.getFounderAgreement()}}"> {{teamRdo.getFounderAgreement()}}</a>
@@ -185,28 +184,6 @@
     <!-- Vision & Mision -->
 
 </section>
-
-
-<div class="modal fade" id="myModalTeamCancel" role="dialog">
-<div class="modal-dialog modal-sm">
-
-  <!-- Modal content-->
-  <div class="modal-content">
-	<!-- <div class="modal-header"> -->
-	  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-	  <!-- <h4 class="modal-title"></h4> -->
-	<!-- </div> -->
-	<div class="modal-body">
-	  <p>Do you want to cancel invitation ?</p>
-	</div>
-	<div class="modal-footer">
-	  <a href="#" type="button" class="btn tombolmodal" id="btnCancel" data-dismiss="modal">Yes</a>
-	  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-	</div>
-  </div>								  
-</div>
-</div>                            
-							
 
 <div class='modal fade' id='myModalTeam' role='dialog'>
     <div class='modal-dialog modal-sm'>
@@ -242,8 +219,6 @@
 </div>
 <!-- main content -->
 
-				
-
 <!-- jQuery 2.2.0 -->
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"
         integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4="
@@ -274,9 +249,9 @@ crossorigin="anonymous"></script>
 
     var id = $('#myModalTeam').data('id');
     //sending to php the row to be deleted from the db
-    alert (id);
+    // alert (id);
     $.ajax({
-    url: '<?php echo $this->url->get('team/member/resign');?>' + id,
+    url: '<?php echo $this->url->get('team/member/resign');?>',
             // type: POST,
             data: 'id=' + id,
             success: function(html){
@@ -286,7 +261,7 @@ crossorigin="anonymous"></script>
             // $('#myModalTeam').modal('hide');
 
             //removing entire row
-            $('[data-id=' + id + ']').remove();
+            $('[data-id=' + id + ']').parents('tr').remove();
             $('#myModalTeam').modal('hide');
             $(document).ready(function () {
             $('.alert-teammember').notify({
@@ -300,10 +275,48 @@ crossorigin="anonymous"></script>
             },
     });
     return false;
+    });</script>
+
+<script>
+    $('#myModalTeamCancel').on('show', function() {
+    var id = $(this).data('id'),
+            removeBtn = $(this).find('.danger');
+    })
+
+            $('.confirm-cancel').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $('#myModalTeamCancel').data('id', id).modal('show');
     });
-</script>
+    $('#btnCancel').click(function() {
+
+    var id = $('#myModalTeamCancel').data('id');
+    //sending to php the row to be deleted from the db
+    // alert (id);
+    $.ajax({
+    url: '<?php echo $this->url->get('team / cancelInvitation / ');?>' + id,
+            // type: POST,
+            data: 'id=' + id,
+            success: function(html){
 
 
+            // $('[data-id='+id+']').remove();
+            // $('#myModalTeamCancel').modal('hide');
+
+            //removing entire row
+            $('[data-id=' + id + ']').parents('tr').remove();
+            $('#myModalTeamCancel').modal('hide');
+            $(document).ready(function () {
+            $('table .mylistinvitee').notify({
+            message: {
+            text: 'Invitation Canceled'
+            }
+            }).show();
+            });
+            },
+    });
+    return false;
+    });</script>
 
 <script>
     $('#myModalTeamKick').on('show', function() {
@@ -348,49 +361,4 @@ crossorigin="anonymous"></script>
     });
 
 </script>
-
-<script>
-    $('#myModalTeamCancel').on('show', function() {
-    var id = $(this).data('id'),
-            removeBtn = $(this).find('.danger');
-    })
-
-            $('.confirm-cancel').on('click', function(e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    $('#myModalTeamCancel').data('id', id).modal('show');
-    });
-    $('#btnKick').click(function() {
-
-    var id = $('#myModalTeamCancel').data('id');
-    //sending to php the row to be deleted from the db
-    // alert (id);
-    $.ajax({
-    url: '<?php echo $this->url->get('team/member/cancel');?>' + id,
-            // type: POST,
-            data: 'id=' + id,
-            success: function(html){
-
-
-            // $('[data-id='+id+']').remove();
-            // $('#myModalTeamCancel').modal('hide');
-
-            //removing entire row
-            $('[data-id='+id+']').remove();
-            alert(id);
-            $('#myModalTeamCancel').modal('hide');
-            $(document).ready(function () {
-            $('.alert-teammember').notify({
-            message: {
-            text: 'Invitation Canceled'
-            }
-            }).show();
-            });
-            },
-    });
-    return false;
-    });
-
-</script>
-
 

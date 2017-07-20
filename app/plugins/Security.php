@@ -36,6 +36,7 @@ class Security extends Plugin {
         $directorResources = array(
             'personnel' => ['*'],
             'city' => ['*'],
+            'skill' => ['*'],
             'track' => ['*'],
             'programme' => ['*'],
             'manager' => ['logout'],
@@ -83,6 +84,7 @@ class Security extends Plugin {
 //public resourcees
         $publicResources = array(
             'index' => array('index'),
+			'faq' => array('index'),
         );
         foreach ($publicResources as $resource => $actions) {
             $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
@@ -124,7 +126,7 @@ class Security extends Plugin {
 
         $allowed = $acl->isAllowed($role, $controller, $action);
         if ($allowed != Acl::ALLOW) {
-            $this->flash->error("You're not allowed to access this resource '$controller $action'");
+            // $this->flash->error("You're not allowed to access this resource '$controller $action'");
             if ($role === 'Guest') {
                 $dispatcher->forward(array(
                     'controller' => 'index',

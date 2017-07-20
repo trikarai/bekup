@@ -1,0 +1,82 @@
+[Wed, 21 Jun 17 07:58:42 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 07:58:46 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 07:58:46 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 07:58:46 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 07:58:52 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 07:58:56 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 07:58:57 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 07:59:08 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 08:02:07 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 08:02:09 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:02:09 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:02:09 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:07 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:07 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:07 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:20 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:20 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:23 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:23 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:23 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:25 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:25 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:25 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:34 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:34 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:34 +0000][DEBUG] BekupController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:38 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 08:05:43 +0000][DEBUG] DartController handler class cannot be loaded
+[Wed, 21 Jun 17 08:28:58 +0000][DEBUG] active team not found
+[Wed, 21 Jun 17 08:29:26 +0000][DEBUG] active team not found
+[Wed, 21 Jun 17 08:29:28 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 08:53:29 +0000][DEBUG] Syntax error, unexpected token COLON in /home/bekupinf/public_html/app/views/team/profile/edit.volt on line 58
+[Wed, 21 Jun 17 08:54:08 +0000][DEBUG] Syntax error, unexpected token ) in /home/bekupinf/public_html/app/views/team/profile/edit.volt on line 58
+[Wed, 21 Jun 17 08:54:28 +0000][DEBUG] Syntax error, unexpected token ) in /home/bekupinf/public_html/app/views/team/profile/edit.volt on line 58
+[Wed, 21 Jun 17 08:54:30 +0000][DEBUG] Syntax error, unexpected token ) in /home/bekupinf/public_html/app/views/team/profile/edit.volt on line 58
+[Wed, 21 Jun 17 08:54:32 +0000][DEBUG] Syntax error, unexpected token ) in /home/bekupinf/public_html/app/views/team/profile/edit.volt on line 58
+[Wed, 21 Jun 17 08:55:55 +0000][DEBUG] Syntax error, unexpected token {{ in /home/bekupinf/public_html/app/views/team/profile/edit.volt on line 58
+[Wed, 21 Jun 17 09:23:43 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 09:23:43 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 09:23:48 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 09:23:48 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 09:23:57 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 09:24:23 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 09:28:03 +0000][DEBUG] Action 'assets' was not found on handler 'register'
+[Wed, 21 Jun 17 13:36:12 +0000][DEBUG] Action 'ajsddhd' was not found on handler 'index'
+[Wed, 21 Jun 17 13:57:28 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 13:57:29 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 14:37:23 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 14:37:24 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 14:37:24 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 16:03:18 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 16:03:18 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 16:03:18 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:07:12 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:08:27 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:21:15 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:21:25 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:34:47 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:36:28 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:44:16 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:44:21 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:45:10 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:45:54 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:52:42 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:52:46 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:53:04 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:53:27 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:53:27 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:53:47 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Wed, 21 Jun 17 23:54:38 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 00:52:40 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 00:54:01 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 00:59:21 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 00:59:34 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 01:03:56 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 01:04:16 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 01:04:41 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 01:05:14 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 01:06:12 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 01:06:16 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 02:03:04 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems
+[Thu, 22 Jun 17 02:03:04 +0000][DEBUG] Dispatcher has detected a cyclic routing causing stability problems

@@ -8,6 +8,10 @@
             <label for="name">Name</label>
             {{text_field('name', 'required': 'required')}}
         </div>
+		<div class='form-group'>
+            <label for="description">Deskripsi</label>
+            {{text_field('description', 'required': 'required')}}
+        </div>
         <div class='form-group'>
             <label for="registration_start_date">Registration Start Date</label>
             {{text_field('registration_start_date', 'required': 'required')}}

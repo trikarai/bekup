@@ -20,33 +20,51 @@ $di = new FactoryDefault();
  */
  
 //security checking is temporarily disabled	
+//set exception logging
 
- $di->set('dispatcher', function() use ($di) {
+$di->set('dispatcher', function() use ($di) {
 	 $eventsManager = new EventsManager;
 	 $security = new Security($di);
 	 $eventsManager->attach('dispatch', $security);
+/**
+*routing to error 404 on exception
+
+	$eventsManager->attach("dispatch", function ($event, $dispatcher, $exception) {
+	//controller or action doesn't exist
+	if ($event->getType() == 'beforeException') {
+		switch ($exception->getCode()) {
+			case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+			case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+				$dispatcher->forward(array(
+					'controller' => 'index',
+					'action' => 'index'
+				));
+				return false;
+			}
+		}
+	});
+*/
 	
 	 $dispatcher = new Dispatcher;
 	 $dispatcher->setEventsManager($eventsManager);
 
 	 return $dispatcher;
  });
-
 /**
  * The URL component is used to generate all kind of urls in the application
  */
-$di->set('url', function() use ($config){
+$di->set('url', function(){
 	$url = new UrlProvider();
-	$url->setBaseUri($config->application->baseUri);
+	$url->setBaseUri("http://bekup.web.id/");
 	return $url;
 });
 
 
-$di->set('view', function() use ($config) {
+$di->set('view', function() {
 
 	$view = new View();
 
-	$view->setViewsDir(BASE_PATH . "/" . $config->application->viewsDir);
+	$view->setViewsDir(APP_PATH . "/views/");
 
 	$view->registerEngines(array(
 		".volt" => 'volt'

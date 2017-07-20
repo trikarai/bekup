@@ -3,7 +3,7 @@
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-$isDevMode = true;
+$isDevMode = false;
 $paths = array(
     BASE_PATH . "/src/Superclass/Infrastructure/Persistence/DoctrineMapping",
     BASE_PATH . "/src/City/Profile/Infrastructure/Persistence/DoctrineMapping",
@@ -27,9 +27,9 @@ $doctrineConfig = Setup::createXMLMetadataConfiguration($paths, $isDevMode);
 
 $conn = array(
     'driver' => 'pdo_mysql',
-    'user' => 'root',
-    'password' => 'root',
-    'dbname' => 'bekup'
+    'user' => 'bekupinf_root',
+    'password' => 'barapraja@pr4jaB1',
+    'dbname' => 'bekupinf_bekup'
 );
 
 $entityManager = EntityManager::create($conn, $doctrineConfig);

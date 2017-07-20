@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Status</label>
-                                {{select_static("class": "form-control", "track_id", trackList)}}
+                                {{select_static("class": "form-control", "type", trackList)}}
                             </div>
                             <div class="form-group">
                                 <label for="name">Name:</label>

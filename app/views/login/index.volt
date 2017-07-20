@@ -5,12 +5,35 @@
         border-color: transparent !important;
         margin-top: 20px;
     }
+	
+	span.rstpass {
+		background: #7fce51;
+		color: #fff;
+		padding: 5px;
+		position: relative;
+		bottom: 14px;
+		font-size: smaller;
+		border-top-right-radius: 11px;
+		border-bottom-right-radius: 11px;
+		padding-right: 7px;
+    }
+	
+	span.rstpass:hover {
+		background: #fb4427;
+		transition: all 0.3s ease;
+	}
+	
+	a, a:hover, a:focus {
+		text-decoration: none;
+    }
+	
+
 </style>
 
 <html lang="en">
     <head>
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-        <link rel="icon" type="image/png" href="assets/img/favicon.png">
+        <link rel="apple-touch-icon" sizes="76x76" href={{url('assets/img/apple-icon.png')}}>
+        <link rel="icon" type="image/png" href={{url('assets/img/favicon.png')}}>
 
         <title>BEKUP - Login Page</title>
 
@@ -20,8 +43,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
         <!-- CSS Files -->
-        {#<link href="{{url('public/css/bootstrap.min.css')}}" rel="stylesheet" />#}
-        <link href="{{url('public/css/material-kit.css')}}" rel="stylesheet"/>
+
+        <link href="<?php echo $this->url->get('public'); ?>/css/material-kit.css" rel="stylesheet"/>
 
 
     </head>
@@ -70,9 +93,13 @@
                                             <button class="btn btn-theme" type="submit">Submit</button>
                                         </div>
                                     </form>
+									<div style="text-align:center;">
+										<a href="http://dilo.id/sign-in-2?view=reset"><span class="rstpass">Forgot Your Password ?</span></a>
+									</div>
                                     <div style="text-align: center;margin-bottom: 37px;">
+										<a href="http://bekup.web.id" style="text-decoration:none !important">Home</a><br>
                                         Don't have an account yet?<br/>
-                                        <a class="" href={{url('register/index')}} style="text-decoration:none !important">
+                                        <a class="" href={{url('register/start')}} style="text-decoration:none !important">
                                             Register Here
                                         </a>
                                     </div>
@@ -97,7 +124,7 @@
     </body>
 
     <script src="<?php echo $this->url->get('public'); ?>/js/jquery.min.js"></script>
-    {#<link href="{{url('public/css/bootstrap.min.css')}}" rel="stylesheet" />#}
+    <script src="<?php echo $this->url->get('public'); ?>/js/bootstrap.min.js"></script>
     <script src="<?php echo $this->url->get('public'); ?>/js/material.min.js"></script>
     <script src="<?php echo $this->url->get('public'); ?>/js/material-kit.js" type="text/javascript"></script>
 

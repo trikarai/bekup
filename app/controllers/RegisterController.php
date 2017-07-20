@@ -1,6 +1,5 @@
 <?php
-use Phalcon\Filter;
-use Phalcon\Tag as Tag;
+use Phalcon\Tag;
 
 use Talent\Profile\ApplicationService\Talent\SignUpTalentDiloService;
 use Talent\Profile\DomainModel\Talent\DataObject\TalentWriteDataObject;
@@ -8,33 +7,49 @@ use City\Profile\ApplicationService\City\QueryCityService;
 use Track\Definition\ApplicationService\Track\QueryTrackService;
  
 class RegisterController extends ControllerBase{    
+    // function indexAction(){
+        // $this->view->cityList = $this->_getCityList();
+        // $this->view->trackList = $this->_getTrackList();
+        // $this->view->genderList = $this->_getGenderList();
+    // }
+    
     function basicAction(){
         $this->view->cityList = $this->_getCityList();
         $this->view->trackList = $this->_getTrackList();
         $this->view->genderList = $this->_getGenderList();
+        Tag::displayTo('bekup_type', 'basic');
     }
     function basicDiloMemberAction(){
+		$_POST['user_name'] = "";
+		$_POST['password'] = "";
         $this->view->cityList = $this->_getCityList();
         $this->view->trackList = $this->_getTrackList();
         $this->view->genderList = $this->_getGenderList();
+        Tag::displayTo('bekup_type', 'basic');
     }
-    
     function startAction(){
         $this->view->cityList = $this->_getCityList();
         $this->view->genderList = $this->_getGenderList();
+        Tag::displayTo('bekup_type', 'start');
     }
     function startDiloMemberAction(){
+		$_POST['user_name'] = "";
+		$_POST['password'] = "";
         $this->view->cityList = $this->_getCityList();
         $this->view->genderList = $this->_getGenderList();
+        Tag::displayTo('bekup_type', 'start');
     }
-    
     function journeyAction(){
         $this->view->cityList = $this->_getCityList();
         $this->view->genderList = $this->_getGenderList();
+        Tag::displayTo('bekup_type', 'journey');
     }
     function journeyDiloMemberAction(){
+		$_POST['user_name'] = "";
+		$_POST['password'] = "";
         $this->view->cityList = $this->_getCityList();
         $this->view->genderList = $this->_getGenderList();
+        Tag::displayTo('bekup_type', 'journey');
     }
 
     function signupBasicAction(){
@@ -47,12 +62,7 @@ class RegisterController extends ControllerBase{
         return $this->forward($this->_signup('journey'));
     }
     function signupBasicDiloMemberAction(){
-        try{
-            $this->forward($this->_signupDiloMember('basic'));
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-        
+        return $this->forward($this->_signupDiloMember('basic'));
     }
     function signupStartDiloMemberAction(){
         return $this->forward($this->_signupDiloMember('start'));
@@ -66,26 +76,33 @@ class RegisterController extends ControllerBase{
             return "register/$bekupType";
         }
         $service = $this->_signUpTalentDiloService();
-        $trackId = strip_tags($this->request->getPost('track_id'));
         $email = strip_tags($this->request->getPost('email'));
-        $request = $this->_getRequest($bekupType, $email, $trackId);
+        $request = $this->_getRequest($bekupType, $email);
         
         $response = $service->prepareTalentData($request);
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
+			// echo '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Info : Registration Process</button><br/>';
             return "register/$bekupType";
         }
-        $jsonObjectResponse = $this->_getDiloRegisterResponse(urlencode($request->getName), urlencode($request->getUserName()), $request->getEmail(), urlencode($request->getPassword()));
+        $jsonObjectResponse = $this->_getDiloRegisterResponse(urlencode($request->getName()), urlencode($request->getUserName()), $request->getEmail(), urlencode($request->getPassword()));
         if("Success" !== $jsonObjectResponse->message){
-            $this->flash->error($jsonObjectResponse->message);
-            return "register/$bekupType";
+			
+			if($jsonObjectResponse->message=="Registration failed: This email address is already registered."){
+				$this->flash->error("This email already registered as Dilo Member please use with this Form ");	
+				return "register/$bekupType" . "DiloMember";
+			}else{
+				$this->flash->error($jsonObjectResponse->message);
+				return "register/$bekupType";
+			}
+			
         }
         $saveResponse = $service->execute();
         if(false === $saveResponse->getStatus()){
-            $this->displayErrorMessages($response->errorMessage()->getDetails());
+            $this->displayErrorMessages($saveResponse->errorMessage()->getDetails());
             return "register/$bekupType";
         }
-        $this->flash->success('sign up successfull, please check email to confirm');
+        $this->flash->success('sign up successfull, please check email to confirm (check your SPAM/Bulk/Promotion/etc folders)');
         return "login/index";
     }
 
@@ -94,7 +111,6 @@ class RegisterController extends ControllerBase{
             return "register/$bekupType" . "DiloMember";
         }
         $service = $this->_signUpTalentDiloService();
-        $trackId = strip_tags($this->request->getPost('track_id'));
         $userName = strip_tags($this->request->getPost('user_name'));
         $password = strip_tags($this->request->getPost('password'));
         $jsonObjectResponse = $this->_getDiloLoginResponse(urlencode($userName), urlencode($password));
@@ -107,17 +123,18 @@ class RegisterController extends ControllerBase{
             $this->flash->error("Akun Dilo Anda belum aktif, silahkan aktifkan melalui email");
             return "register/$bekupType" . "DiloMember";
         }
-        $request = $this->_getRequest($bekupType, $email, $trackId);
+        $request = $this->_getRequest($bekupType, $email);
         $response = $service->prepareTalentData($request);
         if(false === $response->getStatus()){
             $this->displayErrorMessages($response->errorMessage()->getDetails());
             return "register/$bekupType" . "DiloMember";
-        }$saveResponse = $service->execute();
+        }
+        $saveResponse = $service->execute();
         if(false === $saveResponse->getStatus()){
-            $this->displayErrorMessages($response->errorMessage()->getDetails());
+            $this->displayErrorMessages($saveResponse->errorMessage()->getDetails());
             return "register/$bekupType";
         }
-        $this->flash->success('sign up successfull, plea check email to confirm');
+        $this->flash->success('sign up successfull, please check email to confirm');
         return "login/index";
     }
     
@@ -160,7 +177,7 @@ class RegisterController extends ControllerBase{
         );
     }
     protected function _verifyCaptcha(){
-return true;
+//return true;
         $captcha = $this->request->getPost('g-recaptcha-response');
         if(!$captcha){
             $this->flash->error('Please input captcha');
@@ -178,7 +195,7 @@ return true;
         }
     }
 
-    protected function _getRequest($bekupType, $email, $trackId = null){
+    protected function _getRequest($bekupType, $email){
         $name = strip_tags($this->request->getPost('name'));
         $userName = strip_tags($this->request->getPost('user_name'));
         $password = strip_tags($this->request->getPost('password'));
@@ -188,6 +205,11 @@ return true;
         $gender = strip_tags($this->request->getPost('gender'));
         $motivation = strip_tags($this->request->getPost('motivation'));
         $cityId = strip_tags($this->request->getPost('city_id'));
+        if(isset($_POST['track_id'])){
+            $trackId = strip_tags($this->request->getPost('track_id'));
+        }else{
+            $trackId = null;
+        }
         return TalentWriteDataObject::signUpRequest($name, $userName, $email, $password, $phone, $cityOfOrigin, $birthDate, $cityId, $gender, $bekupType, $motivation, $trackId);
     }
 } 

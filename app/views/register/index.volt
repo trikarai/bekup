@@ -20,7 +20,7 @@ use Phalcon\Flash\Session as FlashSession;
 
         <div class="row" style="margin-bottom: 35px;">
             <div class="col-md-4">
-                <a class="prehome" href={{url('index/index')}}><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a class="prehome" href={{url('')}}><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </div>
             <div class="col-md-8">
                 <a class="preregis" href={{url('register/dilo')}}><i class="ion ion-compose"></i> Pre-Registrasi untuk member DILo</a>

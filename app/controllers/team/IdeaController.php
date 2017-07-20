@@ -8,6 +8,7 @@ use Team\Idea\ApplicationService\Idea\ProposeIdeaService;
 use Team\Idea\ApplicationService\Idea\QueryIdeaService;
 use Team\Idea\DomainModel\Idea\DataObject\IdeaWriteDataObject;
 use Team\Idea\ApplicationService\Superhero\QuerySuperheroService;
+use Team\Profile\ApplicationService\Talent\QueryMembershipService;
 
 class IdeaController extends TeamControllerBase{
     protected function _queryIdeaService(){
@@ -39,11 +40,20 @@ class IdeaController extends TeamControllerBase{
     }
     
     function indexAction(){
+		$talentRepository = $this->em->getRepository('\Team\Profile\DomainModel\Talent\Talent');
+		$activeMembershipService = new QueryMembershipService($talentRepository);
+        $membershipResponse = $activeMembershipService->showActiveMembership($this->_getTalentId());
+        if(false === $membershipResponse->getStatus()){
+			$this->flash->error('You cant manage idea without team, create team first');
+        // $this->displayErrorMessages($response->errorMessage()->getDetails());
+			return $this->forwardNamespace('Team/dashboard/noTeam');
+        }
+		
         $this->view->pick('team/idea/index');
         $service = $this->_queryIdeaService();
         $response = $service->showAllIdea($this->_getTalentId());
-		if($false === $response->getStatus()){
-			return $this->forwardNamespace('Team/dashboard/index');
+		if(false === $response->getStatus()){
+			// return $this->forwardNamespace('Team/dashboard/index');
 		}
         $this->view->ideaRdos = $response->arrayOfReadDataObject();
     }

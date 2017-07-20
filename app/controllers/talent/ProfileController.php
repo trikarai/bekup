@@ -73,7 +73,7 @@ class ProfileController extends \TalentControllerBase{
         $talentRepository = $this->em->getRepository('\Talent\Education\DomainModel\Talent\Talent');
         $service = new QueryEducationService($talentRepository);
         $response = $service->showAll($this->_getTalentId());
-        return $this->_getArrayOfRdos($response);
+        return $response->arrayOfReadDataObject();
     }
     /** 
      * @return WorkingExperienceWriteDataObject[] 
@@ -82,7 +82,7 @@ class ProfileController extends \TalentControllerBase{
         $talentRepository = $this->em->getRepository('\Talent\WorkingExperience\DomainModel\Talent\Talent');
         $service = new QueryWorkingExperienceService($talentRepository);
         $response = $service->showAll($this->_getTalentId());
-        return $this->_getArrayOfRdos($response);
+        return $response->arrayOfReadDataObject();
 
     }
     /**
@@ -92,7 +92,7 @@ class ProfileController extends \TalentControllerBase{
         $talentRepository = $this->em->getRepository('\Talent\Training\DomainModel\Talent\Talent');
         $service = new QueryTrainingService($talentRepository);
         $response = $service->showAll($this->_getTalentId());
-        return $this->_getArrayOfRdos($response);
+        return $response->arrayOfReadDataObject();
     }
     
     protected function _talentBusinessRdos(){
@@ -105,15 +105,6 @@ class ProfileController extends \TalentControllerBase{
         $talentQueryRepository = $this->em->getRepository('Talent\Organizational\DomainModel\Talent\TalentQuery');
         $service = new Organizational\ApplicationService\Organizational\QueryOrganizationalService($talentQueryRepository);
         $response = $service->showAll($this->_getTalentId());
-        return $response->arrayOfReadDataObject();
-    }
-    
-    
-
-    protected function _getArrayOfRdos(\Resources\QueryResponseObject $response){
-        if(false === $response->getStatus()){
-            $this->displayErrorMessages($response->errorMessage()->getDetails());
-        }
         return $response->arrayOfReadDataObject();
     }
     

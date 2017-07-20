@@ -8,9 +8,12 @@ $loader->registerNamespaces([
 ]);
 $loader->registerDirs(
     array(
-        BASE_PATH . "/" . $config->application->controllersDir,
-        BASE_PATH . "/" . $config->application->libraryDir,
-        BASE_PATH . "/" . $config->application->pluginsDir,
+		APP_PATH . '/controllers/',
+		APP_PATH . '/library/',
+		APP_PATH . '/plugins/',
+        // BASE_PATH . "/" . $config->application->controllersDir,
+        // BASE_PATH . "/" . $config->application->libraryDir,
+        // BASE_PATH . "/" . $config->application->pluginsDir,
     )
 );
 $loader->register();

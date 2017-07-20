@@ -30,7 +30,7 @@
                     <div class="form-group col-md-6">
                         <div class="form-group">
                             <label for="type">Type:</label>
-                            {{select_static("class": "form-control", "track_id", trackList)}}
+                            {{select_static("class": "form-control", "type", trackList)}}
                         </div>
                         <div class="form-group">
                             <label for="name">Name:</label>

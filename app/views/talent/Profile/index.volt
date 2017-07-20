@@ -6,7 +6,7 @@
         <small>profile</small>
     </h1>
     <ol class="breadcrumb">
-        <li><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li>Profile</li>
     </ol>
 </section>
@@ -89,12 +89,12 @@
                                 <div>{{profileRdo.getGender()}}</div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!--div class="row">
                             <label  class="col-sm-4 control-label">Bekup Type</label>
                             <div class="col-sm-8">
                                 <div>{{profileRdo.getBekupType()}}</div>
                             </div>
-                        </div>
+                        </div-->
                         <div class="row">
                             <label  class="col-sm-4 control-label">Motivation</label>
                             <div class="col-sm-8">
@@ -130,7 +130,8 @@
                                         <a href="{{url('talent/workexperience/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="btn tombolremove confirm-delete-work" data-id="{{row.getId()}}">Remove</a>
+									<!-- untuk aktifkan remove ajax, tambahkan class confirm-delete-work -->
+                                        <a href="{{url('talent/workexperience/remove/')}}{{row.getId()}}" class="btn tombolremove" data-id="{{row.getId()}}">Remove</a>
                                     </div>
                                 </div>
                             {%endfor%}
@@ -172,7 +173,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title" style="margin-top:5px;">Entrepreneurship Experience</h3>
 
-                    <a href="{{url('talent/entrepreneurship/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
+                    <a href="{{url('talent/entrepreneurship/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Experience</a>
 
                 </div>
                 <div class="alert-work"></div>
@@ -265,7 +266,8 @@
                                         <a href="{{url('talent/education/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="btn tombolremove confirm-delete-edu" data-id="{{row.getId()}}">Remove</a>
+									<!-- untuk aktifkan remove ajax, tambahkan class confirm-delete-edu -->
+                                        <a href="{{url('talent/education/remove/')}}{{row.getId()}}" class="btn tombolremove" data-id="{{row.getId()}}">Remove</a>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -328,7 +330,8 @@
                                         <a href="{{url('talent/training/edit/')}}{{row.getId()}}" class="btn tomboledit">Edit</a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="btn tombolremove confirm-delete-training" data-id="{{row.getId()}}">Remove</a>
+									<!-- untuk aktifkan remove ajax, tambahkan class confirm-delete-training -->
+                                        <a href="{{url('talent/training/remove/')}}{{row.getId()}}" class="btn tombolremove" data-id="{{row.getId()}}">Remove</a>
                                     </div>
                                 </div>
                         {%endfor%}{%else%}
@@ -370,7 +373,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title" style="margin-top:5px;">Organizational Experience</h3>
 
-                    <a href="{{url('talent/organizational/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Work Experience</a>
+                    <a href="{{url('talent/organizational/new')}}" class="btn tomboladd pull-right"><i class="fa fa-plus"></i> Add Experience</a>
 
                 </div>
                 <div class="alert-work"></div>

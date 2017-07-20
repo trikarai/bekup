@@ -85,7 +85,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/dart/public/img/profile-fill-circle-160.png" class="img-circle" alt="User Image">
+          <img src="{{url('public/img/profile-fill-circle-160.png')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $this->session->get('auth')['name']; ?></p>

@@ -35,7 +35,7 @@
                     {% for row in skillRdos %}
                         <tr>
                             <td data-title="Nama Skill"> {{row.getName()}}</td>
-                            <td data-title="Type"> {{row.trackReadDataObject().getName()}} </td>
+                            <td data-title="Type"> {{row.getType()}} </td>
                             <td data-title="Action">
                                 <a href={{url('skill/edit/')}}{{row.getId()}} class="btn tomboledit">Edit</a>
                             </td>
