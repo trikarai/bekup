@@ -46,7 +46,16 @@
 					<li><a class="smoothscroll"  href="#features" title="">Partners</a></li>
 					<li><a href="http://bekup.web.id/faq" title="">FAQ</a></li>					
 					<li class="highlight with-sep" style="font-weight:900;"><a href="{{url('register')}}" title="">Pre-Registration</a></li>
-                    <li class="highlight with-sep" style="font-weight:900;"><a href="{{url('login')}}" title="">Log In</a></li>					
+                    <!--<li class="highlight with-sep" style="font-weight:900;"><a href="{{url('login')}}" title="">Log In</a></li>-->			
+					<?php
+						if($this->session->get('auth')['name']==""){
+							echo '<li class="highlight with-sep" style="font-weight:900;"><a href="http://localhost/bekup/login" title="">Log In</a></li>';
+						}else{
+							echo '<li class="highlight with-sep" style="font-weight:900;"><a href="http://localhost/bekup/talent/dashboard/index" title="">';
+							echo $this->session->get('auth')['name'];
+							echo '</a></li>';
+						}
+					?>		
 				</ul>
 			</nav>
 
